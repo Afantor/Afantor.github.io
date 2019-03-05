@@ -88,7 +88,7 @@ opacity:1
 .search_ico span:before { top: -14px; left: 0; }
 .search_ico span:after { left: 10px; top: 0; }
 /*logo*/
-.logo { float: left; font-size: 22px; line-height: 73px; background:url(../images/logo.jpg) left center no-repeat ; padding-left:60px}
+.logo { float: left; font-size: 22px; line-height: 73px; background:url(../images/Logo_2.png) left center no-repeat ; padding-left:60px}
 /*nav*/
 nav { width: 1120px; margin: auto; }
 #mnavh { display: none; width: 30px; height: 40px; text-align: center; padding: 0 5px }
