@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>General information about the nRF52832 port &mdash; MicroPython 1.10 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/customstyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting started with MicroPython on the nRF52832" href="tutorial/intro.html" />
+    <link rel="prev" title="Quick reference for the nRF52832" href="quickref.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> MicroPython
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">MicroPython libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The MicroPython language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genrst/index.html">MicroPython differences from CPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/index.html">Developing and building MicroPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">MicroPython license information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyboard/quickref.html">Quick reference for the pyboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp8266/quickref.html">Quick reference for the ESP8266</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp32/quickref.html">Quick reference for the ESP32</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wipy/quickref.html">Quick reference for the WiPy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="quickref.html">Quick reference for the nRF52832</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General information about the nRF52832 port</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multitude-of-boards">Multitude of boards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-specifications-and-soc-datasheets">Technical specifications and SoC datasheets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/intro.html">Getting started with MicroPython on the nRF52832</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#installing-micropython">Installing MicroPython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#general-board-control">General board control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#module-machine">Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#delay-and-timing">Delay and timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#timers">Timers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#pins-and-gpio">Pins and GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#software-spi-bus">Software SPI bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#hardware-spi-bus">Hardware SPI bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#i2c-bus">I2C bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#real-time-clock-counter-rtcounter">Real time clock Counter (RTCounter)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#deep-sleep-mode">Deep-sleep mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#module-machine.UART">UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#webrepl-web-browser-interactive-prompt">WebREPL (web browser interactive prompt)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MicroPython</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="quickref.html">Quick reference for the nRF52832</a> &raquo;</li>
+        
+      <li>General information about the nRF52832 port</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/nrf52/general.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="general-information-about-the-nrf52832-port">
+<span id="nrf52832-general"></span><h1>General information about the nRF52832 port<a class="headerlink" href="#general-information-about-the-nrf52832-port" title="Permalink to this headline">¶</a></h1>
+<p>The nRF52832 is a popular Bluetooth enabled System-on-Chip (SoC) by
+Espressif Systems.</p>
+<div class="section" id="multitude-of-boards">
+<h2>Multitude of boards<a class="headerlink" href="#multitude-of-boards" title="Permalink to this headline">¶</a></h2>
+<p>There is a multitude of modules and boards from different sources which carry
+the nRF52832 chip. MicroPython tries to provide a generic port which would run on
+as many boards/modules as possible, but there may be limitations. Espressif
+development boards are taken as reference for the port (for example, testing is
+performed on them).  For any board you are using please make sure you have a
+datasheet, schematics and other reference materials so you can look up any
+board-specific functions.</p>
+<p>To make a generic nRF52832 port and support as many boards as possible the
+following design and implementation decision were made:</p>
+<ul class="simple">
+<li>GPIO pin numbering is based on nRF52832 chip numbering.  Please have the manual/pin
+diagram of your board at hand to find correspondence between your board pins and
+actual nRF52832 pins.</li>
+<li>All pins are supported by MicroPython but not all are usable on any given board.
+and a board may only expose a certain selection of pins.</li>
+</ul>
+</div>
+<div class="section" id="technical-specifications-and-soc-datasheets">
+<h2>Technical specifications and SoC datasheets<a class="headerlink" href="#technical-specifications-and-soc-datasheets" title="Permalink to this headline">¶</a></h2>
+<p>The datasheets and other reference material for nRF52832 chip are available
+from the vendor site: <a class="reference external" href="https://www.nordicsemi.com/">https://www.nordicsemi.com/</a> .
+They are the primary reference for the chip technical specifications, capabilities,
+operating modes, internal functioning, etc.</p>
+<p>For your convenience, some of technical specifications are provided below:</p>
+<ul class="simple">
+<li>Architecture: ARM Cortex-M4F 32-bit</li>
+<li>CPU frequency: up to 64MHz</li>
+<li>Flash available: 512KB</li>
+<li>RAM: 64KB</li>
+<li>GPIO: 32 (GPIOs are multiplexed with other functions, including
+external SWD, UART, etc.)</li>
+<li>UART: 1 RX/TX UART (hardware handshaking)</li>
+<li>SPI: 1 SPI interfaces</li>
+<li>I2C: 1 I2C</li>
+<li>I2S: 1</li>
+<li>ADC: 12-bit SAADC up to 8 channels</li>
+<li>Programming: using bootloader from UART -
+and always-available BootROM bootloader</li>
+</ul>
+<p>For more information see the nRF52832 datasheet: <a class="reference external" href="https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52832">https://www.nordicsemi.com/Products/Low-power-short-range-wireless/nRF52832</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial/intro.html" class="btn btn-neutral float-right" title="Getting started with MicroPython on the nRF52832" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickref.html" class="btn btn-neutral" title="Quick reference for the nRF52832" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
+      Last updated on 17 Apr 2019.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions and Downloads</span>
+    latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="//en/latest">latest</a></dd>
+      
+    </dl>
+    <dl>
+      <dt>Downloads</dt>
+      
+        <dd><a href="//en/latest/micropython-docs.pdf">PDF</a></dd>
+      
+    </dl>
+    <hr/>
+    <dl>
+      <dt>External links</dt>
+        <dd>
+          <a href="https://www.micropython.org">micropython.org</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/micropython/micropython">GitHub</a>
+        </dd>
+    </dl>
+  </div>
+</div>
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.10',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.eezyrobots.it/eba_mk2.html -->
+<html lang="en" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" style="">
+<!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Always force latest IE rendering engine -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Meta Keyword -->
+        <meta name="keywords" content="eezybotarm, EEZYbotARM, 3Dprinted robot, 3dprint, 3D print, robot arm, robot, robots, 3dprinting, Carlo Franciscone, Novara">
+        <!-- meta character set -->
+        
+
+        <!-- Site Title -->
+        <title>Bluefruit LE Connect APP</title>
+
+        <link rel="icon" type="image/png" href="./img/icons/app.png">
+        
+        <!--
+        Google Fonts
+        ============================================= -->
+        <link href="./css" rel="stylesheet" type="text/css">
+		
+        <!--
+        CSS
+        ============================================= -->
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="./css/jquery.fancybox.css">
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="./css/owl.carousel.css">
+        <!-- Animate -->
+        <link rel="stylesheet" href="./css/animate.css">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="./css/main.css">
+        <!-- Main Responsive -->
+        <link rel="stylesheet" href="./css/responsive.css">
+		
+		
+		<!-- Modernizer Script for old Browsers -->
+        <script src="./js/vender/modernizr-2.6.2.min.js"></script>
+		
+    <style type="text/css">.fancybox-margin{margin-right:17px;}</style></head>
+	
+    <body>
+
+        <!--
+        Fixed Navigation
+        ==================================== -->
+        <header id="navigation" class="navbar-fixed-top" style="background-color: transparent;">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- /responsive nav button -->
+
+                    <!-- logo -->
+                    <h1 class="navbar-brand">
+                        <a href="http://www.afantor.cc">
+                            <h1>Afantor</h1>
+                        </a>
+                    </h1>
+                    <!-- /logo -->
+
+                    </div>
+
+                    <!-- main nav -->
+                    <nav class="collapse navigation navbar-collapse navbar-right" role="navigation">
+                        <ul id="nav" class="nav navbar-nav">
+                          <li><a href="http://www.afantor.cc">HOME</a></li>
+                          <li class="current"><a href="http://www.afantor.cc/eba_mk2.html#service">INSTRUCTIONS</a></li>
+                          <li><a href="http://www.afantor.cc/eba_mk2.html#portfolio">MAKES</a></li>
+                          <li><a href="./">Privacy</a></li>   
+                          <li><a href="./blue_app.html"> <img src="./img/icons/China.png"></a></li>
+                    <!-- /        <li class="current"><a href="index.html">Home</a></li>                       
+                    <!-- /        <li><a href="#about">About</a></li>
+                    <!-- /        <li><a href="#pricing">Pricing</a></li>  -->
+                    <!-- /        <li><a href="#contact">Contact</a></li>   -->
+                        </ul>
+                    </nav>
+                    <!-- /main nav -->
+                </div>
+
+            
+        </header>
+        <!--
+        End Fixed Navigation
+        ==================================== -->
+
+
+        <!--
+        Home Slider
+        ==================================== -->
+        <section id="home">     
+            <div id="home-carousel" class="carousel slide" data-interval="false">
+                <ol class="carousel-indicators">
+                    <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#home-carousel" data-slide-to="1"></li>
+                    <li data-target="#home-carousel" data-slide-to="2"></li>
+                    <li data-target="#home-carousel" data-slide-to="3"></li>
+                    <li data-target="#home-carousel" data-slide-to="4"></li>
+                </ol>
+                <!--/.carousel-indicators-->
+
+                <div class="carousel-inner">
+
+                    <div class="item active" style="background-image: url(&quot;img/eba2/eba2slider_02.jpg&quot;); height: 969px;">
+                        <div class="carousel-caption">
+                            <div class="animated bounceInDown">
+                                <h1>EEZYbotARM MK2</h1><br><h4>3Dprintable robotic arm</h4>
+                                <p>The make 2 of the previous smaller version. A little less easy but more powerful.</p>
+                            </div>
+                        </div>
+                    </div>              
+
+                    <div class="item" style="background-image: url(&quot;img/eba2/eba2slider_03.jpg&quot;); height: 969px;">                
+                        <div class="carousel-caption">
+                            <div class="animated bounceInRight">
+                                <h1>EEZYbotARM MK2</h1><br><h4>3Dprintable robotic arm</h4>
+                                <p>The make 2 of the previous smaller version. A little less easy but more powerful.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item" style="background-image: url(&quot;img/eba2/eba2slider_04.jpg&quot;); height: 969px;">                 
+                         <div class="carousel-caption">
+                            <div class="animated bounceInUp">
+                                 <h1>EEZYbotARM MK2</h1><br><h4>3Dprintable robotic arm</h4>
+                                <p>The make 2 of the previous smaller version. A little less easy but more powerful.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="item" style="background-image: url(&quot;img/eba2/eba2slider_05.jpg&quot;); height: 969px;">                 
+                         <div class="carousel-caption">
+                            <div class="animated bounceInRight">
+                              <h1>EEZYbotARM MK2</h1><br><h4>3Dprintable robotic arm</h4>
+                                <p>The make 2 of the previous smaller version. A little less easy but more powerful.</p>
+                            </div>                       
+                        </div>
+                    </div>                  
+                    
+                    <div class="item" style="background-image: url(&quot;img/eba2/eba2slider_06.jpg&quot;); height: 969px;">                 
+                         <div class="carousel-caption">
+                            <div class="animated bounceInUp">
+                                 <h1>EEZYbotARM MK2</h1><br><h4>3Dprintable robotic arm</h4>
+                                <p>The make 2 of the previous smaller version. A little less easy but more powerful.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!--/.carousel-inner-->
+                <nav id="nav-arrows" class="nav-arrows hidden-xs hidden-sm visible-md visible-lg">
+                    <a class="sl-prev hidden-xs" href="./eba_mk2.html#home-carousel" data-slide="prev">
+                        <i class="fa fa-angle-left fa-3x"></i>
+                    </a>
+                    <a class="sl-next" href="./eba_mk2.html#home-carousel" data-slide="next">
+                        <i class="fa fa-angle-right fa-3x"></i>
+                    </a>
+                </nav>
+
+            </div>
+        </section>
+        <!--
+        End #home Slider
+        ========================== -->
+
+        
+        <!--
+        #service
+        ========================== -->
+        <section id="service">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                            <h2>EEZYbotARM mk2</h2>    
+                            <p>3D Printed robotic ARM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+        <!--  DESCRIPTION  -->
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left">
+                                <img src="./img/eba2/eba2step002.jpg" class="media-object" alt="description">
+                            </a>
+                            <div class="media-body">
+                                <h3>DESCRIPTION</h3>
+                                <p>This is a 3D printed robotic Arm. <br>
+                                    It follows the success of my previous smaller one EEZYbotARM so I simply called it MK2 (make 2)<br>
+                                    It is a little bigger and stronger, just to obtain an acceptable payload.<br>
+                                    It has been designed without a definite purpose, the aim is educational, providing a suitable hardware that allow to concentrate on exploring all its potential applications.<br>
+                                    It shares the kinematick linkage of the ABB IRB460 scaled down with a ratio of 1:7
+                                <br>
+                                  3D models in stl format can be downloaded for free from my account at <a href="http://www.thingiverse.com/thing:1015238" target="_blank">Thinghiverse</a>.
+                                <br>
+                                  Printing and early tests <a href="https://youtu.be/uOqmjRZzQQs" target="_blank">YouTube</a>.</p>
+                                <br>
+                                  Third Prize winner in the <a href="https://www.instructables.com/contest/robotics2017/" target="_blank">INSTRUCTABLES ROBOTIC CONTEST 2017  <img src="./img/eba2/INSTR_roboticcontest.jpg" alt="robotic contest"></a>.<p></p>
+                                <br>
+                                  Third Prize winner in the <a href="https://www.instructables.com/contest/designnowinmotion/" target="_blank">INSTRUCTABLES IN MOTION CONTEST   <img src="./img/eba2/INSTR_inmotioncontest.jpg" alt="in motion contest"></a>.<p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                    <br>
+                    </p><div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="http://www.instructables.com/id/Exact-Scale-Images-for-Laser-Engraving/" class="pull-left" target="_blank">
+                                <img src="./img/eba2/eba2step001.jpg" alt="step5">
+                            </a>
+                            <div class="media-body">
+                                <h3>FILES</h3>
+                                <p>CAD FILES :<br>I made available the source CAD files of the EEZYbotARM mk2 on my Onshape account : <a href="https://goo.gl/ACnRhT" target="_blank">here </a>
+                                <br> You can copy, modify and export files.</p>   
+                                <p>STL FILES :<br>I made available the source STL files of the EEZYbotARM mk2 on my Thingiverse account : <a href="https://www.thingiverse.com/thing:1454048" target="_blank">here </a>
+                                <br> You can download and export files.Print 3D structural parts by yourself.</p>                           
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+       <!--  PREFACE  -->
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step004.jpg" alt="preface">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>NOTES</h3>
+                                <p>HARDWARE :<br>I used metric hardware and all joints rotate on M4 screws. (in alternative of M4 an #8-32 can be used)<br>Holes of the joints are designed quite tight. This to allow a fine adjust of their diameter using an exact drill bit.<br> 
+                              On screws are to be used selflocking nuts. They are to be tightened till the locking of the joint, then consequently you have to loose them until you obtain a smooth movement with a low clearance between components.<br>On the two axis of the main vertical.arm I used n.2 M4 threaded rods</p>                            
+                            <p><br>SOFTWARE / FIRMWARE :<br>The purpose of the robot is to provide an educational tool wich allow making experiment with different control methods. I found very easy to use a Mini Maestro 12 Controller from Pololu, it is not very cheap but solve a lot of problems. You have to install drivers, a software and when connected to usb you're are immediately able to drive the servos choosing their speed and acceleration also. You can store the servo position to a sequence and when ready it can be played once or in a loop. Can also be stored in the internal script memory and it can be automatically played without computer connected.  
+                            </p></div>
+                        </div>
+                    </div>
+                
+                
+        <!--  MATERIALS  -->
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step003.jpg" alt="materials">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>MATERIALS</h3>
+                                
+                            <p>PRINTED PARTS BOM list :</p><p>
+<br>EBAmk2_001_base.STL	
+<br>EBAmk2_002_mainarm.STL	
+<br>EBAmk2_003_varm.STL	
+<br>EBAmk2_004_link135.STL	
+<br>EBAmk2_005_link135angled.STL	
+<br>EBAmk2_006_horarm__.STL	
+<br>EBAmk2_006_horarm_plate.STL	
+<br>EBAmk2_007_trialink.STL	
+<br>EBAmk2_008_link147_new.STL	
+<br>EBAmk2_009_trialinkfront.STL	
+<br>EBAmk2_010_gearservo.STL	
+<br>EBAmk2_010_gearservo_22DENTI.STL	
+<br>EBAmk2_010_gearservo_25DENTI.STL	
+<br>EBAmk2_011_gearmast.STL	
+<br>EBAmk2_012_mainbase.STL	
+<br>EBAmk2_013_lower base.STL	
+<br>EBAmk2_014_claw base.STL	
+<br>EBAmk2_015_claw finger dx.STL	
+<br>EBAmk2_016_claw gear drive.STL	
+<br>EBAmk2_017_claw finger sx.STL	
+<br>EBAmk2_018_claw gear driven.STL	
+<br>EBAmk2_019_drive cover.STL	
+<br>
+
+                                
+                                <br>NON PRINTED PARTS BOM list :
+<br>
+<br>n.3 995 or 996 or 955 or 946 servo
+<br>n.1 SG90 SERVO
+<br>n.1 M6 selflocking nut
+<br>n.1 M6x25 screw (washers)
+<br>n.2 M3 selflocking nuts
+<br>n.2 M3 x 25 screws
+<br>n.1 M3 x 10 hex recessed head screw
+<br>n.9 M4 selflocking nuts
+<br>n.1 M4 x 40 screw
+<br>n.1 M4 x 30 screw
+<br>n.5 M4 x 20 screw
+<br>n.1 M4 x 60mm threated rod
+<br>n.1 M4 x 34mm threated rod
+<br>n.25 dia 6 mm ball spheres
+<br>n.1 606zz bearing
+<br>some M4 washers
+                            </p></div>
+                        </div>
+                    </div>
+                          
+        <!--  STEP 1  -->
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step005.jpg" alt="step1">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 1</h3>
+                                <p>Put in position a 946 servo with the driving shaft forward.</p>
+                            </div>
+                        </div>
+                    </div>
+
+        <!--  STEP 2  -->
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step006.jpg" alt="step2">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 2</h3>
+                                <p>Fix the servo to the main base using the selftapping screws supplied with it.</p>
+                            </div>
+                        </div>
+                    </div>   
+                                     
+        <!--  STEP 3  -->        
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step007.jpg" alt="step3">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 3</h3>
+                                <p>Insert 3 M3 nuts in the receptacles of the main base as swown.</p>
+                            </div>
+                        </div>
+                    </div>                    
+        <!--  STEP 4  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step008.jpg" alt="step5">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 4</h3>
+                                <p>Insert the 606 bearings in its housing and attach the plate to the main base using 3 M3 screws.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+                
+        <!--  STEP 5  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step009.jpg" alt="step5">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 5</h3>
+                                <p>Verify the freedom of movement of the bearing.</p>
+                            </div>
+                        </div>
+                    </div>        
+        <!--  STEP 6  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInRight;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step010.jpg" alt="step6">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 6</h3>
+                                <p>Position the drive plate on the splined shaft and upper the driving printed gear.
+                                <br>Add one or two small selftapping screw to connect plate and the gear
+                                <br></p>
+                            </div>
+                        </div>
+                    </div>        
+        <!--  STEP 7  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step011.jpg" alt="step7">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 7</h3>
+                                <p>Thera are two driving gears available one has 22 theet and the other 25 I made two because during printing of the base I've got some deformation and the two axis distance became smaller </p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 8  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step012.jpg" alt="step8">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 8</h3>
+                                <p>Insert an M6 self locking nut in the receptacle of the swivel base then place in position le geared base and fix it using a couple of M3 screws and nuts as shown.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+        <!--  STEP 9  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step013.jpg" alt="step9">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 9</h3>
+                                <p>Fill the path using about 30 spheres with a diameter of 6mm.</p>                            
+                            </div>
+                        </div>
+                    </div>
+                    
+        <!--  STEP 10  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step014.jpg" alt="step10">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 10</h3>
+                                <p>Keeping the main base flat and the swivel element in contact with it, connect the two elements using an M6 screw. </p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 11  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step015.jpg" alt="step11">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 11</h3>
+                                <p>Now the main base is finished.</p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 12  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step016.jpg" alt="step12">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 12</h3>
+                                <p>Put in position the main arm and the vertical drive lever, connect them with the main base horizontal axis using a 4mm dia rod 33 mm long.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+        <!--  STEP 14  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step017.jpg" alt="step14">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 13</h3>
+                                <p>Fix in position the two servo and hold in place using eight selftapping screws. To drive the arms use the sigle horns supplied with the servos.
+                                <br>Make sure that the mid position of the servos are aligned with the housing of the arms</p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 15  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step018.jpg" alt="step15">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 14</h3>
+                                <p>Connect the lower end of straight lever to the driving arm.</p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 16  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step019.jpg" alt="step16">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 15</h3>
+                                <p>Connect the lower end of angled lever to the fixed end on the base.</p>                            
+                            </div>
+                        </div>
+                    </div>                    
+        <!--  STEP 17  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step020.jpg" alt="step17">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 15</h3>
+                                <p>Use a threated M4 rod to connect the horizontal arm and the triangle to the upper part of the main arm.</p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 18  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step021.jpg" alt="step18">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 16</h3>
+                                <p>Connect the straight rod to the main arm and angled to the triangle.</p>                            
+                            </div>
+                        </div>
+                    </div>
+        <!--  STEP 19  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step022.jpg" alt="step19">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 17</h3>
+                                <p>Attach the rod and the claw fast release to the front part of the horizontal arm.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+<!--  STEP 20  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step023.jpg" alt="step20">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 18</h3>
+                                <p>The robot arm is now assembled.
+                                <br>You can now proceed with the claw assembly or you can use your own claw design</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+<!--  STEP 21  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="http://www.eezyrobots.it/eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step024.jpg" alt="step21">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 19</h3>
+                                <p>Assembly the claw as shown on the image.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+<!--  STEP 22  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step025.jpg" alt="step22">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 21</h3>
+                                <p>Attach the claw to the fast release end of the arm.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--  STEP 23  -->          
+                    <div class="col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="0.2s" style="visibility: hidden; animation-delay: 0.2s; animation-name: none;">
+                        <div class="media">
+                            <a href="./eba_mk2.html#" class="pull-left"><br><br>
+                                <img src="./img/eba2/eba2step026.jpg" alt="step20">
+                            </a>
+                            <div class="media-body">
+                                <h3><br>STEP 22</h3>
+                                <p>The eezybotarm mk2 is now mechanically assembled, ready to be driven by the electronics.</p>                            
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- end .row -->
+            </div> <!-- end .container -->
+        </section>
+        <!--
+        End #service
+        ========================== -->
+
+         <!--
+        #count
+        ========================== -->
+        
+        <section id="count">
+            <div class="container">
+                <div class="row">
+                
+                 <div class="section-title text-center wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                        <h1>EEZYbotARM mk2 numbers</h1>    
+                        <p>last update 2019/02/20</p>
+                    </div>
+                
+                    <div class="counter-section clearfix">
+
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.5s" style="visibility: hidden; animation-delay: 0.5s; animation-name: none;">
+                            <div class="fact-item text-center">
+                                <div class="fact-icon">
+                                    <i class="fa fa-eye fa-lg"></i>
+                                </div>
+                                <span data-to="290358">0</span>
+                                <p>VIEWS on Thingiverse</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: hidden; animation-delay: 0.8s; animation-name: none;">
+                            <div class="fact-item text-center">
+                                <div class="fact-icon">
+                                    <i class="fa fa-download fa-lg"></i>                                    
+                                </div>
+                                <span data-to="44871">0</span>
+                                <p>DOWNLOADS on Thingiverse</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="1.1s" style="visibility: hidden; animation-delay: 1.1s; animation-name: none;">
+                            <div class="fact-item text-center last">
+                                <div class="fact-icon">
+                                    <i class="fa fa-eye fa-lg"></i>
+                                </div>
+                                <span data-to="107177">0</span>
+                                <p>VIEWS on YOUTUBE</p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-delay="1.3s" style="visibility: hidden; animation-delay: 1.3s; animation-name: none;">
+                            <div class="fact-item text-center last">
+                                <div class="fact-icon">
+                                    <i class="fa fa-eye fa-lg"></i>
+                                </div>
+                                <span data-to="27988">0</span>
+                                <p>VIEWS on Instructables</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!--
+        End #count
+        ========================== -->
+
+
+ 
+
+        <!--
+        #Portfolio
+        ========================== -->
+        
+        <section id="portfolio">
+
+            <div class="section-title text-center wow fadeInDown" style="visibility: hidden; animation-name: none;">
+                <h2>MAKES GALLERY</h2>    
+                <p>more makes from other Thingiverse users</p>
+            </div>
+            
+            <div class="about-us text-center wow fadeInDown" style="visibility: hidden; animation-name: none;">
+                        <img src="./img/eba2/EEZYbotARM MK2 makes 3.jpg" alt="Makes by Thingiverse users" class="img-responsive"><br>
+                        <img src="./img/eba2/EEZYbotARM MK2 makes 2.jpg" alt="Makes by Thingiverse users" class="img-responsive"><br>
+                        <img src="./img/eba2/EEZYbotARM MK2 makes 1.jpg" alt="Makes by Thingiverse users" class="img-responsive"><br>
+            </div>
+            
+
+
+             <!-- end #projects -->
+
+        </section>
+        <!--
+        End #Portfolio
+        ========================== -->
+
+       <!--
+        #footer
+        ========================== -->
+        <footer id="footer" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <div class="footer-logo wow fadeInDown" style="visibility: hidden; animation-name: none;">
+                            <h1>Afantor</h1>
+                        </div>
+
+                        
+
+                        <div class="copyright">
+                            <p><i class="fa fa-copyright"></i> Carlo Franciscone 2018</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--
+        End #footer
+        ========================== -->
+
+        <!--
+        JavaScripts
+        ========================== -->
+        
+        <!-- main jQuery -->
+        <script src="./js/vender/jquery-1.11.1.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="./js/bootstrap.min.js"></script>
+        <!-- jquery.nav -->
+        <script src="./js/jquery.nav.js"></script>
+        <!-- Portfolio Filtering -->
+        <script src="./js/jquery.mixitup.min.js"></script>
+        <!-- Fancybox -->
+        <script src="./js/jquery.fancybox.pack.js"></script>
+        <!-- Parallax sections -->
+        <script src="./js/jquery.parallax-1.1.3.js"></script>
+        <!-- jQuery Appear -->
+        <script src="./js/jquery.appear.js"></script>
+        <!-- countTo -->
+        <script src="./js/jquery-countTo.js"></script>
+        <!-- owl carousel -->
+        <script src="./js/owl.carousel.min.js"></script>
+        <!-- WOW script -->
+        <script src="./js/wow.min.js"></script>
+        <!-- theme custom scripts -->
+        <script src="./js/main.js"></script>
+    
+
+<span style="border-radius: 3px !important; 
+text-indent: 20px !important; 
+width: auto !important; 
+padding: 0px 4px 0px 0px !important; 
+text-align: center !important; 
+font: bold 11px/20px &quot;Helvetica Neue&quot;, Helvetica, sans-serif !important; 
+color: rgb(255, 255, 255) !important; 
+background: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMzBweCIgd2lkdGg9IjMwcHgiIHZpZXdCb3g9Ii0xIC0xIDMxIDMxIj48Zz48cGF0aCBkPSJNMjkuNDQ5LDE0LjY2MiBDMjkuNDQ5LDIyLjcyMiAyMi44NjgsMjkuMjU2IDE0Ljc1LDI5LjI1NiBDNi42MzIsMjkuMjU2IDAuMDUxLDIyLjcyMiAwLjA1MSwxNC42NjIgQzAuMDUxLDYuNjAxIDYuNjMyLDAuMDY3IDE0Ljc1LDAuMDY3IEMyMi44NjgsMC4wNjcgMjkuNDQ5LDYuNjAxIDI5LjQ0OSwxNC42NjIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+PHBhdGggZD0iTTE0LjczMywxLjY4NiBDNy41MTYsMS42ODYgMS42NjUsNy40OTUgMS42NjUsMTQuNjYyIEMxLjY2NSwyMC4xNTkgNS4xMDksMjQuODU0IDkuOTcsMjYuNzQ0IEM5Ljg1NiwyNS43MTggOS43NTMsMjQuMTQzIDEwLjAxNiwyMy4wMjIgQzEwLjI1MywyMi4wMSAxMS41NDgsMTYuNTcyIDExLjU0OCwxNi41NzIgQzExLjU0OCwxNi41NzIgMTEuMTU3LDE1Ljc5NSAxMS4xNTcsMTQuNjQ2IEMxMS4xNTcsMTIuODQyIDEyLjIxMSwxMS40OTUgMTMuNTIyLDExLjQ5NSBDMTQuNjM3LDExLjQ5NSAxNS4xNzUsMTIuMzI2IDE1LjE3NSwxMy4zMjMgQzE1LjE3NSwxNC40MzYgMTQuNDYyLDE2LjEgMTQuMDkzLDE3LjY0MyBDMTMuNzg1LDE4LjkzNSAxNC43NDUsMTkuOTg4IDE2LjAyOCwxOS45ODggQzE4LjM1MSwxOS45ODggMjAuMTM2LDE3LjU1NiAyMC4xMzYsMTQuMDQ2IEMyMC4xMzYsMTAuOTM5IDE3Ljg4OCw4Ljc2NyAxNC42NzgsOC43NjcgQzEwLjk1OSw4Ljc2NyA4Ljc3NywxMS41MzYgOC43NzcsMTQuMzk4IEM4Ljc3NywxNS41MTMgOS4yMSwxNi43MDkgOS43NDksMTcuMzU5IEM5Ljg1NiwxNy40ODggOS44NzIsMTcuNiA5Ljg0LDE3LjczMSBDOS43NDEsMTguMTQxIDkuNTIsMTkuMDIzIDkuNDc3LDE5LjIwMyBDOS40MiwxOS40NCA5LjI4OCwxOS40OTEgOS4wNCwxOS4zNzYgQzcuNDA4LDE4LjYyMiA2LjM4NywxNi4yNTIgNi4zODcsMTQuMzQ5IEM2LjM4NywxMC4yNTYgOS4zODMsNi40OTcgMTUuMDIyLDYuNDk3IEMxOS41NTUsNi40OTcgMjMuMDc4LDkuNzA1IDIzLjA3OCwxMy45OTEgQzIzLjA3OCwxOC40NjMgMjAuMjM5LDIyLjA2MiAxNi4yOTcsMjIuMDYyIEMxNC45NzMsMjIuMDYyIDEzLjcyOCwyMS4zNzkgMTMuMzAyLDIwLjU3MiBDMTMuMzAyLDIwLjU3MiAxMi42NDcsMjMuMDUgMTIuNDg4LDIzLjY1NyBDMTIuMTkzLDI0Ljc4NCAxMS4zOTYsMjYuMTk2IDEwLjg2MywyNy4wNTggQzEyLjA4NiwyNy40MzQgMTMuMzg2LDI3LjYzNyAxNC43MzMsMjcuNjM3IEMyMS45NSwyNy42MzcgMjcuODAxLDIxLjgyOCAyNy44MDEsMTQuNjYyIEMyNy44MDEsNy40OTUgMjEuOTUsMS42ODYgMTQuNzMzLDEuNjg2IiBmaWxsPSIjZTYwMDIzIj48L3BhdGg+PC9nPjwvc3ZnPg==&quot;) 3px 50% / 14px 14px no-repeat rgb(230, 0, 35) !important; 
+position: absolute !important;
+ opacity: 1 !important; 
+ z-index: 8675309 !important; display: none; cursor: pointer !important; border: none !important; -webkit-font-smoothing: antialiased !important; top: 5062px; left: 412px;">Save</span><span style="border-radius: 12px; width: 24px !important; height: 24px !important; background: url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI0IDI0IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxtYXNrIGlkPSJtIj48cmVjdCBmaWxsPSIjZmZmIiB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHJ4PSI2IiByeT0iNiIvPjxyZWN0IGZpbGw9IiMwMDAiIHg9IjUiIHk9IjUiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgcng9IjEiIHJ5PSIxIi8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMTAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjI0Ii8+PHJlY3QgZmlsbD0iIzAwMCIgeD0iMCIgeT0iMTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0Ii8+PC9tYXNrPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiNmZmYiIG1hc2s9InVybCgjbSkiLz48L3N2Zz4=&quot;) 50% 50% / 14px 14px no-repeat rgba(0, 0, 0, 0.4) !important; position: absolute !important; opacity: 1 !important; z-index: 8675309 !important; display: none; cursor: pointer !important; border: none !important; top: 5060px; left: 770px;"></span></body></html>

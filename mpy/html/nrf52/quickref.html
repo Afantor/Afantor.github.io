@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick reference for the nRF52832 &mdash; MicroPython 1.10 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/customstyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General information about the nRF52832 port" href="general.html" />
+    <link rel="prev" title="6. Reset and boot modes" href="../wipy/tutorial/reset.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> MicroPython
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">MicroPython libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The MicroPython language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genrst/index.html">MicroPython differences from CPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/index.html">Developing and building MicroPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">MicroPython license information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyboard/quickref.html">Quick reference for the pyboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp8266/quickref.html">Quick reference for the ESP8266</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp32/quickref.html">Quick reference for the ESP32</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wipy/quickref.html">Quick reference for the WiPy</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick reference for the nRF52832</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="general.html">General information about the nRF52832 port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/intro.html">Getting started with MicroPython on the nRF52832</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-micropython">Installing MicroPython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-board-control">General board control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-machine">Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delay-and-timing">Delay and timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timers">Timers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pins-and-gpio">Pins and GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#software-spi-bus">Software SPI bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-spi-bus">Hardware SPI bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i2c-bus">I2C bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#real-time-clock-counter-rtcounter">Real time clock Counter (RTCounter)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deep-sleep-mode">Deep-sleep mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-machine.UART">UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#webrepl-web-browser-interactive-prompt">WebREPL (web browser interactive prompt)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MicroPython</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Quick reference for the nRF52832</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/nrf52/quickref.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-reference-for-the-nrf52832">
+<span id="esp32-quickref"></span><h1>Quick reference for the nRF52832<a class="headerlink" href="#quick-reference-for-the-nrf52832" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../_images/nRF52.JPG"><img alt="nRF52832-Bluefruit52 board" src="../_images/nRF52.JPG" style="width: 640px;" /></a>
+<p>The Afantor nRF52832 Bluefruit52 Development Board (image attribution: Afantor).</p>
+<p>Below is a quick reference for nRF52832-based boards.  If it is your first time
+working with this board it may be useful to get an overview of the microcontroller:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="general.html">General information about the nRF52832 port</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/intro.html">Getting started with MicroPython on the nRF52832</a></li>
+</ul>
+</div>
+<div class="section" id="installing-micropython">
+<h2>Installing MicroPython<a class="headerlink" href="#installing-micropython" title="Permalink to this headline">¶</a></h2>
+<p>See the corresponding section of tutorial: <a class="reference internal" href="tutorial/intro.html#nrf52-intro"><span class="std std-ref">Getting started with MicroPython on the nRF52832</span></a>. It also includes
+a troubleshooting subsection.</p>
+</div>
+<div class="section" id="general-board-control">
+<h2>General board control<a class="headerlink" href="#general-board-control" title="Permalink to this headline">¶</a></h2>
+<p>The MicroPython REPL is on UART1 (GPIO10.06=TX, GPIO0.08=RX) at baudrate 115200.
+Tab-completion is useful to find out what methods an object has.
+Paste mode (ctrl-E) is useful to paste a large slab of Python code into
+the REPL.</p>
+</div>
+<div class="section" id="module-machine">
+<span id="machine"></span><h2>Machine<a class="headerlink" href="#module-machine" title="Permalink to this headline">¶</a></h2>
+<p>The machine module contains specific functions related to the nRF52832
+hardware. Most functions in this module allow to achieve direct and
+unrestricted access to and control of hardware blocks on a system (like CPU,
+timers, buses, etc.). Used incorrectly, this can lead to malfunction, lockups,
+crashes of your board, and in extreme cases, hardware damage.</p>
+<p>Functions</p>
+<dl class="method">
+<dt id="machine.machine.reset">
+<code class="descclassname">machine.</code><code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the device in a manner similar to pushing the external RESET button.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.disable_irq">
+<code class="descclassname">machine.</code><code class="descname">disable_irq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.disable_irq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable interrupt requests. Returns the previous IRQ state which should be
+considered an opaque value. This return value should be passed to the
+<a class="reference internal" href="../library/machine.html#machine.enable_irq" title="machine.enable_irq"><code class="xref py py-func docutils literal notranslate"><span class="pre">machine.enable_irq()</span></code></a> function to restore interrupts to their
+original state, before <a class="reference internal" href="../library/machine.html#machine.disable_irq" title="machine.disable_irq"><code class="xref py py-func docutils literal notranslate"><span class="pre">machine.disable_irq()</span></code></a> was called.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.enable_irq">
+<code class="descclassname">machine.</code><code class="descname">enable_irq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.enable_irq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-enable interrupt requests. The <em>state</em> parameter should be the value
+that was returned from the most recent call to the
+<a class="reference internal" href="../library/machine.html#machine.disable_irq" title="machine.disable_irq"><code class="xref py py-func docutils literal notranslate"><span class="pre">machine.disable_irq()</span></code></a> function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.deepsleep">
+<code class="descclassname">machine.</code><code class="descname">deepsleep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.deepsleep" title="Permalink to this definition">¶</a></dt>
+<dd><p>in to deepsleep mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.info">
+<code class="descclassname">machine.</code><code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return machine some information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.lightsleep">
+<code class="descclassname">machine.</code><code class="descname">lightsleep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.lightsleep" title="Permalink to this definition">¶</a></dt>
+<dd><p>in to lightsleep mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.reset_cause">
+<code class="descclassname">machine.</code><code class="descname">reset_cause</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.reset_cause" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return machine reset cause countor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.sleep">
+<code class="descclassname">machine.</code><code class="descname">sleep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.sleep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Machine delay some second time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.machine.soft_reset">
+<code class="descclassname">machine.</code><code class="descname">soft_reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.soft_reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the device in a manner similar to pushing the external RESET button.</p>
+</dd></dl>
+
+<p>The <a class="reference internal" href="#module-machine" title="machine"><code class="xref py py-mod docutils literal notranslate"><span class="pre">machine</span></code></a> module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">machine</span>
+
+<span class="n">machine</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>          <span class="c1"># Return machine some information</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">enable_irq</span><span class="p">()</span>    <span class="c1"># Re-enable interrupt requests.</span>
+</pre></div>
+</div>
+<p>Note that the temperature sensor in the nRF52832 will typically read higher than
+ambient due to the IC getting warm while it runs.  This effect can be minimised
+by reading the temperature sensor immediately after waking up from sleep.</p>
+</div>
+<div class="section" id="delay-and-timing">
+<h2>Delay and timing<a class="headerlink" href="#delay-and-timing" title="Permalink to this headline">¶</a></h2>
+<p>Use the <a class="reference internal" href="../library/utime.html#module-utime" title="utime: time related functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># sleep for 1 second</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>      <span class="c1"># sleep for 500 milliseconds</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>       <span class="c1"># sleep for 10 microseconds</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="timers">
+<h2>Timers<a class="headerlink" href="#timers" title="Permalink to this headline">¶</a></h2>
+<p>Virtual (RTOS-based) timers are supported. Use the <a class="reference internal" href="../library/machine.Timer.html#machine-timer"><span class="std std-ref">machine.Timer</span></a> class
+with timer ID of -1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Timer</span>
+
+<span class="n">tim</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">ONE_SHOT</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">PERIODIC</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The period is in milliseconds.</p>
+</div>
+<div class="section" id="pins-and-gpio">
+<h2>Pins and GPIO<a class="headerlink" href="#pins-and-gpio" title="Permalink to this headline">¶</a></h2>
+<p>Use the <a class="reference internal" href="../library/machine.Pin.html#machine-pin"><span class="std std-ref">machine.Pin</span></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span>
+
+<span class="n">p0</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>    <span class="c1"># create output pin on GPIO0</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>                 <span class="c1"># set pin to &quot;on&quot; (high) level</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>                <span class="c1"># set pin to &quot;off&quot; (low) level</span>
+<span class="n">p0</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># set pin to on/high</span>
+
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>     <span class="c1"># create input pin on GPIO2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>       <span class="c1"># get value, 0 or 1</span>
+
+<span class="n">p4</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span> <span class="c1"># enable internal pull-up resistor</span>
+<span class="n">p5</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># set pin high on creation</span>
+</pre></div>
+</div>
+<p>Available Pins are from the following ranges (inclusive): 0-19, 21-23, 25-27, 32-39.
+These correspond to the actual GPIO pin numbers of ESP32 chip.  Note that many
+end-user boards use their own adhoc pin numbering (marked e.g. D0, D1, …).
+For mapping between board logical pins and physical chip pins consult your board
+documentation.</p>
+<p>Notes:</p>
+<ul class="simple">
+<li>Pins 1 and 3 are REPL UART TX and RX respectively</li>
+<li>Pins 6, 7, 8, 11, 16, and 17 are used for connecting the embedded flash,
+and are not recommended for other uses</li>
+<li>Pins 34-39 are input only, and also do not have internal pull-up resistors</li>
+<li>The pull value of some pins can be set to <code class="docutils literal notranslate"><span class="pre">Pin.PULL_HOLD</span></code> to reduce power
+consumption during deepsleep.</li>
+</ul>
+</div>
+<div class="section" id="pwm-pulse-width-modulation">
+<h2>PWM (pulse width modulation)<a class="headerlink" href="#pwm-pulse-width-modulation" title="Permalink to this headline">¶</a></h2>
+<p>PWM can be enabled on all output-enabled pins. The base frequency can
+range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
+<em>increases</em> the duty resolution <em>decreases</em>.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">machine.PWM</span></code> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>      <span class="c1"># create PWM object from a pin</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">()</span>             <span class="c1"># get current frequency</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>         <span class="c1"># set frequency</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">()</span>             <span class="c1"># get current duty cycle</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>          <span class="c1"># set duty cycle</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>           <span class="c1">#</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>           <span class="c1"># turn off PWM on the pin</span>
+
+<span class="n">pwm2</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">duty</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span> <span class="c1"># create and configure in one go</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adc-analog-to-digital-conversion">
+<h2>ADC (analog to digital conversion)<a class="headerlink" href="#adc-analog-to-digital-conversion" title="Permalink to this headline">¶</a></h2>
+<p>On the nRF52832 ADC functionality is available 8 channels（0~7）. Note that, when
+using the default configuration, input voltages on the ADC pin must be between
+0.0v and 3.3v.  Attenuation must be applied in order to increase this usable voltage range.</p>
+<p>Use the <a class="reference internal" href="../library/machine.ADC.html#machine-adc"><span class="std std-ref">machine.ADC</span></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">ADC</span>
+
+<span class="n">adc3</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                <span class="c1"># create ADC object on ADC pin</span>
+<span class="n">adc3</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>                 <span class="c1"># read value, 0-255 across voltage range 0.0v - 3.3v</span>
+
+<span class="n">adc3</span><span class="o">.</span><span class="n">battery_level</span><span class="p">()</span>        <span class="c1"># read battery value.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="software-spi-bus">
+<h2>Software SPI bus<a class="headerlink" href="#software-spi-bus" title="Permalink to this headline">¶</a></h2>
+<p>There are two SPI drivers. One is implemented in software (bit-banging)
+and works on all pins, and is accessed via the <a class="reference internal" href="../library/machine.SPI.html#machine-spi"><span class="std std-ref">machine.SPI</span></a>
+class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+
+<span class="c1"># construct an SPI bus on the given pins</span>
+<span class="c1"># polarity is the idle state of SCK</span>
+<span class="c1"># phase=0 means sample on the first edge of SCK, phase=1 means the second</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">spi</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">200000</span><span class="p">)</span> <span class="c1"># set the baudrate</span>
+
+<span class="n">spi</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>            <span class="c1"># read 10 bytes on MISO</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">)</span>      <span class="c1"># read 10 bytes while outputing 0xff on MOSI</span>
+
+<span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>     <span class="c1"># create a buffer</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>       <span class="c1"># read into the given buffer (reads 50 bytes in this case)</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mh">0xff</span><span class="p">)</span> <span class="c1"># read into the given buffer and output 0xff on MOSI</span>
+
+<span class="n">spi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;12345&#39;</span><span class="p">)</span>     <span class="c1"># write 5 bytes on MOSI</span>
+
+<span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># create a buffer</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">write_readinto</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;1234&#39;</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span> <span class="c1"># write to MOSI and read from MISO into the buffer</span>
+<span class="n">spi</span><span class="o">.</span><span class="n">write_readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span> <span class="c1"># write buf to MOSI and read MISO back into buf</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Currently <em>all</em> of <code class="docutils literal notranslate"><span class="pre">sck</span></code>, <code class="docutils literal notranslate"><span class="pre">mosi</span></code> and <code class="docutils literal notranslate"><span class="pre">miso</span></code> <em>must</em> be specified when
+initialising Software SPI.</p>
+</div>
+<p>Functions</p>
+<dl class="method">
+<dt id="machine.init">
+<code class="descclassname">machine.</code><code class="descname">init</code><span class="sig-paren">(</span><em>baudrate=1000000</em>, <em>bits=8</em>, <em>mode=0</em>, <em>sclk=pin12</em>, <em>mosi=pin13</em>, <em>miso=pin14</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize SPI communication with the specified parameters on the
+specified <code class="docutils literal notranslate"><span class="pre">pins</span></code>. Note that for correct communication, the parameters
+have to be the same on both communicating devices.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">baudrate</span></code> defines the speed of communication.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">bits</span></code> defines the size of bytes being transmitted. Currently only
+<code class="docutils literal notranslate"><span class="pre">bits=8</span></code> is supported. However, this may change in the future.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mode</span></code> determines the combination of clock polarity and phase
+according to the following convention, with polarity as the high order bit
+and phase as the low order bit:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SPI Mode</th>
+<th class="head">Polarity (CPOL)</th>
+<th class="head">Phase (CPHA)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Polarity (aka CPOL) 0 means that the clock is at logic value 0 when idle
+and goes high (logic value 1) when active; polarity 1 means the clock is
+at logic value 1 when idle and goes low (logic value 0) when active. Phase
+(aka CPHA) 0 means that data is sampled on the leading edge of the clock,
+and 1 means on the trailing edge
+(viz. <a class="reference external" href="https://en.wikipedia.org/wiki/Signal_edge">https://en.wikipedia.org/wiki/Signal_edge</a>).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sclk</span></code>, <code class="docutils literal notranslate"><span class="pre">mosi</span></code> and <code class="docutils literal notranslate"><span class="pre">miso</span></code> arguments specify the pins to use for
+each type of signal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.spi.read">
+<code class="descclassname">spi.</code><code class="descname">read</code><span class="sig-paren">(</span><em>nbytes</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.spi.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read at most <code class="docutils literal notranslate"><span class="pre">nbytes</span></code>. Returns what was read.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.spi.write">
+<code class="descclassname">spi.</code><code class="descname">write</code><span class="sig-paren">(</span><em>buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.spi.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the <code class="docutils literal notranslate"><span class="pre">buffer</span></code> of bytes to the bus.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.spi.write_readinto">
+<code class="descclassname">spi.</code><code class="descname">write_readinto</code><span class="sig-paren">(</span><em>out</em>, <em>in</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.spi.write_readinto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the <code class="docutils literal notranslate"><span class="pre">out</span></code> buffer to the bus and read any response into the <code class="docutils literal notranslate"><span class="pre">in</span></code>
+buffer. The length of the buffers should be the same. The buffers can be
+the same object.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="hardware-spi-bus">
+<h2>Hardware SPI bus<a class="headerlink" href="#hardware-spi-bus" title="Permalink to this headline">¶</a></h2>
+<p>There is one hardware SPI channels that allow faster transmission rates,
+but are only supported on a subset of pins.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"></th>
+<th class="head">SPI (id=0)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sck</td>
+<td>12</td>
+</tr>
+<tr class="row-odd"><td>mosi</td>
+<td>13</td>
+</tr>
+<tr class="row-even"><td>miso</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<p>Hardware SPI has the same methods as Software SPI above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+
+<span class="n">hspi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">firstbit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="i2c-bus">
+<h2>I2C bus<a class="headerlink" href="#i2c-bus" title="Permalink to this headline">¶</a></h2>
+<p>Functions</p>
+<dl class="function">
+<dt>
+<code class="descclassname">machine.</code><code class="descname">init</code><span class="sig-paren">(</span><em>freq=100000</em>, <em>sda=Pin(26)</em>, <em>scl=Pin(25)</em><span class="sig-paren">)</span></dt>
+<dd><p>Re-initialize peripheral with the specified clock frequency <code class="docutils literal notranslate"><span class="pre">freq</span></code> on the
+specified <code class="docutils literal notranslate"><span class="pre">sda</span></code> and <code class="docutils literal notranslate"><span class="pre">scl</span></code> pins.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Changing the I²C pins from defaults will make the accelerometer and
+compass stop working, as they are connected internally to those pins.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="machine.scan">
+<code class="descclassname">machine.</code><code class="descname">scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan the bus for devices.  Returns a list of 7-bit addresses corresponding
+to those devices that responded to the scan.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="machine.read">
+<code class="descclassname">machine.</code><code class="descname">read</code><span class="sig-paren">(</span><em>addr</em>, <em>n</em>, <em>repeat=False</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read <code class="docutils literal notranslate"><span class="pre">n</span></code> bytes from the device with 7-bit address <code class="docutils literal notranslate"><span class="pre">addr</span></code>. If <code class="docutils literal notranslate"><span class="pre">repeat</span></code>
+is <code class="docutils literal notranslate"><span class="pre">True</span></code>, no stop bit will be sent.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="machine.write">
+<code class="descclassname">machine.</code><code class="descname">write</code><span class="sig-paren">(</span><em>addr</em>, <em>buf</em>, <em>repeat=False</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write bytes from <code class="docutils literal notranslate"><span class="pre">buf</span></code> to the device with 7-bit address <code class="docutils literal notranslate"><span class="pre">addr</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">repeat</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, no stop bit will be sent.</p>
+</dd></dl>
+
+<p>Connecting</p>
+<p>You should connect the device’s <code class="docutils literal notranslate"><span class="pre">SCL</span></code> pin to micro:bit pin 25, and the
+device’s <code class="docutils literal notranslate"><span class="pre">SDA</span></code> pin to micro:bit pin 26. You also must connect the device’s
+ground to the micro:bit ground (pin <code class="docutils literal notranslate"><span class="pre">GND</span></code>). You may need to power the device
+using an external power supply or the micro:bit.</p>
+<p>There are internal pull-up resistors on the I²C lines of the board, but with
+particularly long wires or large number of devices you may need to add
+additional pull-up resistors, to ensure noise-free communication.</p>
+<p>The I2C driver is implemented in software and works on all pins,
+and is accessed via the <a class="reference internal" href="../library/machine.I2C.html#machine-i2c"><span class="std std-ref">machine.I2C</span></a> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+
+<span class="c1"># construct an I2C bus</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">readfrom</span><span class="p">(</span><span class="mh">0x3a</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># read 4 bytes from slave device with address 0x3a</span>
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="mh">0x3a</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">)</span> <span class="c1"># write &#39;12&#39; to slave device with address 0x3a</span>
+
+<span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>     <span class="c1"># create a buffer with 10 bytes</span>
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="mh">0x3a</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>  <span class="c1"># write the given buffer to the slave</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="real-time-clock-counter-rtcounter">
+<h2>Real time clock Counter (RTCounter)<a class="headerlink" href="#real-time-clock-counter-rtcounter" title="Permalink to this headline">¶</a></h2>
+<p>See <span class="xref std std-ref">machine.RTCounter</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">RTCounter</span>
+
+<span class="n">rtc</span> <span class="o">=</span> <span class="n">RTCounter</span><span class="p">()</span>
+<span class="n">rtc</span><span class="o">.</span><span class="n">start</span><span class="p">((</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="c1"># set a specific date and time</span>
+<span class="n">rtc</span><span class="o">.</span><span class="n">counter</span><span class="p">()</span> <span class="c1"># get date and time</span>
+<span class="n">rtc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">rtc</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deep-sleep-mode">
+<h2>Deep-sleep mode<a class="headerlink" href="#deep-sleep-mode" title="Permalink to this headline">¶</a></h2>
+<p>The following code can be used to sleep, wake and check the reset cause:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">machine</span>
+
+<span class="c1"># check if the device woke from a deep sleep</span>
+<span class="k">if</span> <span class="n">machine</span><span class="o">.</span><span class="n">reset_cause</span><span class="p">()</span> <span class="o">==</span> <span class="n">machine</span><span class="o">.</span><span class="n">DEEPSLEEP_RESET</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;woke from a deep sleep&#39;</span><span class="p">)</span>
+
+<span class="c1"># put the device to sleep for 10 seconds</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">deepsleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li>Calling <code class="docutils literal notranslate"><span class="pre">deepsleep()</span></code> without an argument will put the device to sleep
+indefinitely</li>
+<li>A software reset does not change the reset cause</li>
+</ul>
+</div>
+<div class="section" id="module-machine.UART">
+<span id="uart"></span><h2>UART<a class="headerlink" href="#module-machine.UART" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">UART</span></code> module lets you talk to a device connected to your board using
+a serial interface.</p>
+<p>Functions</p>
+<dl class="method">
+<dt id="machine.UART.init">
+<code class="descclassname">machine.UART.</code><code class="descname">init</code><span class="sig-paren">(</span><em>baudrate=9600</em>, <em>bits=8</em>, <em>parity=None</em>, <em>stop=1</em>, <em>*</em>, <em>tx=None</em>, <em>rx=None</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize serial communication with the specified parameters on the
+specified <code class="docutils literal notranslate"><span class="pre">tx</span></code> and <code class="docutils literal notranslate"><span class="pre">rx</span></code> pins. Note that for correct communication, the parameters
+have to be the same on both communicating devices.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Initializing the UART on external pins will cause the Python console on
+USB to become unaccessible, as it uses the same hardware. To bring the
+console back you must reinitialize the UART without passing anything for
+<code class="docutils literal notranslate"><span class="pre">tx</span></code> or <code class="docutils literal notranslate"><span class="pre">rx</span></code> (or passing <code class="docutils literal notranslate"><span class="pre">None</span></code> to these arguments).  This means
+that calling <code class="docutils literal notranslate"><span class="pre">uart.init(115200)</span></code> is enough to restore the Python console.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">baudrate</span></code> defines the speed of communication. Common baud
+rates include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>9600</li>
+<li>14400</li>
+<li>19200</li>
+<li>28800</li>
+<li>38400</li>
+<li>57600</li>
+<li>115200</li>
+</ul>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">bits</span></code> defines the size of bytes being transmitted, and the board
+only supports 8. The <code class="docutils literal notranslate"><span class="pre">parity</span></code> parameter defines how parity is checked,
+and it can be <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">microbit.uart.ODD</span></code> or <code class="docutils literal notranslate"><span class="pre">microbit.uart.EVEN</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">stop</span></code> parameter tells the number of stop bits, and has to be 1 for
+this board.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">tx</span></code> and <code class="docutils literal notranslate"><span class="pre">rx</span></code> are not specified then the internal USB-UART TX/RX pins
+are used which connect to the USB serial converter on the micro:bit, thus
+connecting the UART to your PC.  You can specify any other pins you want by
+passing the desired pin objects to the <code class="docutils literal notranslate"><span class="pre">tx</span></code> and <code class="docutils literal notranslate"><span class="pre">rx</span></code> parameters.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When connecting the device, make sure you “cross” the wires – the TX
+pin on your board needs to be connected with the RX pin on the device,
+and the RX pin – with the TX pin on the device. Also make sure the
+ground pins of both devices are connected.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.uart.read">
+<code class="descclassname">uart.</code><code class="descname">read</code><span class="sig-paren">(</span><span class="optional">[</span><em>nbytes</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read bytes.  If <code class="docutils literal notranslate"><span class="pre">nbytes</span></code> is specified then read at most that many
+bytes, otherwise read as many bytes as possible.</p>
+<p>Return value: a bytes object or <code class="docutils literal notranslate"><span class="pre">None</span></code> on timeout.</p>
+<p>A bytes object contains a sequence of bytes. Because
+<a class="reference external" href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> characters can fit in
+single bytes this type of object is often used to represent simple text
+and offers methods to manipulate it as such, e.g. you can display the text
+using the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.</p>
+<p>You can also convert this object into a string object, and if there are
+non-ASCII characters present the encoding can be specified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msg_bytes</span> <span class="o">=</span> <span class="n">uart</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">msg_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The timeout for all UART reads depends on the baudrate and is otherwise
+not changeable via Python. The timeout, in milliseconds, is given by:
+<code class="docutils literal notranslate"><span class="pre">microbit_uart_timeout_char</span> <span class="pre">=</span> <span class="pre">13000</span> <span class="pre">/</span> <span class="pre">baudrate</span> <span class="pre">+</span> <span class="pre">1</span></code></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The internal UART RX buffer is 64 bytes, so make sure data is read
+before the buffer is full or some of the data might be lost.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Receiving <code class="docutils literal notranslate"><span class="pre">0x03</span></code> will stop your program by raising a Keyboard
+Interrupt. You can enable or disable this using
+<a class="reference internal" href="../library/micropython.html#micropython.kbd_intr" title="micropython.kbd_intr"><code class="xref py py-func docutils literal notranslate"><span class="pre">micropython.kbd_intr()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.uart.readinto">
+<code class="descclassname">uart.</code><code class="descname">readinto</code><span class="sig-paren">(</span><em>buf</em><span class="optional">[</span>, <em>nbytes</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.readinto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read bytes into the <code class="docutils literal notranslate"><span class="pre">buf</span></code>.  If <code class="docutils literal notranslate"><span class="pre">nbytes</span></code> is specified then read at most
+that many bytes.  Otherwise, read at most <code class="docutils literal notranslate"><span class="pre">len(buf)</span></code> bytes.</p>
+<p>Return value: number of bytes read and stored into <code class="docutils literal notranslate"><span class="pre">buf</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code> on
+timeout.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.uart.readline">
+<code class="descclassname">uart.</code><code class="descname">readline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.readline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a line, ending in a newline character.</p>
+<p>Return value: the line read or <code class="docutils literal notranslate"><span class="pre">None</span></code> on timeout. The newline character is
+included in the returned bytes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.uart.write">
+<code class="descclassname">uart.</code><code class="descname">write</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the buffer to the bus, it can be a bytes object or a string:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Return value: number of bytes written or <code class="docutils literal notranslate"><span class="pre">None</span></code> on timeout.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="webrepl-web-browser-interactive-prompt">
+<h2>WebREPL (web browser interactive prompt)<a class="headerlink" href="#webrepl-web-browser-interactive-prompt" title="Permalink to this headline">¶</a></h2>
+<p>WebREPL (REPL over WebSockets, accessible via a web browser) is an
+experimental feature available in ESP32 port. Download web client
+from <a class="reference external" href="https://github.com/micropython/webrepl">https://github.com/micropython/webrepl</a> (hosted version available
+at <a class="reference external" href="http://micropython.org/webrepl">http://micropython.org/webrepl</a>), and configure it by executing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">webrepl_setup</span>
+</pre></div>
+</div>
+<p>and following on-screen instructions. After reboot, it will be available
+for connection. If you disabled automatic start-up on boot, you may
+run configured daemon on demand using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">webrepl</span>
+<span class="n">webrepl</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># or, start with a specific password</span>
+<span class="n">webrepl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;mypass&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The WebREPL daemon listens on all active interfaces, which can be STA or
+AP.  This allows you to connect to the ESP32 via a router (the STA
+interface) or directly when connected to its access point.</p>
+<p>In addition to terminal/command prompt access, WebREPL also has provision
+for file transfer (both upload and download).  The web client has buttons for
+the corresponding functions, or you can use the command-line client
+<code class="docutils literal notranslate"><span class="pre">webrepl_cli.py</span></code> from the repository above.</p>
+<p>See the MicroPython forum for other community-supported alternatives
+to transfer files to an ESP32 board.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="general.html" class="btn btn-neutral float-right" title="General information about the nRF52832 port" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../wipy/tutorial/reset.html" class="btn btn-neutral" title="6. Reset and boot modes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
+      Last updated on 17 Apr 2019.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions and Downloads</span>
+    latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="//en/latest">latest</a></dd>
+      
+    </dl>
+    <dl>
+      <dt>Downloads</dt>
+      
+        <dd><a href="//en/latest/micropython-docs.pdf">PDF</a></dd>
+      
+    </dl>
+    <hr/>
+    <dl>
+      <dt>External links</dt>
+        <dd>
+          <a href="https://www.micropython.org">micropython.org</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/micropython/micropython">GitHub</a>
+        </dd>
+    </dl>
+  </div>
+</div>
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.10',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
