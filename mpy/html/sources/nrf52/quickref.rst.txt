@@ -1,0 +1,541 @@
+.. _nRF52832_quickref:
+
+Quick reference for the nRF52832
+=============================
+
+.. image:: img/nRF52.JPG
+    :alt: nRF52832-Bluefruit52 board
+    :width: 640px
+
+The Afantor nRF52832 Bluefruit52 Development Board (image attribution: Afantor).
+
+Below is a quick reference for nRF52832-based boards.  If it is your first time
+working with this board it may be useful to get an overview of the microcontroller:
+
+.. toctree::
+   :maxdepth: 1
+
+   general.rst
+   tutorial/intro.rst
+
+Installing MicroPython
+----------------------
+
+See the corresponding section of tutorial: :ref:`nrf52_intro`. It also includes
+a troubleshooting subsection.
+
+General board control
+---------------------
+
+The MicroPython REPL is on UART1 (GPIO10.06=TX, GPIO0.08=RX) at baudrate 115200.
+Tab-completion is useful to find out what methods an object has.
+Paste mode (ctrl-E) is useful to paste a large slab of Python code into
+the REPL.
+
+Machine
+----------
+
+.. py:module:: machine
+
+The machine module contains specific functions related to the nRF52832 
+hardware. Most functions in this module allow to achieve direct and 
+unrestricted access to and control of hardware blocks on a system (like CPU, 
+timers, buses, etc.). Used incorrectly, this can lead to malfunction, lockups, 
+crashes of your board, and in extreme cases, hardware damage.
+
+
+Functions
+
+.. method:: machine.reset()
+
+    Resets the device in a manner similar to pushing the external RESET button.
+
+
+.. method:: machine.disable_irq()
+
+    Disable interrupt requests. Returns the previous IRQ state which should be 
+    considered an opaque value. This return value should be passed to the 
+    :func:`machine.enable_irq()` function to restore interrupts to their 
+    original state, before :func:`machine.disable_irq()` was called.
+
+
+.. method:: machine.enable_irq()
+
+    Re-enable interrupt requests. The *state* parameter should be the value 
+    that was returned from the most recent call to the
+    :func:`machine.disable_irq()` function.
+
+.. method:: machine.deepsleep()
+
+    in to deepsleep mode.
+
+.. method:: machine.info()
+
+    Return machine some information.
+
+.. method:: machine.lightsleep()
+
+    in to lightsleep mode.
+
+.. method:: machine.reset_cause()
+
+    Return machine reset cause countor.
+
+.. method:: machine.sleep()
+
+    in to lightsleep mode.
+
+.. method:: machine.soft_reset()
+
+    Resets the device in a manner similar to pushing the external RESET button.
+
+The :mod:`machine` module::
+
+    import machine
+
+    machine.info()          # Return machine some information
+    machine.enable_irq()    # Re-enable interrupt requests.
+    machine.disable_irq()   # disable interrupt requests.
+    machine.reset()         # Reset machine system
+    machine.soft_reset()    # soft_reset machine system
+
+Note that the temperature sensor in the nRF52832 will typically read higher than
+ambient due to the IC getting warm while it runs.  This effect can be minimised
+by reading the temperature sensor immediately after waking up from sleep.
+
+
+Delay and timing
+----------------
+
+Use the :mod:`time <utime>` module::
+
+    import time
+
+    time.sleep_ms(500)      # sleep for 500 milliseconds
+    time.sleep_us(10)       # sleep for 10 microseconds
+
+Timers
+------
+
+Hardware timers are supported. Use the :ref:`machine.Timer <machine.Timer>` class
+with timer ID of -1::
+
+    from machine import Timer
+
+    tim = Timer(4, callback=lambda t:print("tick"))
+    tim.start()
+    tim.time()
+    tim.period()
+    tim.stop()
+    tim.deinit()
+Constants
+---------
+
+.. data:: Timer.ONESHOT
+          Timer.PERIODIC
+
+Pins and GPIO
+-------------
+
+Use the :ref:`machine.Pin <machine.Pin>` class::
+
+    from machine import Pin
+
+    p2 = Pin(2, Pin.OUT)    # create output pin on GPIO0.02
+    p2.on()                 # set pin to "on" (high) level
+    p2.off()                # set pin to "off" (low) level
+    p2.value(1)             # set pin to on/high
+
+    p3 = Pin(3, Pin.IN)     # create input pin on GPIO0.03
+    print(p3.value())       # get value, 0 or 1
+
+    p4 = Pin(4, Pin.IN, Pin.PULL_UP) # enable internal pull-up resistor
+    p5 = Pin(5, Pin.OUT, value=1) # set pin high on creation
+
+Constants
+---------
+
+.. data:: Pin.IN
+          Pin.OUT
+          Pin.PULL_UP
+          Pin.PULL_DOWN
+          Pin.PULL_DISABLED
+          Pin.IRQ_FALLING
+          Pin.IRQ_RISING
+
+Available Pins are from the following ranges (inclusive): 2-20, 25-31.
+These correspond to the actual GPIO pin numbers of nRF52832 chip.  Note that many
+end-user boards use their own adhoc pin numbering (marked e.g. D0, D1, ...).
+For mapping between board logical pins and physical chip pins consult your board
+documentation.
+
+Notes:
+
+* Pins 6 and 8 are REPL UART TX and RX respectively
+
+* Pins 7, 15, 16, and 27 are used for connecting the lcd screen driver,
+  and are not recommended for other uses
+
+* Pins 11 and 18 are used for connecting the button, and it have been pull up 10k to 3.3v
+
+* Pins 17 and 19 are used for connecting the led.
+
+PWM (pulse width modulation)
+----------------------------
+
+PWM can be enabled on all output-enabled pins. The base frequency can
+range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
+*increases* the duty resolution *decreases*. 
+
+Use the ``machine.PWM`` class::
+
+    from machine import Pin, PWM
+
+    pwm0 = PWM(0,pin=Pin(11,Pin.OUT),duty=90,period=10000)   # create PWM object from a pin,and set duty period.
+    pwm0.init()             # get current frequency
+    pwm0.freq(1000)         # set frequency
+    pwm0.duty()             # get current duty cycle
+    pwm0.duty(200)          # set duty cycle
+    pwm0.period()           # 
+    pwm0.deinit()           # turn off PWM on the pin
+
+Constants
+---------
+
+.. data:: PWM.FREQ_16MHZ
+          PWM.FREQ_8MHZ
+          PWM.FREQ_4MHZ
+          PWM.FREQ_2MHZ
+          PWM.FREQ_1MHZ
+          PWM.FREQ_500KHZ
+          PWM.FREQ_250KHZ
+          PWM.FREQ_125KHZ
+          PWM.MODE_LOW_HIGH
+          PWM.MODE_HIGH_LOW
+
+Available Pins are from the following ranges (inclusive): 2-5, 11-20, 25-31.
+
+ADC (analog to digital conversion)
+----------------------------------
+
+On the nRF52832 ADC functionality is available 8 channels（0~7）. Note that, when
+using the default configuration, input voltages on the ADC pin must be between
+0.0v and 3.3v.  Attenuation must be applied in order to increase this usable voltage range.
+
+Use the :ref:`machine.ADC <machine.ADC>` class::
+
+    from machine import ADC
+
+    adc3 = ADC(3)                # create ADC object on ADC pin
+    adc3.value()                 # read value, 0-255 across voltage range 0.0v - 3.3v
+
+    adc3.battery_level()        # read battery value.
+
+Software SPI bus
+----------------
+
+There are two SPI drivers. One is implemented in software (bit-banging)
+and works on all pins, and is accessed via the :ref:`machine.SPI <machine.SPI>`
+class::
+
+    from machine import Pin, SPI
+
+    # construct an SPI bus on the given pins
+    # polarity is the idle state of SCK
+    # phase=0 means sample on the first edge of SCK, phase=1 means the second
+    spi = SPI(2,baudrate=100000, polarity=1, phase=0, sck=Pin(12), mosi=Pin(13), miso=Pin(14))
+
+    spi.init(baudrate=200000) # set the baudrate
+
+    spi.read(10)            # read 10 bytes on MISO
+    spi.read(10, 0xff)      # read 10 bytes while outputing 0xff on MOSI
+
+    buf = bytearray(50)     # create a buffer
+    spi.readinto(buf)       # read into the given buffer (reads 50 bytes in this case)
+    spi.readinto(buf, 0xff) # read into the given buffer and output 0xff on MOSI
+
+    spi.write(b'12345')     # write 5 bytes on MOSI
+
+    buf = bytearray(4)      # create a buffer
+    spi.write_readinto(b'1234', buf) # write to MOSI and read from MISO into the buffer
+    spi.write_readinto(buf, buf) # write buf to MOSI and read MISO back into buf
+
+.. Warning::
+   Currently *all* of ``sck``, ``mosi`` and ``miso`` *must* be specified when
+   initialising Software SPI. 
+
+Functions
+
+.. method:: init(baudrate=1000000, bits=8, mode=0, sclk=pin12, mosi=pin13, miso=pin14)
+
+    Initialize SPI communication with the specified parameters on the
+    specified ``pins``. Note that for correct communication, the parameters
+    have to be the same on both communicating devices.
+
+    The ``baudrate`` defines the speed of communication.
+
+    The ``bits`` defines the size of bytes being transmitted. Currently only
+    ``bits=8`` is supported. However, this may change in the future.
+
+    The ``mode`` determines the combination of clock polarity and phase
+    according to the following convention, with polarity as the high order bit
+    and phase as the low order bit:
+
+    +----------+-----------------+--------------+
+    | SPI Mode | Polarity (CPOL) | Phase (CPHA) |
+    +==========+=================+==============+
+    | 0        | 0               | 0            |
+    +----------+-----------------+--------------+
+    | 1        | 0               | 1            |
+    +----------+-----------------+--------------+
+    | 2        | 1               | 0            |
+    +----------+-----------------+--------------+
+    | 3        | 1               | 1            |
+    +----------+-----------------+--------------+
+
+    Polarity (aka CPOL) 0 means that the clock is at logic value 0 when idle
+    and goes high (logic value 1) when active; polarity 1 means the clock is
+    at logic value 1 when idle and goes low (logic value 0) when active. Phase
+    (aka CPHA) 0 means that data is sampled on the leading edge of the clock,
+    and 1 means on the trailing edge
+    (viz. https://en.wikipedia.org/wiki/Signal_edge).
+
+    The ``sclk``, ``mosi`` and ``miso`` arguments specify the pins to use for
+    each type of signal.
+
+.. method:: spi.read(nbytes)
+
+   Read at most ``nbytes``. Returns what was read.
+
+.. method:: spi.write(buffer)
+
+   Write the ``buffer`` of bytes to the bus.
+
+.. method:: spi.write_readinto(out, in)
+
+   Write the ``out`` buffer to the bus and read any response into the ``in``
+   buffer. The length of the buffers should be the same. The buffers can be
+   the same object.
+
+Hardware SPI bus
+----------------
+
+There is one hardware SPI channels that allow faster transmission rates, 
+but are only supported on a subset of pins.
+
+=====  ===========  
+\      SPI (id=0)   
+=====  ===========  
+sck    12           
+mosi   13           
+miso   14           
+=====  ===========  
+
+Hardware SPI has the same methods as Software SPI above::
+
+    from machine import Pin, SPI
+
+    hspi = SPI(2, baudrate=10000000, polarity=0, phase=0, bits=8, firstbit=0,sck=Pin(12), mosi=Pin(13), miso=Pin(14))
+
+
+I2C bus
+-------
+
+The I2C driver is implemented in software and works on all pins,
+and is accessed via the :ref:`machine.I2C <machine.I2C>` class::
+
+    from machine import Pin, I2C
+
+    # construct an I2C bus
+    i2c = I2C(0, scl=Pin(26), sda=Pin(25))
+
+    i2c.scan()
+
+    i2c.readfrom(0x3a, 4)   # read 4 bytes from slave device with address 0x3a
+    i2c.writeto(0x3a, '12') # write '12' to slave device with address 0x3a
+
+    buf = bytearray(10)     # create a buffer with 10 bytes
+    i2c.writeto(0x3a, buf)  # write the given buffer to the slave
+
+
+
+Connecting
+
+You should connect the device's ``SCL`` pin to Bluefruit52 pin 26, and the
+device's ``SDA`` pin to Bluefruit52 pin 25. You also must connect the device's
+ground to the Bluefruit52 ground (pin ``GND``). You may need to power the device
+using an external power supply or the Bluefruit52.
+
+There are internal pull-up resistors on the I²C lines of the board, but with
+particularly long wires or large number of devices you may need to add
+additional pull-up resistors, to ensure noise-free communication.
+
+Real time clock Counter (RTCounter)
+---------------------
+
+See :ref:`machine.RTCounter <machine.RTCounter>` ::
+
+    from machine import RTCounter
+
+    rtcount = RTCounter(2, callback=lambda t:print("tick"))
+    rtcount.start()
+    rtcount.counter()
+    rtcount.stop()
+    rtcount.deinit()
+
+Constants
+---------
+
+.. data:: RTCounter.ONESHOT
+          RTCounter.PERIODIC
+          RTCounter.FREQUENCY
+
+Deep-sleep mode
+---------------
+
+The following code can be used to sleep, wake and check the reset cause::
+
+    import machine
+
+    # check if the device woke from a deep sleep
+    if machine.reset_cause() == machine.DEEPSLEEP_RESET:
+        print('woke from a deep sleep')
+
+    # put the device to sleep
+    machine.deepsleep()
+
+Notes:
+
+* Calling ``deepsleep()`` without an argument will put the device to sleep
+  indefinitely
+* A software reset does not change the reset cause
+
+Temp
+---------------
+
+The following code can be used to read temperature from on-soc::
+
+    import machine
+
+    temp = machine.Temp()
+
+    temp.read()
+
+
+UART
+---------------
+
+.. py:module:: machine.UART
+
+The ``UART`` module lets you talk to a device connected to your board using
+a serial interface.
+
+
+Functions
+
+.. method:: init(baudrate=9600, bits=8, parity=None, stop=1, \*, tx=None, rx=None)
+
+    Initialize serial communication with the specified parameters on the
+    specified ``tx`` and ``rx`` pins. Note that for correct communication, the parameters
+    have to be the same on both communicating devices.
+
+    .. warning::
+
+        Initializing the UART on external pins will cause the Python console on
+        USB to become unaccessible, as it uses the same hardware. To bring the
+        console back you must reinitialize the UART without passing anything for
+        ``tx`` or ``rx`` (or passing ``None`` to these arguments).  This means
+        that calling ``uart.init(115200)`` is enough to restore the Python console.
+
+    The ``baudrate`` defines the speed of communication. Common baud
+    rates include:
+
+        * 9600
+        * 14400
+        * 19200
+        * 28800
+        * 38400
+        * 57600
+        * 115200
+
+    The ``bits`` defines the size of bytes being transmitted, and the board
+    only supports 8. The ``parity`` parameter defines how parity is checked,
+    and it can be ``None``, ``microbit.uart.ODD`` or ``microbit.uart.EVEN``.
+    The ``stop`` parameter tells the number of stop bits, and has to be 1 for
+    this board.
+
+    If ``tx`` and ``rx`` are not specified then the internal USB-UART TX/RX pins
+    are used which connect to the USB serial converter on the micro:bit, thus
+    connecting the UART to your PC.  You can specify any other pins you want by
+    passing the desired pin objects to the ``tx`` and ``rx`` parameters.
+
+    .. note::
+
+        When connecting the device, make sure you "cross" the wires -- the TX
+        pin on your board needs to be connected with the RX pin on the device,
+        and the RX pin -- with the TX pin on the device. Also make sure the
+        ground pins of both devices are connected.
+
+.. method:: uart.read([nbytes])
+
+    Read bytes.  If ``nbytes`` is specified then read at most that many
+    bytes, otherwise read as many bytes as possible.
+
+    Return value: a bytes object or ``None`` on timeout.
+
+    A bytes object contains a sequence of bytes. Because
+    `ASCII <https://en.wikipedia.org/wiki/ASCII>`_ characters can fit in
+    single bytes this type of object is often used to represent simple text
+    and offers methods to manipulate it as such, e.g. you can display the text
+    using the ``print()`` function.
+
+    You can also convert this object into a string object, and if there are
+    non-ASCII characters present the encoding can be specified::
+
+        msg_bytes = uart.read()
+        msg_str = str(msg, 'UTF-8')
+
+    .. note::
+
+        The timeout for all UART reads depends on the baudrate and is otherwise
+        not changeable via Python. The timeout, in milliseconds, is given by:
+        ``microbit_uart_timeout_char = 13000 / baudrate + 1``
+
+    .. note::
+
+        The internal UART RX buffer is 64 bytes, so make sure data is read
+        before the buffer is full or some of the data might be lost.
+
+    .. warning::
+
+        Receiving ``0x03`` will stop your program by raising a Keyboard
+        Interrupt. You can enable or disable this using
+        :func:`micropython.kbd_intr()`.
+
+.. method:: uart.readinto(buf[, nbytes])
+
+   Read bytes into the ``buf``.  If ``nbytes`` is specified then read at most
+   that many bytes.  Otherwise, read at most ``len(buf)`` bytes.
+
+   Return value: number of bytes read and stored into ``buf`` or ``None`` on
+   timeout.
+
+.. method:: uart.readline()
+
+   Read a line, ending in a newline character.
+
+   Return value: the line read or ``None`` on timeout. The newline character is
+   included in the returned bytes.
+
+.. method:: uart.write(buf)
+
+    Write the buffer to the bus, it can be a bytes object or a string::
+
+        uart.write('hello world')
+        uart.write(b'hello world')
+        uart.write(bytes([1, 2, 3]))
+
+    Return value: number of bytes written or ``None`` on timeout.
+
+See the MicroPython forum for other community-supported alternatives
+to transfer files to an nRF52832 board.
