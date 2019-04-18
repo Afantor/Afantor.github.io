@@ -107,16 +107,20 @@
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#module-machine">Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#delay-and-timing">Delay and timing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#timers">Timers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#constants">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#pins-and-gpio">Pins and GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#id1">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#id2">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#software-spi-bus">Software SPI bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#hardware-spi-bus">Hardware SPI bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#i2c-bus">I2C bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#real-time-clock-counter-rtcounter">Real time clock Counter (RTCounter)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#id3">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#deep-sleep-mode">Deep-sleep mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#temp">Temp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#module-machine.UART">UART</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quickref.html#webrepl-web-browser-interactive-prompt">WebREPL (web browser interactive prompt)</a></li>
 </ul>
 </li>
 </ul>
@@ -193,7 +197,7 @@ Espressif Systems.</p>
 <h2>Multitude of boards<a class="headerlink" href="#multitude-of-boards" title="Permalink to this headline">¶</a></h2>
 <p>There is a multitude of modules and boards from different sources which carry
 the nRF52832 chip. MicroPython tries to provide a generic port which would run on
-as many boards/modules as possible, but there may be limitations. Espressif
+as many boards/modules as possible, but there may be limitations. nRF52832
 development boards are taken as reference for the port (for example, testing is
 performed on them).  For any board you are using please make sure you have a
 datasheet, schematics and other reference materials so you can look up any
@@ -224,7 +228,7 @@ operating modes, internal functioning, etc.</p>
 external SWD, UART, etc.)</li>
 <li>UART: 1 RX/TX UART (hardware handshaking)</li>
 <li>SPI: 1 SPI interfaces</li>
-<li>I2C: 1 I2C</li>
+<li>I2C: 2 I2C</li>
 <li>I2S: 1</li>
 <li>ADC: 12-bit SAADC up to 8 channels</li>
 <li>Programming: using bootloader from UART -
@@ -255,7 +259,7 @@ and always-available BootROM bootloader</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 17 Apr 2019.
+      Last updated on 18 Apr 2019.
 
     </p>
   </div>

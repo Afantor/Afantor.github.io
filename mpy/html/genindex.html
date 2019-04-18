@@ -447,6 +447,8 @@
 </li>
       <li><a href="library/builtins.html#classmethod">classmethod() (built-in function)</a>
 </li>
+      <li><a href="library/nrf.html#LCD.clear">clear() (in module LCD)</a>
+</li>
       <li><a href="library/pyb.CAN.html#pyb.CAN.clearfilter">clearfilter() (pyb.CAN method)</a>
 </li>
       <li><a href="library/btree.html#btree.btree.close">close() (btree.btree method)</a>
@@ -527,7 +529,7 @@
 </li>
       <li><a href="library/ucryptolib.html#ucryptolib.aes.decrypt">decrypt() (ucryptolib.aes method)</a>
 </li>
-      <li><a href="library/esp.html#esp.deepsleep">deepsleep() (in module esp)</a>, <a href="library/nrf.html#esp.deepsleep">[1]</a>
+      <li><a href="library/esp.html#esp.deepsleep">deepsleep() (in module esp)</a>
 
       <ul>
         <li><a href="library/machine.html#machine.deepsleep">(in module machine)</a>
@@ -571,8 +573,6 @@
         <li><a href="wipy/general.html#server.deinit">(server method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/builtins.html#delattr">delattr() (built-in function)</a>
 </li>
       <li><a href="library/pyb.html#pyb.delay">delay() (in module pyb)</a>
@@ -581,6 +581,8 @@
 </li>
       <li><a href="library/btree.html#btree.DESC">DESC (in module btree)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/builtins.html#dict">dict (built-in class)</a>
 </li>
       <li><a href="library/pyb.Pin.html#pyb.Pin.dict">dict() (pyb.Pin class method)</a>
@@ -615,9 +617,27 @@
       </ul></li>
       <li><a href="library/builtins.html#divmod">divmod() (built-in function)</a>
 </li>
+      <li><a href="library/nrf52.html#mpu6050.dmpGetEuler">dmpGetEuler() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.dmpGetFIFOPacketSize">dmpGetFIFOPacketSize() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.dmpGetQuaternion">dmpGetQuaternion() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.dmpInit">dmpInit() (in module mpu6050)</a>
+</li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.dot">dot() (lcd160cr.LCD160CR method)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.dot_no_clip">dot_no_clip() (lcd160cr.LCD160CR method)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.drawBiPoint">drawBiPoint() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.drawCircle">drawCircle() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.drawLine">drawLine() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.drawPoint">drawPoint() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.drawRectangle">drawRectangle() (in module LCD)</a>
 </li>
       <li><a href="library/machine.Pin.html#machine.Pin.drive">drive() (machine.Pin method)</a>
 </li>
@@ -675,13 +695,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/uerrno.html#uerrno.errorcode">errorcode (in module uerrno)</a>
 </li>
-      <li><a href="library/esp.html#module-esp">esp (module)</a>, <a href="library/nrf.html#module-esp">[1]</a>
+      <li><a href="library/esp.html#module-esp">esp (module)</a>
 </li>
-      <li><a href="library/esp32.html#module-esp32">esp32 (module)</a>, <a href="library/nrf52.html#module-esp32">[1]</a>
+      <li><a href="library/esp32.html#module-esp32">esp32 (module)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.esp32.WAKEUP_ALL_LOW">esp32.WAKEUP_ALL_LOW (in module esp32)</a>, <a href="library/nrf52.html#esp32.esp32.WAKEUP_ALL_LOW">[1]</a>
+      <li><a href="library/esp32.html#esp32.esp32.WAKEUP_ALL_LOW">esp32.WAKEUP_ALL_LOW (in module esp32)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.esp32.WAKEUP_ANY_HIGH">esp32.WAKEUP_ANY_HIGH (in module esp32)</a>, <a href="library/nrf52.html#esp32.esp32.WAKEUP_ANY_HIGH">[1]</a>
+      <li><a href="library/esp32.html#esp32.esp32.WAKEUP_ANY_HIGH">esp32.WAKEUP_ANY_HIGH (in module esp32)</a>
 </li>
       <li><a href="library/builtins.html#eval">eval() (built-in function)</a>
 </li>
@@ -728,33 +748,37 @@
       <li><a href="library/framebuf.html#framebuf.FrameBuffer.fill">fill() (framebuf.FrameBuffer method)</a>
 
       <ul>
+        <li><a href="library/nrf.html#LCD.fill">(in module LCD)</a>
+</li>
         <li><a href="library/pyb.LCD.html#pyb.LCD.fill">(pyb.LCD method)</a>
 </li>
       </ul></li>
       <li><a href="library/framebuf.html#framebuf.FrameBuffer.fill_rect">fill_rect() (framebuf.FrameBuffer method)</a>
 </li>
+      <li><a href="library/nrf.html#LCD.fillScreen">fillScreen() (in module LCD)</a>
+</li>
       <li><a href="library/builtins.html#filter">filter() (built-in function)</a>
 </li>
       <li><a href="library/pyb.Accel.html#pyb.Accel.filtered_xyz">filtered_xyz() (pyb.Accel method)</a>
 </li>
-      <li><a href="library/esp.html#esp.flash_erase">flash_erase() (in module esp)</a>, <a href="library/nrf.html#esp.flash_erase">[1]</a>
+      <li><a href="library/esp.html#esp.flash_erase">flash_erase() (in module esp)</a>
 </li>
-      <li><a href="library/esp.html#esp.flash_id">flash_id() (in module esp)</a>, <a href="library/nrf.html#esp.flash_id">[1]</a>
+      <li><a href="library/esp.html#esp.flash_id">flash_id() (in module esp)</a>
 </li>
-      <li><a href="library/esp.html#esp.flash_read">flash_read() (in module esp)</a>, <a href="library/nrf.html#esp.flash_read">[1]</a>
+      <li><a href="library/esp.html#esp.flash_read">flash_read() (in module esp)</a>
 </li>
-      <li><a href="library/esp.html#esp.flash_size">flash_size() (in module esp)</a>, <a href="library/nrf.html#esp.flash_size">[1]</a>
+      <li><a href="library/esp.html#esp.flash_size">flash_size() (in module esp)</a>
 </li>
-      <li><a href="library/esp.html#esp.flash_user_start">flash_user_start() (in module esp)</a>, <a href="library/nrf.html#esp.flash_user_start">[1]</a>
+      <li><a href="library/esp.html#esp.flash_user_start">flash_user_start() (in module esp)</a>
 </li>
-      <li><a href="library/esp.html#esp.flash_write">flash_write() (in module esp)</a>, <a href="library/nrf.html#esp.flash_write">[1]</a>
+      <li><a href="library/esp.html#esp.flash_write">flash_write() (in module esp)</a>
 </li>
       <li><a href="library/builtins.html#float">float (built-in class)</a>
 </li>
-      <li><a href="library/uctypes.html#uctypes.FLOAT32">FLOAT32 (in module uctypes)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="library/uctypes.html#uctypes.FLOAT32">FLOAT32 (in module uctypes)</a>
+</li>
       <li><a href="library/uctypes.html#uctypes.FLOAT64">FLOAT64 (in module uctypes)</a>
 </li>
       <li><a href="library/math.html#math.floor">floor() (in module math)</a>
@@ -819,13 +843,33 @@
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.get_touch">get_touch() (lcd160cr.LCD160CR method)</a>
 </li>
+      <li><a href="library/nrf52.html#mpu6050.getAccelX">getAccelX() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getAccelY">getAccelY() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getAccelZ">getAccelZ() (in module mpu6050)</a>
+</li>
       <li><a href="library/usocket.html#usocket.getaddrinfo">getaddrinfo() (in module usocket)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/builtins.html#getattr">getattr() (built-in function)</a>
 </li>
       <li><a href="library/uos.html#uos.getcwd">getcwd() (in module uos)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="library/nrf52.html#mpu6050.getFIFOBytes">getFIFOBytes() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getFIFOCount">getFIFOCount() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getGyroX">getGyroX() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getGyroY">getGyroY() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getGyroZ">getGyroZ() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getIntStatus">getIntStatus() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.getTemp">getTemp() (in module mpu6050)</a>
 </li>
       <li><a href="library/uio.html#uio.BytesIO.getvalue">getvalue() (uio.BytesIO method)</a>
 </li>
@@ -847,7 +891,7 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="library/esp32.html#esp32.hall_sensor">hall_sensor() (in module esp32)</a>, <a href="library/nrf52.html#esp32.hall_sensor">[1]</a>
+      <li><a href="library/esp32.html#esp32.hall_sensor">hall_sensor() (in module esp32)</a>
 </li>
       <li><a href="library/pyb.html#pyb.hard_reset">hard_reset() (in module pyb)</a>
 </li>
@@ -935,9 +979,11 @@
         <li><a href="library/pyb.RTC.html#pyb.RTC.info">(pyb.RTC method)</a>
 </li>
       </ul></li>
-      <li><a href="nrf52/quickref.html#machine.init">init() (in module machine)</a>, <a href="nrf52/quickref.html#machine.init">[1]</a>
+      <li><a href="library/nrf.html#LCD.init">init() (in module LCD)</a>
 
       <ul>
+        <li><a href="nrf52/quickref.html#machine.init">(in module machine)</a>
+</li>
         <li><a href="nrf52/quickref.html#machine.UART.init">(in module machine.UART)</a>
 </li>
         <li><a href="library/machine.ADC.html#machine.ADC.init">(machine.ADC method)</a>
@@ -1091,6 +1137,50 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="library/nrf.html#module-LCD">LCD (module)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.BLACK">LCD.BLACK (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.BLUE">LCD.BLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.BRED">LCD.BRED (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.BROWN">LCD.BROWN (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.BRRED">LCD.BRRED (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.CYAN">LCD.CYAN (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.DARKBLUE">LCD.DARKBLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.GBLUE">LCD.GBLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.GRAY">LCD.GRAY (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.GRAYBLUE">LCD.GRAYBLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.GRED">LCD.GRED (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.GREEN">LCD.GREEN (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.IGHTGREEN">LCD.IGHTGREEN (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.LBBLUE">LCD.LBBLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.LGRAY">LCD.LGRAY (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.LGRAYBLUE">LCD.LGRAYBLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.LIGHTBLUE">LCD.LIGHTBLUE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.MAGENTA">LCD.MAGENTA (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.RED">LCD.RED (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.WHITE">LCD.WHITE (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.LCD.YELLOW">LCD.YELLOW (in module LCD)</a>
+</li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR">LCD160CR (class in lcd160cr)</a>
 </li>
       <li><a href="library/lcd160cr.html#module-lcd160cr">lcd160cr (module)</a>
@@ -1103,6 +1193,8 @@
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.lcd160cr.PORTRAIT">lcd160cr.PORTRAIT (in module lcd160cr)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/lcd160cr.html#lcd160cr.lcd160cr.PORTRAIT_UPSIDEDOWN">lcd160cr.PORTRAIT_UPSIDEDOWN (in module lcd160cr)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.lcd160cr.STARTUP_DECO_INFO">lcd160cr.STARTUP_DECO_INFO (in module lcd160cr)</a>
@@ -1127,8 +1219,6 @@
         <li><a href="nrf52/quickref.html#machine.machine.lightsleep">(machine.machine method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/framebuf.html#framebuf.FrameBuffer.line">line() (framebuf.FrameBuffer method)</a>
 
       <ul>
@@ -1149,7 +1239,7 @@
 </li>
       <li><a href="library/ujson.html#ujson.load">load() (in module ujson)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.ULP.load_binary">load_binary() (esp32.ULP method)</a>, <a href="library/nrf52.html#esp32.ULP.load_binary">[1]</a>
+      <li><a href="library/esp32.html#esp32.ULP.load_binary">load_binary() (esp32.ULP method)</a>
 </li>
       <li><a href="library/ujson.html#ujson.loads">loads() (in module ujson)</a>
 </li>
@@ -1233,12 +1323,12 @@
 </li>
       <li><a href="library/gc.html#gc.mem_alloc">mem_alloc() (in module gc)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/gc.html#gc.mem_free">mem_free() (in module gc)</a>
 </li>
       <li><a href="library/micropython.html#micropython.mem_info">mem_info() (in module micropython)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/pyb.I2C.html#pyb.I2C.mem_read">mem_read() (pyb.I2C method)</a>
 </li>
       <li><a href="library/pyb.I2C.html#pyb.I2C.mem_write">mem_write() (pyb.I2C method)</a>
@@ -1293,6 +1383,14 @@
         <li><a href="library/uos.html#uos.mount">(in module uos)</a>
 </li>
       </ul></li>
+      <li><a href="library/nrf52.html#module-mpu6050">mpu6050 (module)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.MPU6050">MPU6050() (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.MPU6050.MPU6050_DEFAULT_ADDRESS">MPU6050.MPU6050_DEFAULT_ADDRESS (in module mpu6050)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.MPU6050.MPU6050_RA_TEMP_OUT_H">MPU6050.MPU6050_RA_TEMP_OUT_H (in module mpu6050)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1419,19 +1517,19 @@
 </li>
       <li><a href="library/machine.Pin.html#machine.Pin.HIGH_POWER">Pin.HIGH_POWER (in module machine)</a>
 </li>
-      <li><a href="library/machine.Pin.html#machine.Pin.IN">Pin.IN (in module machine)</a>
+      <li><a href="library/machine.Pin.html#machine.Pin.IN">Pin.IN (in module machine)</a>, <a href="nrf52/quickref.html#machine.Pin.IN">[1]</a>
 
       <ul>
         <li><a href="library/pyb.Pin.html#pyb.Pin.IN">(in module pyb)</a>
 </li>
       </ul></li>
-      <li><a href="library/machine.Pin.html#machine.Pin.IRQ_FALLING">Pin.IRQ_FALLING (in module machine)</a>
+      <li><a href="library/machine.Pin.html#machine.Pin.IRQ_FALLING">Pin.IRQ_FALLING (in module machine)</a>, <a href="nrf52/quickref.html#machine.Pin.IRQ_FALLING">[1]</a>
 </li>
       <li><a href="library/machine.Pin.html#machine.Pin.IRQ_HIGH_LEVEL">Pin.IRQ_HIGH_LEVEL (in module machine)</a>
 </li>
       <li><a href="library/machine.Pin.html#machine.Pin.IRQ_LOW_LEVEL">Pin.IRQ_LOW_LEVEL (in module machine)</a>
 </li>
-      <li><a href="library/machine.Pin.html#machine.Pin.IRQ_RISING">Pin.IRQ_RISING (in module machine)</a>
+      <li><a href="library/machine.Pin.html#machine.Pin.IRQ_RISING">Pin.IRQ_RISING (in module machine)</a>, <a href="nrf52/quickref.html#machine.Pin.IRQ_RISING">[1]</a>
 </li>
       <li><a href="library/machine.Pin.html#machine.Pin.LOW_POWER">Pin.LOW_POWER (in module machine)</a>
 </li>
@@ -1439,13 +1537,15 @@
 </li>
       <li><a href="library/machine.Pin.html#machine.Pin.OPEN_DRAIN">Pin.OPEN_DRAIN (in module machine)</a>
 </li>
-      <li><a href="library/machine.Pin.html#machine.Pin.OUT">Pin.OUT (in module machine)</a>
+      <li><a href="library/machine.Pin.html#machine.Pin.OUT">Pin.OUT (in module machine)</a>, <a href="nrf52/quickref.html#machine.Pin.OUT">[1]</a>
 </li>
       <li><a href="library/pyb.Pin.html#pyb.Pin.OUT_OD">Pin.OUT_OD (in module pyb)</a>
 </li>
       <li><a href="library/pyb.Pin.html#pyb.Pin.OUT_PP">Pin.OUT_PP (in module pyb)</a>
 </li>
-      <li><a href="library/machine.Pin.html#machine.Pin.PULL_DOWN">Pin.PULL_DOWN (in module machine)</a>
+      <li><a href="nrf52/quickref.html#machine.Pin.PULL_DISABLED">Pin.PULL_DISABLED (in module machine)</a>
+</li>
+      <li><a href="library/machine.Pin.html#machine.Pin.PULL_DOWN">Pin.PULL_DOWN (in module machine)</a>, <a href="nrf52/quickref.html#machine.Pin.PULL_DOWN">[1]</a>
 
       <ul>
         <li><a href="library/pyb.Pin.html#pyb.Pin.PULL_DOWN">(in module pyb)</a>
@@ -1455,7 +1555,7 @@
 </li>
       <li><a href="library/pyb.Pin.html#pyb.Pin.PULL_NONE">Pin.PULL_NONE (in module pyb)</a>
 </li>
-      <li><a href="library/machine.Pin.html#machine.Pin.PULL_UP">Pin.PULL_UP (in module machine)</a>
+      <li><a href="library/machine.Pin.html#machine.Pin.PULL_UP">Pin.PULL_UP (in module machine)</a>, <a href="nrf52/quickref.html#machine.Pin.PULL_UP">[1]</a>
 
       <ul>
         <li><a href="library/pyb.Pin.html#pyb.Pin.PULL_UP">(in module pyb)</a>
@@ -1467,8 +1567,6 @@
         <li><a href="library/pyb.LCD.html#pyb.LCD.pixel">(pyb.LCD method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/sys.html#sys.platform">platform (in module sys)</a>
 </li>
       <li><a href="library/cmath.html#cmath.polar">polar() (in module cmath)</a>
@@ -1479,6 +1577,8 @@
         <li><a href="library/uselect.html#uselect.poll.poll">(uselect.poll method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.poly_dot">poly_dot() (lcd160cr.LCD160CR method)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.poly_line">poly_line() (lcd160cr.LCD160CR method)</a>
@@ -1518,6 +1618,26 @@
 </li>
       </ul></li>
       <li><a href="library/pyb.Timer.html#pyb.timerchannel.pulse_width_percent">pulse_width_percent() (pyb.timerchannel method)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_125KHZ">PWM.FREQ_125KHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_16MHZ">PWM.FREQ_16MHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_1MHZ">PWM.FREQ_1MHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_250KHZ">PWM.FREQ_250KHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_2MHZ">PWM.FREQ_2MHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_4MHZ">PWM.FREQ_4MHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_500KHZ">PWM.FREQ_500KHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.FREQ_8MHZ">PWM.FREQ_8MHZ (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.MODE_HIGH_LOW">PWM.MODE_HIGH_LOW (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.PWM.MODE_LOW_HIGH">PWM.MODE_LOW_HIGH (in module machine)</a>
 </li>
       <li><a href="library/pyb.html#module-pyb">pyb (module)</a>
 </li>
@@ -1573,13 +1693,11 @@
 </li>
       <li><a href="library/builtins.html#range">range() (built-in function)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.raw_temperature">raw_temperature() (in module esp32)</a>, <a href="library/nrf52.html#esp32.raw_temperature">[1]</a>
+      <li><a href="library/esp32.html#esp32.raw_temperature">raw_temperature() (in module esp32)</a>
 </li>
-      <li><a href="nrf52/quickref.html#machine.read">read() (in module machine)</a>
+      <li><a href="library/machine.SPI.html#machine.SPI.read">read() (machine.SPI method)</a>
 
       <ul>
-        <li><a href="library/machine.SPI.html#machine.SPI.read">(machine.SPI method)</a>
-</li>
         <li><a href="library/machine.UART.html#machine.UART.read">(machine.UART method)</a>
 </li>
         <li><a href="nrf52/quickref.html#machine.UART.uart.read">(machine.UART.uart method)</a>
@@ -1649,12 +1767,12 @@
         <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.rect">(lcd160cr.LCD160CR method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.rect_interior">rect_interior() (lcd160cr.LCD160CR method)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.rect_interior_no_clip">rect_interior_no_clip() (lcd160cr.LCD160CR method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.rect_no_clip">rect_no_clip() (lcd160cr.LCD160CR method)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.rect_outline">rect_outline() (lcd160cr.LCD160CR method)</a>
@@ -1729,7 +1847,13 @@
 </li>
       <li><a href="library/machine.RTC.html#machine.RTC.ALARM0">RTC.ALARM0 (in module machine)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.ULP.run">run() (esp32.ULP method)</a>, <a href="library/nrf52.html#esp32.ULP.run">[1]</a>
+      <li><a href="nrf52/quickref.html#machine.RTCounter.FREQUENCY">RTCounter.FREQUENCY (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.RTCounter.ONESHOT">RTCounter.ONESHOT (in module machine)</a>
+</li>
+      <li><a href="nrf52/quickref.html#machine.RTCounter.PERIODIC">RTCounter.PERIODIC (in module machine)</a>
+</li>
+      <li><a href="library/esp32.html#esp32.ULP.run">run() (esp32.ULP method)</a>
 </li>
       <li><a href="library/builtins.html#RuntimeError">RuntimeError</a>
 </li>
@@ -1743,11 +1867,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.save_to_flash">save_to_flash() (lcd160cr.LCD160CR method)</a>
 </li>
-      <li><a href="nrf52/quickref.html#machine.scan">scan() (in module machine)</a>
+      <li><a href="library/machine.I2C.html#machine.I2C.scan">scan() (machine.I2C method)</a>
 
       <ul>
-        <li><a href="library/machine.I2C.html#machine.I2C.scan">(machine.I2C method)</a>
-</li>
         <li><a href="library/network.html#network.AbstractNIC.scan">(network.AbstractNIC method)</a>
 </li>
         <li><a href="library/network.WLAN.html#network.WLAN.scan">(network.WLAN method)</a>
@@ -1809,7 +1931,7 @@
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.set_i2c_addr">set_i2c_addr() (lcd160cr.LCD160CR method)</a>
 </li>
-      <li><a href="library/esp.html#esp.set_native_code_location">set_native_code_location() (in module esp)</a>, <a href="library/nrf.html#esp.set_native_code_location">[1]</a>
+      <li><a href="library/esp.html#esp.set_native_code_location">set_native_code_location() (in module esp)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.set_orient">set_orient() (lcd160cr.LCD160CR method)</a>
 </li>
@@ -1837,11 +1959,13 @@
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.set_uart_baudrate">set_uart_baudrate() (lcd160cr.LCD160CR method)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.ULP.set_wakeup_period">set_wakeup_period() (esp32.ULP method)</a>, <a href="library/nrf52.html#esp32.ULP.set_wakeup_period">[1]</a>
+      <li><a href="library/esp32.html#esp32.ULP.set_wakeup_period">set_wakeup_period() (esp32.ULP method)</a>
 </li>
       <li><a href="library/builtins.html#setattr">setattr() (built-in function)</a>
 </li>
       <li><a href="library/usocket.html#usocket.socket.setblocking">setblocking() (usocket.socket method)</a>
+</li>
+      <li><a href="library/nrf52.html#mpu6050.setDMPEnabled">setDMPEnabled() (in module mpu6050)</a>
 </li>
       <li><a href="library/pyb.CAN.html#pyb.CAN.setfilter">setfilter() (pyb.CAN method)</a>
 </li>
@@ -1855,8 +1979,26 @@
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.show_framebuf">show_framebuf() (lcd160cr.LCD160CR method)</a>
 </li>
+      <li><a href="library/nrf.html#LCD.showBLE">showBLE() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showChar">showChar() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showChinese">showChinese() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showFloat">showFloat() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showLogo">showLogo() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showNum">showNum() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showPicture">showPicture() (in module LCD)</a>
+</li>
+      <li><a href="library/nrf.html#LCD.showString">showString() (in module LCD)</a>
+</li>
       <li><a href="library/machine.Signal.html#machine.Signal">Signal (class in machine)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/cmath.html#cmath.sin">sin() (in module cmath)</a>
 
       <ul>
@@ -1867,8 +2009,6 @@
 </li>
       <li><a href="library/uctypes.html#uctypes.sizeof">sizeof() (in module uctypes)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/machine.html#machine.sleep">sleep() (in module machine)</a>
 
       <ul>
@@ -1879,7 +2019,7 @@
       </ul></li>
       <li><a href="library/utime.html#utime.sleep_ms">sleep_ms() (in module utime)</a>
 </li>
-      <li><a href="library/esp.html#esp.sleep_type">sleep_type() (in module esp)</a>, <a href="library/nrf.html#esp.sleep_type">[1]</a>
+      <li><a href="library/esp.html#esp.sleep_type">sleep_type() (in module esp)</a>
 </li>
       <li><a href="library/utime.html#utime.sleep_us">sleep_us() (in module utime)</a>
 </li>
@@ -2057,7 +2197,9 @@
 </li>
       <li><a href="library/machine.Timer.html#machine.Timer.ONE_SHOT">Timer.ONE_SHOT (in module machine)</a>
 </li>
-      <li><a href="library/machine.Timer.html#machine.Timer.PERIODIC">Timer.PERIODIC (in module machine)</a>
+      <li><a href="nrf52/quickref.html#machine.Timer.ONESHOT">Timer.ONESHOT (in module machine)</a>
+</li>
+      <li><a href="library/machine.Timer.html#machine.Timer.PERIODIC">Timer.PERIODIC (in module machine)</a>, <a href="nrf52/quickref.html#machine.Timer.PERIODIC">[1]</a>
 </li>
       <li><a href="wipy/tutorial/timer.html#Timer.POSITIVE">Timer.POSITIVE (built-in variable)</a>
 </li>
@@ -2135,7 +2277,7 @@
 </li>
       <li><a href="library/ujson.html#module-ujson">ujson (module)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.ULP">ULP (class in esp32)</a>, <a href="library/nrf52.html#esp32.ULP">[1]</a>
+      <li><a href="library/esp32.html#esp32.ULP">ULP (class in esp32)</a>
 </li>
       <li><a href="library/uos.html#uos.umount">umount() (in module uos)</a>
 </li>
@@ -2233,11 +2375,11 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="library/esp32.html#esp32.wake_on_ext0">wake_on_ext0() (in module esp32)</a>, <a href="library/nrf52.html#esp32.wake_on_ext0">[1]</a>
+      <li><a href="library/esp32.html#esp32.wake_on_ext0">wake_on_ext0() (in module esp32)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.wake_on_ext1">wake_on_ext1() (in module esp32)</a>, <a href="library/nrf52.html#esp32.wake_on_ext1">[1]</a>
+      <li><a href="library/esp32.html#esp32.wake_on_ext1">wake_on_ext1() (in module esp32)</a>
 </li>
-      <li><a href="library/esp32.html#esp32.wake_on_touch">wake_on_touch() (in module esp32)</a>, <a href="library/nrf52.html#esp32.wake_on_touch">[1]</a>
+      <li><a href="library/esp32.html#esp32.wake_on_touch">wake_on_touch() (in module esp32)</a>
 </li>
       <li><a href="library/machine.html#machine.wake_reason">wake_reason() (in module machine)</a>
 </li>
@@ -2269,15 +2411,13 @@
 </li>
       <li><a href="library/network.WLANWiPy.html#network.WLANWiPy.WPA">WLANWiPy.WPA (in module network)</a>
 </li>
-      <li><a href="library/network.WLANWiPy.html#network.WLANWiPy.WPA2">WLANWiPy.WPA2 (in module network)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="nrf52/quickref.html#machine.write">write() (in module machine)</a>
+      <li><a href="library/network.WLANWiPy.html#network.WLANWiPy.WPA2">WLANWiPy.WPA2 (in module network)</a>
+</li>
+      <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.write">write() (lcd160cr.LCD160CR method)</a>
 
       <ul>
-        <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.write">(lcd160cr.LCD160CR method)</a>
-</li>
         <li><a href="library/machine.I2C.html#machine.I2C.write">(machine.I2C method)</a>
 </li>
         <li><a href="library/machine.SPI.html#machine.SPI.write">(machine.SPI method)</a>
@@ -2361,7 +2501,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 17 Apr 2019.
+      Last updated on 18 Apr 2019.
 
     </p>
   </div>

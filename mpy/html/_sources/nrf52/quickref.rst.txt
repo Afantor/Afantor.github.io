@@ -1,4 +1,4 @@
-.. _esp32_quickref:
+.. _nRF52832_quickref:
 
 Quick reference for the nRF52832
 =============================
@@ -83,7 +83,7 @@ Functions
 
 .. method:: machine.sleep()
 
-    Machine delay some second time.
+    in to lightsleep mode.
 
 .. method:: machine.soft_reset()
 
@@ -95,6 +95,9 @@ The :mod:`machine` module::
 
     machine.info()          # Return machine some information
     machine.enable_irq()    # Re-enable interrupt requests.
+    machine.disable_irq()   # disable interrupt requests.
+    machine.reset()         # Reset machine system
+    machine.soft_reset()    # soft_reset machine system
 
 Note that the temperature sensor in the nRF52832 will typically read higher than
 ambient due to the IC getting warm while it runs.  This effect can be minimised
@@ -108,23 +111,28 @@ Use the :mod:`time <utime>` module::
 
     import time
 
-    time.sleep(1)           # sleep for 1 second
     time.sleep_ms(500)      # sleep for 500 milliseconds
     time.sleep_us(10)       # sleep for 10 microseconds
 
 Timers
 ------
 
-Virtual (RTOS-based) timers are supported. Use the :ref:`machine.Timer <machine.Timer>` class
+Hardware timers are supported. Use the :ref:`machine.Timer <machine.Timer>` class
 with timer ID of -1::
 
     from machine import Timer
 
-    tim = Timer(-1)
-    tim.init(period=5000, mode=Timer.ONE_SHOT, callback=lambda t:print(1))
-    tim.init(period=2000, mode=Timer.PERIODIC, callback=lambda t:print(2))
+    tim = Timer(4, callback=lambda t:print("tick"))
+    tim.start()
+    tim.time()
+    tim.period()
+    tim.stop()
+    tim.deinit()
+Constants
+---------
 
-The period is in milliseconds.
+.. data:: Timer.ONESHOT
+          Timer.PERIODIC
 
 Pins and GPIO
 -------------
@@ -133,34 +141,44 @@ Use the :ref:`machine.Pin <machine.Pin>` class::
 
     from machine import Pin
 
-    p0 = Pin(0, Pin.OUT)    # create output pin on GPIO0
-    p0.on()                 # set pin to "on" (high) level
-    p0.off()                # set pin to "off" (low) level
-    p0.value(1)             # set pin to on/high
+    p2 = Pin(2, Pin.OUT)    # create output pin on GPIO0.02
+    p2.on()                 # set pin to "on" (high) level
+    p2.off()                # set pin to "off" (low) level
+    p2.value(1)             # set pin to on/high
 
-    p2 = Pin(2, Pin.IN)     # create input pin on GPIO2
-    print(p2.value())       # get value, 0 or 1
+    p3 = Pin(3, Pin.IN)     # create input pin on GPIO0.03
+    print(p3.value())       # get value, 0 or 1
 
     p4 = Pin(4, Pin.IN, Pin.PULL_UP) # enable internal pull-up resistor
     p5 = Pin(5, Pin.OUT, value=1) # set pin high on creation
 
-Available Pins are from the following ranges (inclusive): 0-19, 21-23, 25-27, 32-39.
-These correspond to the actual GPIO pin numbers of ESP32 chip.  Note that many
+Constants
+---------
+
+.. data:: Pin.IN
+          Pin.OUT
+          Pin.PULL_UP
+          Pin.PULL_DOWN
+          Pin.PULL_DISABLED
+          Pin.IRQ_FALLING
+          Pin.IRQ_RISING
+
+Available Pins are from the following ranges (inclusive): 2-20, 25-31.
+These correspond to the actual GPIO pin numbers of nRF52832 chip.  Note that many
 end-user boards use their own adhoc pin numbering (marked e.g. D0, D1, ...).
 For mapping between board logical pins and physical chip pins consult your board
 documentation.
 
 Notes:
 
-* Pins 1 and 3 are REPL UART TX and RX respectively
+* Pins 6 and 8 are REPL UART TX and RX respectively
 
-* Pins 6, 7, 8, 11, 16, and 17 are used for connecting the embedded flash,
+* Pins 7, 15, 16, and 27 are used for connecting the lcd screen driver,
   and are not recommended for other uses
 
-* Pins 34-39 are input only, and also do not have internal pull-up resistors
+* Pins 11 and 18 are used for connecting the button, and it have been pull up 10k to 3.3v
 
-* The pull value of some pins can be set to ``Pin.PULL_HOLD`` to reduce power
-  consumption during deepsleep.
+* Pins 17 and 19 are used for connecting the led.
 
 PWM (pulse width modulation)
 ----------------------------
@@ -173,15 +191,29 @@ Use the ``machine.PWM`` class::
 
     from machine import Pin, PWM
 
-    pwm0 = PWM(Pin(0))      # create PWM object from a pin
-    pwm0.freq()             # get current frequency
+    pwm0 = PWM(0,pin=Pin(11,Pin.OUT),duty=90,period=10000)   # create PWM object from a pin,and set duty period.
+    pwm0.init()             # get current frequency
     pwm0.freq(1000)         # set frequency
     pwm0.duty()             # get current duty cycle
     pwm0.duty(200)          # set duty cycle
     pwm0.period()           # 
     pwm0.deinit()           # turn off PWM on the pin
 
-    pwm2 = PWM(Pin(2), freq=20000, duty=512) # create and configure in one go
+Constants
+---------
+
+.. data:: PWM.FREQ_16MHZ
+          PWM.FREQ_8MHZ
+          PWM.FREQ_4MHZ
+          PWM.FREQ_2MHZ
+          PWM.FREQ_1MHZ
+          PWM.FREQ_500KHZ
+          PWM.FREQ_250KHZ
+          PWM.FREQ_125KHZ
+          PWM.MODE_LOW_HIGH
+          PWM.MODE_HIGH_LOW
+
+Available Pins are from the following ranges (inclusive): 2-5, 11-20, 25-31.
 
 ADC (analog to digital conversion)
 ----------------------------------
@@ -211,7 +243,7 @@ class::
     # construct an SPI bus on the given pins
     # polarity is the idle state of SCK
     # phase=0 means sample on the first edge of SCK, phase=1 means the second
-    spi = SPI(baudrate=100000, polarity=1, phase=0, sck=Pin(0), mosi=Pin(2), miso=Pin(4))
+    spi = SPI(2,baudrate=100000, polarity=1, phase=0, sck=Pin(12), mosi=Pin(13), miso=Pin(14))
 
     spi.init(baudrate=200000) # set the baudrate
 
@@ -303,53 +335,11 @@ Hardware SPI has the same methods as Software SPI above::
 
     from machine import Pin, SPI
 
-    hspi = SPI(1, baudrate=10000000, polarity=0, phase=0, bits=8, firstbit=0,sck=Pin(12), mosi=Pin(13), miso=Pin(14))
+    hspi = SPI(2, baudrate=10000000, polarity=0, phase=0, bits=8, firstbit=0,sck=Pin(12), mosi=Pin(13), miso=Pin(14))
 
 
 I2C bus
 -------
-
-Functions
-
-.. py:function:: init(freq=100000, sda=Pin(26), scl=Pin(25))
-
-    Re-initialize peripheral with the specified clock frequency ``freq`` on the
-    specified ``sda`` and ``scl`` pins.
-
-    .. warning::
-
-        Changing the I²C pins from defaults will make the accelerometer and
-        compass stop working, as they are connected internally to those pins.
-
-
-.. py:function:: scan()
-
-    Scan the bus for devices.  Returns a list of 7-bit addresses corresponding
-    to those devices that responded to the scan.
-
-
-.. py:function:: read(addr, n, repeat=False)
-
-    Read ``n`` bytes from the device with 7-bit address ``addr``. If ``repeat``
-    is ``True``, no stop bit will be sent.
-
-
-.. py:function:: write(addr, buf, repeat=False)
-
-    Write bytes from ``buf`` to the device with 7-bit address ``addr``. If
-    ``repeat`` is ``True``, no stop bit will be sent.
-
-
-Connecting
-
-You should connect the device's ``SCL`` pin to micro:bit pin 25, and the
-device's ``SDA`` pin to micro:bit pin 26. You also must connect the device's
-ground to the micro:bit ground (pin ``GND``). You may need to power the device
-using an external power supply or the micro:bit.
-
-There are internal pull-up resistors on the I²C lines of the board, but with
-particularly long wires or large number of devices you may need to add
-additional pull-up resistors, to ensure noise-free communication.
 
 The I2C driver is implemented in software and works on all pins,
 and is accessed via the :ref:`machine.I2C <machine.I2C>` class::
@@ -357,13 +347,28 @@ and is accessed via the :ref:`machine.I2C <machine.I2C>` class::
     from machine import Pin, I2C
 
     # construct an I2C bus
-    i2c = I2C(scl=Pin(5), sda=Pin(4), freq=100000)
+    i2c = I2C(0, scl=Pin(26), sda=Pin(25))
+
+    i2c.scan()
 
     i2c.readfrom(0x3a, 4)   # read 4 bytes from slave device with address 0x3a
     i2c.writeto(0x3a, '12') # write '12' to slave device with address 0x3a
 
     buf = bytearray(10)     # create a buffer with 10 bytes
     i2c.writeto(0x3a, buf)  # write the given buffer to the slave
+
+
+
+Connecting
+
+You should connect the device's ``SCL`` pin to Bluefruit52 pin 26, and the
+device's ``SDA`` pin to Bluefruit52 pin 25. You also must connect the device's
+ground to the Bluefruit52 ground (pin ``GND``). You may need to power the device
+using an external power supply or the Bluefruit52.
+
+There are internal pull-up resistors on the I²C lines of the board, but with
+particularly long wires or large number of devices you may need to add
+additional pull-up resistors, to ensure noise-free communication.
 
 Real time clock Counter (RTCounter)
 ---------------------
@@ -372,11 +377,18 @@ See :ref:`machine.RTCounter <machine.RTCounter>` ::
 
     from machine import RTCounter
 
-    rtc = RTCounter()
-    rtc.start((2017, 8, 23, 1, 12, 48, 0, 0)) # set a specific date and time
-    rtc.counter() # get date and time
-    rtc.stop()
-    rtc.deinit()
+    rtcount = RTCounter(2, callback=lambda t:print("tick"))
+    rtcount.start()
+    rtcount.counter()
+    rtcount.stop()
+    rtcount.deinit()
+
+Constants
+---------
+
+.. data:: RTCounter.ONESHOT
+          RTCounter.PERIODIC
+          RTCounter.FREQUENCY
 
 Deep-sleep mode
 ---------------
@@ -389,14 +401,26 @@ The following code can be used to sleep, wake and check the reset cause::
     if machine.reset_cause() == machine.DEEPSLEEP_RESET:
         print('woke from a deep sleep')
 
-    # put the device to sleep for 10 seconds
-    machine.deepsleep(10000)
+    # put the device to sleep
+    machine.deepsleep()
 
 Notes:
 
 * Calling ``deepsleep()`` without an argument will put the device to sleep
   indefinitely
 * A software reset does not change the reset cause
+
+Temp
+---------------
+
+The following code can be used to read temperature from on-soc::
+
+    import machine
+
+    temp = machine.Temp()
+
+    temp.read()
+
 
 UART
 ---------------
@@ -513,35 +537,5 @@ Functions
 
     Return value: number of bytes written or ``None`` on timeout.
 
-
-WebREPL (web browser interactive prompt)
-----------------------------------------
-
-WebREPL (REPL over WebSockets, accessible via a web browser) is an
-experimental feature available in ESP32 port. Download web client
-from https://github.com/micropython/webrepl (hosted version available
-at http://micropython.org/webrepl), and configure it by executing::
-
-    import webrepl_setup
-
-and following on-screen instructions. After reboot, it will be available
-for connection. If you disabled automatic start-up on boot, you may
-run configured daemon on demand using::
-
-    import webrepl
-    webrepl.start()
-
-    # or, start with a specific password
-    webrepl.start(password='mypass')
-
-The WebREPL daemon listens on all active interfaces, which can be STA or
-AP.  This allows you to connect to the ESP32 via a router (the STA
-interface) or directly when connected to its access point.
-
-In addition to terminal/command prompt access, WebREPL also has provision
-for file transfer (both upload and download).  The web client has buttons for
-the corresponding functions, or you can use the command-line client
-``webrepl_cli.py`` from the repository above.
-
 See the MicroPython forum for other community-supported alternatives
-to transfer files to an ESP32 board.
+to transfer files to an nRF52832 board.

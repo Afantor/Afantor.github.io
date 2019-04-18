@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>esp32 — functionality specific to the ESP32 &mdash; MicroPython 1.10 documentation</title>
+  <title>mpu6050 — functionality specific to the nRF52832 Bluefruit52 &mdash; MicroPython 1.10 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The MicroPython language" href="../reference/index.html" />
-    <link rel="prev" title="esp — functions related to the ESP8266 and ESP32" href="nrf.html" /> 
+    <link rel="prev" title="LCD — functions related to the nRF52832 Bluefruit52" href="nrf.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -92,11 +92,10 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#libraries-specific-to-the-pyboard">Libraries specific to the pyboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#libraries-specific-to-the-wipy">Libraries specific to the WiPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#libraries-specific-to-the-esp8266-and-esp32">Libraries specific to the ESP8266 and ESP32</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#libraries-specific-to-the-nrf52832">Libraries specific to the nRF52832</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="nrf.html"><code class="docutils literal notranslate"><span class="pre">esp</span></code> — functions related to the ESP8266 and ESP32</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">esp32</span></code> — functionality specific to the ESP32</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#libraries-specific-to-the-nrf52832-blurfruit52">Libraries specific to the nRF52832 Blurfruit52</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="nrf.html"><code class="docutils literal notranslate"><span class="pre">LCD</span></code> — functions related to the nRF52832 Bluefruit52</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">mpu6050</span></code> — functionality specific to the nRF52832 Bluefruit52</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-ultra-low-power-co-processor">The Ultra-Low-Power co-processor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#constants">Constants</a></li>
 </ul>
 </li>
@@ -160,7 +159,7 @@
         
           <li><a href="index.html">MicroPython libraries</a> &raquo;</li>
         
-      <li><code class="docutils literal notranslate"><span class="pre">esp32</span></code> — functionality specific to the ESP32</li>
+      <li><code class="docutils literal notranslate"><span class="pre">mpu6050</span></code> — functionality specific to the nRF52832 Bluefruit52</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -179,83 +178,117 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-esp32">
-<span id="esp32-functionality-specific-to-the-esp32"></span><h1><a class="reference internal" href="#module-esp32" title="esp32: functionality specific to the ESP32"><code class="xref py py-mod docutils literal notranslate"><span class="pre">esp32</span></code></a> — functionality specific to the ESP32<a class="headerlink" href="#module-esp32" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">esp32</span></code> module contains functions and classes specifically aimed at
-controlling ESP32 modules.</p>
+  <div class="section" id="mpu6050-functionality-specific-to-the-nrf52832-bluefruit52">
+<h1><a class="reference internal" href="#module-mpu6050" title="mpu6050: functionality specific to the nRF52832 Bluefruit52"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mpu6050</span></code></a> — functionality specific to the nRF52832 Bluefruit52<a class="headerlink" href="#mpu6050-functionality-specific-to-the-nrf52832-bluefruit52" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-mpu6050"></span><p>The <code class="docutils literal notranslate"><span class="pre">mpu6050</span></code> module contains functions and classes specifically aimed at
+controlling nRF52832 Bluefruit52 modules.</p>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="esp32.wake_on_touch">
-<code class="descclassname">esp32.</code><code class="descname">wake_on_touch</code><span class="sig-paren">(</span><em>wake</em><span class="sig-paren">)</span><a class="headerlink" href="#esp32.wake_on_touch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configure whether or not a touch will wake the device from sleep.
-<em>wake</em> should be a boolean value.</p>
+<dt id="mpu6050.MPU6050">
+<code class="descclassname">mpu6050.</code><code class="descname">MPU6050</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.MPU6050" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a object MPU6050.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp32.wake_on_ext0">
-<code class="descclassname">esp32.</code><code class="descname">wake_on_ext0</code><span class="sig-paren">(</span><em>pin</em>, <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#esp32.wake_on_ext0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configure how EXT0 wakes the device from sleep.  <em>pin</em> can be <code class="docutils literal notranslate"><span class="pre">None</span></code>
-or a valid Pin object.  <em>level</em> should be <code class="docutils literal notranslate"><span class="pre">esp32.WAKEUP_ALL_LOW</span></code> or
-<code class="docutils literal notranslate"><span class="pre">esp32.WAKEUP_ANY_HIGH</span></code>.</p>
+<dt id="mpu6050.dmpInit">
+<code class="descclassname">mpu6050.</code><code class="descname">dmpInit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpInit" title="Permalink to this definition">¶</a></dt>
+<dd><p>mpu6050 init dmp mode.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp32.wake_on_ext1">
-<code class="descclassname">esp32.</code><code class="descname">wake_on_ext1</code><span class="sig-paren">(</span><em>pins</em>, <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#esp32.wake_on_ext1" title="Permalink to this definition">¶</a></dt>
-<dd><p>Configure how EXT1 wakes the device from sleep.  <em>pins</em> can be <code class="docutils literal notranslate"><span class="pre">None</span></code>
-or a tuple/list of valid Pin objects.  <em>level</em> should be <code class="docutils literal notranslate"><span class="pre">esp32.WAKEUP_ALL_LOW</span></code>
-or <code class="docutils literal notranslate"><span class="pre">esp32.WAKEUP_ANY_HIGH</span></code>.</p>
+<dt id="mpu6050.setDMPEnabled">
+<code class="descclassname">mpu6050.</code><code class="descname">setDMPEnabled</code><span class="sig-paren">(</span><em>True</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.setDMPEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>set DMP Mode enable.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp32.raw_temperature">
-<code class="descclassname">esp32.</code><code class="descname">raw_temperature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#esp32.raw_temperature" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the raw value of the internal temperature sensor, returning an integer.</p>
+<dt id="mpu6050.dmpGetFIFOPacketSize">
+<code class="descclassname">mpu6050.</code><code class="descname">dmpGetFIFOPacketSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpGetFIFOPacketSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return FIFO packet sizes.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp32.hall_sensor">
-<code class="descclassname">esp32.</code><code class="descname">hall_sensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#esp32.hall_sensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the raw value of the internal Hall sensor, returning an integer.</p>
+<dt id="mpu6050.getIntStatus">
+<code class="descclassname">mpu6050.</code><code class="descname">getIntStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getIntStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return interrupt status.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="the-ultra-low-power-co-processor">
-<h2>The Ultra-Low-Power co-processor<a class="headerlink" href="#the-ultra-low-power-co-processor" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="esp32.ULP">
-<em class="property">class </em><code class="descclassname">esp32.</code><code class="descname">ULP</code><a class="headerlink" href="#esp32.ULP" title="Permalink to this definition">¶</a></dt>
-<dd><p>This class provides access to the Ultra-Low-Power co-processor.</p>
+<dl class="function">
+<dt id="mpu6050.getFIFOCount">
+<code class="descclassname">mpu6050.</code><code class="descname">getFIFOCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getFIFOCount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return FIFO counts.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="esp32.ULP.set_wakeup_period">
-<code class="descclassname">ULP.</code><code class="descname">set_wakeup_period</code><span class="sig-paren">(</span><em>period_index</em>, <em>period_us</em><span class="sig-paren">)</span><a class="headerlink" href="#esp32.ULP.set_wakeup_period" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the wake-up period.</p>
+<dl class="function">
+<dt id="mpu6050.getFIFOBytes">
+<code class="descclassname">mpu6050.</code><code class="descname">getFIFOBytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getFIFOBytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return FIFO bytes to buffers.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="esp32.ULP.load_binary">
-<code class="descclassname">ULP.</code><code class="descname">load_binary</code><span class="sig-paren">(</span><em>load_addr</em>, <em>program_binary</em><span class="sig-paren">)</span><a class="headerlink" href="#esp32.ULP.load_binary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a <em>program_binary</em> into the ULP at the given <em>load_addr</em>.</p>
+<dl class="function">
+<dt id="mpu6050.dmpGetQuaternion">
+<code class="descclassname">mpu6050.</code><code class="descname">dmpGetQuaternion</code><span class="sig-paren">(</span><em>fifoBuffer</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpGetQuaternion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculation quaternion value and return to buffers.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="esp32.ULP.run">
-<code class="descclassname">ULP.</code><code class="descname">run</code><span class="sig-paren">(</span><em>entry_point</em><span class="sig-paren">)</span><a class="headerlink" href="#esp32.ULP.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start the ULP running at the given <em>entry_point</em>.</p>
+<dl class="function">
+<dt id="mpu6050.dmpGetEuler">
+<code class="descclassname">mpu6050.</code><code class="descname">dmpGetEuler</code><span class="sig-paren">(</span><em>*fifoBuffer</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpGetEuler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculation euler angle value and return to buffers(yaw,roll,pitch).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getTemp">
+<code class="descclassname">mpu6050.</code><code class="descname">getTemp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getTemp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the soc temperature register value(°C).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getAccelX">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccelX</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccelX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel X register value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getAccelY">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccelY</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccelY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel Y register value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getAccelZ">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccelZ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccelZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel Z register value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getGyroX">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyroX</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyroX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyro X register value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getGyroY">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyroY</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyroY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyro Y register value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getGyroZ">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyroZ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyroZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyro Z register value.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
 <dl class="data">
-<dt id="esp32.esp32.WAKEUP_ALL_LOW">
-<code class="descclassname">esp32.</code><code class="descname">WAKEUP_ALL_LOW</code><a class="headerlink" href="#esp32.esp32.WAKEUP_ALL_LOW" title="Permalink to this definition">¶</a></dt>
-<dt id="esp32.esp32.WAKEUP_ANY_HIGH">
-<code class="descclassname">esp32.</code><code class="descname">WAKEUP_ANY_HIGH</code><a class="headerlink" href="#esp32.esp32.WAKEUP_ANY_HIGH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Selects the wake level for pins.</p>
+<dt id="mpu6050.MPU6050.MPU6050_DEFAULT_ADDRESS">
+<code class="descclassname">MPU6050.</code><code class="descname">MPU6050_DEFAULT_ADDRESS</code><a class="headerlink" href="#mpu6050.MPU6050.MPU6050_DEFAULT_ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dt id="mpu6050.MPU6050.MPU6050_RA_TEMP_OUT_H">
+<code class="descclassname">MPU6050.</code><code class="descname">MPU6050_RA_TEMP_OUT_H</code><a class="headerlink" href="#mpu6050.MPU6050.MPU6050_RA_TEMP_OUT_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the register address.</p>
 </dd></dl>
 
 </div>
@@ -272,7 +305,7 @@ or <code class="docutils literal notranslate"><span class="pre">esp32.WAKEUP_ANY
         <a href="../reference/index.html" class="btn btn-neutral float-right" title="The MicroPython language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="nrf.html" class="btn btn-neutral" title="esp — functions related to the ESP8266 and ESP32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nrf.html" class="btn btn-neutral" title="LCD — functions related to the nRF52832 Bluefruit52" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -282,7 +315,7 @@ or <code class="docutils literal notranslate"><span class="pre">esp32.WAKEUP_ANY
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 17 Apr 2019.
+      Last updated on 18 Apr 2019.
 
     </p>
   </div>

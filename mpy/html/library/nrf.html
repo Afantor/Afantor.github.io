@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>esp — functions related to the ESP8266 and ESP32 &mdash; MicroPython 1.10 documentation</title>
+  <title>LCD — functions related to the nRF52832 Bluefruit52 &mdash; MicroPython 1.10 documentation</title>
   
 
   
@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="../_static/customstyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="esp32 — functionality specific to the ESP32" href="nrf52.html" />
+    <link rel="next" title="mpu6050 — functionality specific to the nRF52832 Bluefruit52" href="nrf52.html" />
     <link rel="prev" title="esp32 — functionality specific to the ESP32" href="esp32.html" /> 
 
   
@@ -92,12 +92,13 @@
 <li class="toctree-l2"><a class="reference internal" href="index.html#libraries-specific-to-the-pyboard">Libraries specific to the pyboard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#libraries-specific-to-the-wipy">Libraries specific to the WiPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#libraries-specific-to-the-esp8266-and-esp32">Libraries specific to the ESP8266 and ESP32</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#libraries-specific-to-the-nrf52832">Libraries specific to the nRF52832</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">esp</span></code> — functions related to the ESP8266 and ESP32</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#libraries-specific-to-the-nrf52832-blurfruit52">Libraries specific to the nRF52832 Blurfruit52</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">LCD</span></code> — functions related to the nRF52832 Bluefruit52</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constants">Constants</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="nrf52.html"><code class="docutils literal notranslate"><span class="pre">esp32</span></code> — functionality specific to the ESP32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nrf52.html"><code class="docutils literal notranslate"><span class="pre">mpu6050</span></code> — functionality specific to the nRF52832 Bluefruit52</a></li>
 </ul>
 </li>
 </ul>
@@ -158,7 +159,7 @@
         
           <li><a href="index.html">MicroPython libraries</a> &raquo;</li>
         
-      <li><code class="docutils literal notranslate"><span class="pre">esp</span></code> — functions related to the ESP8266 and ESP32</li>
+      <li><code class="docutils literal notranslate"><span class="pre">LCD</span></code> — functions related to the nRF52832 Bluefruit52</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,111 +178,186 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-esp">
-<span id="esp-functions-related-to-the-esp8266-and-esp32"></span><h1><a class="reference internal" href="#module-esp" title="esp: functions related to the ESP8266 and ESP32"><code class="xref py py-mod docutils literal notranslate"><span class="pre">esp</span></code></a> — functions related to the ESP8266 and ESP32<a class="headerlink" href="#module-esp" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">esp</span></code> module contains specific functions related to both the ESP8266 and
-ESP32 modules.  Some functions are only available on one or the other of these
+  <div class="section" id="lcd-functions-related-to-the-nrf52832-bluefruit52">
+<h1><a class="reference internal" href="#module-LCD" title="LCD: functions related to the nRF52832 Bluefruit52"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LCD</span></code></a> — functions related to the nRF52832 Bluefruit52<a class="headerlink" href="#lcd-functions-related-to-the-nrf52832-bluefruit52" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-LCD"></span><p>The <code class="docutils literal notranslate"><span class="pre">LCD</span></code> module contains specific functions related to the nRF52832 Bluefruit52 modules.  Some functions are only available on one or the other of these
 ports.</p>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="esp.sleep_type">
-<code class="descclassname">esp.</code><code class="descname">sleep_type</code><span class="sig-paren">(</span><span class="optional">[</span><em>sleep_type</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#esp.sleep_type" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Note</strong>: ESP8266 only</p>
-<p>Get or set the sleep type.</p>
-<p>If the <em>sleep_type</em> parameter is provided, sets the sleep type to its
-value. If the function is called without parameters, returns the current
-sleep type.</p>
-<p>The possible sleep types are defined as constants:</p>
+<dt id="LCD.init">
+<code class="descclassname">LCD.</code><code class="descname">init</code><span class="sig-paren">(</span><em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the TFT displayer ST7789 register, and clear screen.</p>
+<p>If the <em>direction</em> parameter is provided, sets the Screen display direction to its
+value. If the function is called without parameters, default direction = 3, Horizontal screen shows.</p>
+<p>The the <em>direction</em> parameter value available:</p>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">SLEEP_NONE</span></code> – all functions enabled,</li>
-<li><code class="docutils literal notranslate"><span class="pre">SLEEP_MODEM</span></code> – modem sleep, shuts down the WiFi Modem circuit.</li>
-<li><code class="docutils literal notranslate"><span class="pre">SLEEP_LIGHT</span></code> – light sleep, shuts down the WiFi Modem circuit
-and suspends the processor periodically.</li>
+<li><code class="docutils literal notranslate"><span class="pre">direction</span> <span class="pre">=</span> <span class="pre">0</span></code> – Vertical screen show to left direction,</li>
+<li><code class="docutils literal notranslate"><span class="pre">direction</span> <span class="pre">=</span> <span class="pre">1</span></code> – Vertical screen show to right direction,</li>
+<li><code class="docutils literal notranslate"><span class="pre">direction</span> <span class="pre">=</span> <span class="pre">2</span></code> – Vertical screen show to up direction,</li>
+<li><code class="docutils literal notranslate"><span class="pre">direction</span> <span class="pre">=</span> <span class="pre">3</span></code> – Vertical screen show to down direction.</li>
 </ul>
 </div></blockquote>
-<p>The system enters the set sleep mode automatically when possible.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp.deepsleep">
-<code class="descclassname">esp.</code><code class="descname">deepsleep</code><span class="sig-paren">(</span><em>time=0</em><span class="sig-paren">)</span><a class="headerlink" href="#esp.deepsleep" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Note</strong>: ESP8266 only - use <a class="reference internal" href="machine.html#machine.deepsleep" title="machine.deepsleep"><code class="xref any py py-func docutils literal notranslate"><span class="pre">machine.deepsleep()</span></code></a> on ESP32</p>
-<p>Enter deep sleep.</p>
-<p>The whole module powers down, except for the RTC clock circuit, which can
-be used to restart the module after the specified time if the pin 16 is
-connected to the reset pin. Otherwise the module will sleep until manually
-reset.</p>
+<dt id="LCD.clear">
+<code class="descclassname">LCD.</code><code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LCD.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all screen to Black.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp.flash_id">
-<code class="descclassname">esp.</code><code class="descname">flash_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#esp.flash_id" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Note</strong>: ESP8266 only</p>
-<p>Read the device ID of the flash memory.</p>
+<dt id="LCD.drawBiPoint">
+<code class="descclassname">LCD.</code><code class="descname">drawBiPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawBiPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a big point, input parameters position coordinate :<em>x,y</em> and set color value <em>color</em>.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp.flash_size">
-<code class="descclassname">esp.</code><code class="descname">flash_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#esp.flash_size" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the total size of the flash memory.</p>
+<dt id="LCD.drawPoint">
+<code class="descclassname">LCD.</code><code class="descname">drawPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a point, input parameters position coordinate :<em>x,y</em> and set color value color*.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp.flash_user_start">
-<code class="descclassname">esp.</code><code class="descname">flash_user_start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#esp.flash_user_start" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read the memory offset at which the user flash space begins.</p>
+<dt id="LCD.drawCircle">
+<code class="descclassname">LCD.</code><code class="descname">drawCircle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawCircle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a Circle, input parameters :<em>x, y, radius, color</em>.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="esp.flash_read">
-<code class="descclassname">esp.</code><code class="descname">flash_read</code><span class="sig-paren">(</span><em>byte_offset</em>, <em>length_or_buffer</em><span class="sig-paren">)</span><a class="headerlink" href="#esp.flash_read" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="LCD.drawLine">
+<code class="descclassname">LCD.</code><code class="descname">drawLine</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a line, input parameters :<em>x1, y1, x2, y2, color</em>.
+Start position coordinate :<em>x1, y1</em>,
+End position coordinate :<em>x2,y2</em>,
+set line color value :<em>color</em>.</p>
+</dd></dl>
 
 <dl class="function">
-<dt id="esp.flash_write">
-<code class="descclassname">esp.</code><code class="descname">flash_write</code><span class="sig-paren">(</span><em>byte_offset</em>, <em>bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#esp.flash_write" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="LCD.drawRectangle">
+<code class="descclassname">LCD.</code><code class="descname">drawRectangle</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawRectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a rectangle,
+input parameters Rectangular diagonal coordinates:<em>x1, y1, x2, y2, color</em>.
+Start position coordinate :<em>x1, y1</em>,
+End position coordinate :<em>x2,y2</em>,
+set line color value :<em>color</em>.</p>
+</dd></dl>
 
 <dl class="function">
-<dt id="esp.flash_erase">
-<code class="descclassname">esp.</code><code class="descname">flash_erase</code><span class="sig-paren">(</span><em>sector_no</em><span class="sig-paren">)</span><a class="headerlink" href="#esp.flash_erase" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="LCD.fill">
+<code class="descclassname">LCD.</code><code class="descname">fill</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill a rectangular area and set fill color.
+input parameters Rectangular diagonal coordinates:<em>x1, y1, x2, y2, color</em>.
+Start position coordinate :<em>x1, y1</em>,
+End position coordinate :<em>x2,y2</em>,
+set fill color value :<em>color</em>.</p>
+</dd></dl>
 
 <dl class="function">
-<dt id="esp.set_native_code_location">
-<code class="descclassname">esp.</code><code class="descname">set_native_code_location</code><span class="sig-paren">(</span><em>start</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#esp.set_native_code_location" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Note</strong>: ESP8266 only</p>
-<p>Set the location that native code will be placed for execution after it is
-compiled.  Native code is emitted when the <code class="docutils literal notranslate"><span class="pre">&#64;micropython.native</span></code>,
-<code class="docutils literal notranslate"><span class="pre">&#64;micropython.viper</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;micropython.asm_xtensa</span></code> decorators are applied
-to a function.  The ESP8266 must execute code from either iRAM or the lower
-1MByte of flash (which is memory mapped), and this function controls the
-location.</p>
-<p>If <em>start</em> and <em>length</em> are both <code class="docutils literal notranslate"><span class="pre">None</span></code> then the native code location is
-set to the unused portion of memory at the end of the iRAM1 region.  The
-size of this unused portion depends on the firmware and is typically quite
-small (around 500 bytes), and is enough to store a few very small
-functions.  The advantage of using this iRAM1 region is that it does not
-get worn out by writing to it.</p>
-<p>If neither <em>start</em> nor <em>length</em> are <code class="docutils literal notranslate"><span class="pre">None</span></code> then they should be integers.
-<em>start</em> should specify the byte offset from the beginning of the flash at
-which native code should be stored.  <em>length</em> specifies how many bytes of
-flash from <em>start</em> can be used to store native code.  <em>start</em> and <em>length</em>
-should be multiples of the sector size (being 4096 bytes).  The flash will
-be automatically erased before writing to it so be sure to use a region of
-flash that is not otherwise used, for example by the firmware or the
-filesystem.</p>
-<p>When using the flash to store native code <em>start+length</em> must be less
-than or equal to 1MByte.  Note that the flash can be worn out if repeated
-erasures (and writes) are made so use this feature sparingly.
-In particular, native code needs to be recompiled and rewritten to flash
-on each boot (including wake from deepsleep).</p>
-<p>In both cases above, using iRAM1 or flash, if there is no more room left
-in the specified region then the use of a native decorator on a function
-will lead to <a class="reference internal" href="builtins.html#MemoryError" title="MemoryError"><code class="xref any py py-exc docutils literal notranslate"><span class="pre">MemoryError</span></code></a> exception being raised during compilation of
-that function.</p>
+<dt id="LCD.fillScreen">
+<code class="descclassname">LCD.</code><code class="descname">fillScreen</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.fillScreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill all Screen to one color.
+input parameters :<em>color</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showBLE">
+<code class="descclassname">LCD.</code><code class="descname">showBLE</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showBLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show BLE logo image.set start coordinates.image resolution 40*40.
+input parameters start coordinates:<em>x, y</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showChar">
+<code class="descclassname">LCD.</code><code class="descname">showChar</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>char</em>, <em>mode</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showChar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show a Char, input parameters :<em>x, y, char, mode, color</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showFloat">
+<code class="descclassname">LCD.</code><code class="descname">showFloat</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>float</em>, <em>len</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showFloat" title="Permalink to this definition">¶</a></dt>
+<dd><p>show Float, input parameters : <em>x, y, float, len, color</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showLogo">
+<code class="descclassname">LCD.</code><code class="descname">showLogo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showLogo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show Bluetooth logo image.fill all screen.image resolution 135*240.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showNum">
+<code class="descclassname">LCD.</code><code class="descname">showNum</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>num</em>, <em>len</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showNum" title="Permalink to this definition">¶</a></dt>
+<dd><p>show Float, input parameters : <em>x, y, num, len, color</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showPicture">
+<code class="descclassname">LCD.</code><code class="descname">showPicture</code><span class="sig-paren">(</span><em>start</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showPicture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show penguin logo image.set start coordinates.image resolution 40*40.
+input parameters start coordinates:<em>x, y</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showString">
+<code class="descclassname">LCD.</code><code class="descname">showString</code><span class="sig-paren">(</span><em>start</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showString" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Note</strong>: Not support now.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="LCD.showChinese">
+<code class="descclassname">LCD.</code><code class="descname">showChinese</code><span class="sig-paren">(</span><em>start</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showChinese" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Note</strong>: Not open now.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="LCD.LCD.WHITE">
+<code class="descclassname">LCD.</code><code class="descname">WHITE</code><span class="sig-paren">(</span><em>0xFFFF</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.WHITE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.BLACK">
+<code class="descclassname">LCD.</code><code class="descname">BLACK</code><span class="sig-paren">(</span><em>0x0000</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.BLACK" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.BLUE">
+<code class="descclassname">LCD.</code><code class="descname">BLUE</code><span class="sig-paren">(</span><em>0x001F</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.BLUE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.BRED">
+<code class="descclassname">LCD.</code><code class="descname">BRED</code><span class="sig-paren">(</span><em>0XF81F</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.BRED" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.GRED">
+<code class="descclassname">LCD.</code><code class="descname">GRED</code><span class="sig-paren">(</span><em>0XFFE0</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.GRED" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.GBLUE">
+<code class="descclassname">LCD.</code><code class="descname">GBLUE</code><span class="sig-paren">(</span><em>0X07FF</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.GBLUE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.RED">
+<code class="descclassname">LCD.</code><code class="descname">RED</code><span class="sig-paren">(</span><em>0xF800</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.RED" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.MAGENTA">
+<code class="descclassname">LCD.</code><code class="descname">MAGENTA</code><span class="sig-paren">(</span><em>0xF81F</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.MAGENTA" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.GREEN">
+<code class="descclassname">LCD.</code><code class="descname">GREEN</code><span class="sig-paren">(</span><em>0x07E0</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.GREEN" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.CYAN">
+<code class="descclassname">LCD.</code><code class="descname">CYAN</code><span class="sig-paren">(</span><em>0x7FFF</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.CYAN" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.YELLOW">
+<code class="descclassname">LCD.</code><code class="descname">YELLOW</code><span class="sig-paren">(</span><em>0xFFE0</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.YELLOW" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.BROWN">
+<code class="descclassname">LCD.</code><code class="descname">BROWN</code><span class="sig-paren">(</span><em>0XBC40</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.BROWN" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.BRRED">
+<code class="descclassname">LCD.</code><code class="descname">BRRED</code><span class="sig-paren">(</span><em>0XFC07</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.BRRED" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.GRAY">
+<code class="descclassname">LCD.</code><code class="descname">GRAY</code><span class="sig-paren">(</span><em>0X8430</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.GRAY" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.DARKBLUE">
+<code class="descclassname">LCD.</code><code class="descname">DARKBLUE</code><span class="sig-paren">(</span><em>0X01CF</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.DARKBLUE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.LIGHTBLUE">
+<code class="descclassname">LCD.</code><code class="descname">LIGHTBLUE</code><span class="sig-paren">(</span><em>0X7D7C</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.LIGHTBLUE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.GRAYBLUE">
+<code class="descclassname">LCD.</code><code class="descname">GRAYBLUE</code><span class="sig-paren">(</span><em>0X5458</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.GRAYBLUE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.IGHTGREEN">
+<code class="descclassname">LCD.</code><code class="descname">IGHTGREEN</code><span class="sig-paren">(</span><em>0X841F</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.IGHTGREEN" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.LGRAY">
+<code class="descclassname">LCD.</code><code class="descname">LGRAY</code><span class="sig-paren">(</span><em>0XC618</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.LGRAY" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.LGRAYBLUE">
+<code class="descclassname">LCD.</code><code class="descname">LGRAYBLUE</code><span class="sig-paren">(</span><em>0XA651</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.LGRAYBLUE" title="Permalink to this definition">¶</a></dt>
+<dt id="LCD.LCD.LBBLUE">
+<code class="descclassname">LCD.</code><code class="descname">LBBLUE</code><span class="sig-paren">(</span><em>0X2B12</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.LCD.LBBLUE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the color for display.</p>
 </dd></dl>
 
 </div>
@@ -295,7 +371,7 @@ that function.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nrf52.html" class="btn btn-neutral float-right" title="esp32 — functionality specific to the ESP32" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nrf52.html" class="btn btn-neutral float-right" title="mpu6050 — functionality specific to the nRF52832 Bluefruit52" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="esp32.html" class="btn btn-neutral" title="esp32 — functionality specific to the ESP32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -308,7 +384,7 @@ that function.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 17 Apr 2019.
+      Last updated on 18 Apr 2019.
 
     </p>
   </div>

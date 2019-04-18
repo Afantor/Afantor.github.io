@@ -1,66 +1,84 @@
-:mod:`esp32` --- functionality specific to the ESP32
+:mod:`mpu6050` --- functionality specific to the nRF52832 Bluefruit52
 ====================================================
 
-.. module:: esp32
-    :synopsis: functionality specific to the ESP32
+.. module:: mpu6050
+    :synopsis: functionality specific to the nRF52832 Bluefruit52
 
-The ``esp32`` module contains functions and classes specifically aimed at
-controlling ESP32 modules.
+The ``mpu6050`` module contains functions and classes specifically aimed at
+controlling nRF52832 Bluefruit52 modules.
 
 
 Functions
 ---------
 
-.. function:: wake_on_touch(wake)
+.. function:: MPU6050()
 
-    Configure whether or not a touch will wake the device from sleep.
-    *wake* should be a boolean value.
+    New a object MPU6050.
 
-.. function:: wake_on_ext0(pin, level)
+.. function:: dmpInit()
 
-    Configure how EXT0 wakes the device from sleep.  *pin* can be ``None``
-    or a valid Pin object.  *level* should be ``esp32.WAKEUP_ALL_LOW`` or
-    ``esp32.WAKEUP_ANY_HIGH``.
+    mpu6050 init dmp mode.
 
-.. function:: wake_on_ext1(pins, level)
+.. function:: setDMPEnabled(True)
 
-    Configure how EXT1 wakes the device from sleep.  *pins* can be ``None``
-    or a tuple/list of valid Pin objects.  *level* should be ``esp32.WAKEUP_ALL_LOW``
-    or ``esp32.WAKEUP_ANY_HIGH``.
+    set DMP Mode enable.
 
-.. function:: raw_temperature()
+.. function:: dmpGetFIFOPacketSize()
 
-    Read the raw value of the internal temperature sensor, returning an integer.
+    Return FIFO packet sizes.
 
-.. function:: hall_sensor()
+.. function:: getIntStatus()
 
-    Read the raw value of the internal Hall sensor, returning an integer.
+    Return interrupt status. 
 
+.. function:: getFIFOCount()
 
-The Ultra-Low-Power co-processor
---------------------------------
+    Return FIFO counts. 
 
-.. class:: ULP()
+.. function:: getFIFOBytes()
 
-    This class provides access to the Ultra-Low-Power co-processor.
+    Return FIFO bytes to buffers. 
 
-.. method:: ULP.set_wakeup_period(period_index, period_us)
+.. function:: dmpGetQuaternion(fifoBuffer)
 
-    Set the wake-up period.
+    Calculation quaternion value and return to buffers. 
 
-.. method:: ULP.load_binary(load_addr, program_binary)
+.. function:: dmpGetEuler(*fifoBuffer)
 
-    Load a *program_binary* into the ULP at the given *load_addr*.
+    Calculation euler angle value and return to buffers(yaw,roll,pitch). 
 
-.. method:: ULP.run(entry_point)
+.. function:: getTemp()
 
-    Start the ULP running at the given *entry_point*.
+    Return the soc temperature register value(°C). 
 
+.. function:: getAccelX()
+
+    Return the Accel X register value. 
+
+.. function:: getAccelY()
+
+    Return the Accel Y register value. 
+
+.. function:: getAccelZ()
+
+    Return the Accel Z register value. 
+
+.. function:: getGyroX()
+
+    Return the Gyro X register value. 
+
+.. function:: getGyroY()
+
+    Return the Gyro Y register value. 
+
+.. function:: getGyroZ()
+
+    Return the Gyro Z register value. 
 
 Constants
 ---------
 
-.. data:: esp32.WAKEUP_ALL_LOW
-          esp32.WAKEUP_ANY_HIGH
+.. data:: MPU6050.MPU6050_DEFAULT_ADDRESS
+          MPU6050.MPU6050_RA_TEMP_OUT_H
 
-   Selects the wake level for pins.
+   Selects the register address.

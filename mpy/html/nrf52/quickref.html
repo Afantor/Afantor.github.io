@@ -103,16 +103,20 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-machine">Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delay-and-timing">Delay and timing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#timers">Timers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pins-and-gpio">Pins and GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#software-spi-bus">Software SPI bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-spi-bus">Hardware SPI bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#i2c-bus">I2C bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#real-time-clock-counter-rtcounter">Real time clock Counter (RTCounter)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deep-sleep-mode">Deep-sleep mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#temp">Temp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-machine.UART">UART</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#webrepl-web-browser-interactive-prompt">WebREPL (web browser interactive prompt)</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +184,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="quick-reference-for-the-nrf52832">
-<span id="esp32-quickref"></span><h1>Quick reference for the nRF52832<a class="headerlink" href="#quick-reference-for-the-nrf52832" title="Permalink to this headline">¶</a></h1>
+<span id="nrf52832-quickref"></span><h1>Quick reference for the nRF52832<a class="headerlink" href="#quick-reference-for-the-nrf52832" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="../_images/nRF52.JPG"><img alt="nRF52832-Bluefruit52 board" src="../_images/nRF52.JPG" style="width: 640px;" /></a>
 <p>The Afantor nRF52832 Bluefruit52 Development Board (image attribution: Afantor).</p>
 <p>Below is a quick reference for nRF52832-based boards.  If it is your first time
@@ -261,7 +265,7 @@ that was returned from the most recent call to the
 <dl class="method">
 <dt id="machine.machine.sleep">
 <code class="descclassname">machine.</code><code class="descname">sleep</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.machine.sleep" title="Permalink to this definition">¶</a></dt>
-<dd><p>Machine delay some second time.</p>
+<dd><p>in to lightsleep mode.</p>
 </dd></dl>
 
 <dl class="method">
@@ -275,6 +279,9 @@ that was returned from the most recent call to the
 
 <span class="n">machine</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>          <span class="c1"># Return machine some information</span>
 <span class="n">machine</span><span class="o">.</span><span class="n">enable_irq</span><span class="p">()</span>    <span class="c1"># Re-enable interrupt requests.</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">disable_irq</span><span class="p">()</span>   <span class="c1"># disable interrupt requests.</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>         <span class="c1"># Reset machine system</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">soft_reset</span><span class="p">()</span>    <span class="c1"># soft_reset machine system</span>
 </pre></div>
 </div>
 <p>Note that the temperature sensor in the nRF52832 will typically read higher than
@@ -286,7 +293,6 @@ by reading the temperature sensor immediately after waking up from sleep.</p>
 <p>Use the <a class="reference internal" href="../library/utime.html#module-utime" title="utime: time related functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> module:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># sleep for 1 second</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>      <span class="c1"># sleep for 500 milliseconds</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>       <span class="c1"># sleep for 10 microseconds</span>
 </pre></div>
@@ -294,47 +300,78 @@ by reading the temperature sensor immediately after waking up from sleep.</p>
 </div>
 <div class="section" id="timers">
 <h2>Timers<a class="headerlink" href="#timers" title="Permalink to this headline">¶</a></h2>
-<p>Virtual (RTOS-based) timers are supported. Use the <a class="reference internal" href="../library/machine.Timer.html#machine-timer"><span class="std std-ref">machine.Timer</span></a> class
+<p>Hardware timers are supported. Use the <a class="reference internal" href="../library/machine.Timer.html#machine-timer"><span class="std std-ref">machine.Timer</span></a> class
 with timer ID of -1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Timer</span>
 
-<span class="n">tim</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">ONE_SHOT</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">PERIODIC</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">tim</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tick&quot;</span><span class="p">))</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The period is in milliseconds.</p>
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="machine.Timer.ONESHOT">
+<code class="descclassname">Timer.</code><code class="descname">ONESHOT</code><a class="headerlink" href="#machine.Timer.ONESHOT" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Timer.PERIODIC">
+<code class="descclassname">Timer.</code><code class="descname">PERIODIC</code><a class="headerlink" href="#machine.Timer.PERIODIC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="pins-and-gpio">
 <h2>Pins and GPIO<a class="headerlink" href="#pins-and-gpio" title="Permalink to this headline">¶</a></h2>
 <p>Use the <a class="reference internal" href="../library/machine.Pin.html#machine-pin"><span class="std std-ref">machine.Pin</span></a> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span>
 
-<span class="n">p0</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>    <span class="c1"># create output pin on GPIO0</span>
-<span class="n">p0</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>                 <span class="c1"># set pin to &quot;on&quot; (high) level</span>
-<span class="n">p0</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>                <span class="c1"># set pin to &quot;off&quot; (low) level</span>
-<span class="n">p0</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># set pin to on/high</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>    <span class="c1"># create output pin on GPIO0.02</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>                 <span class="c1"># set pin to &quot;on&quot; (high) level</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>                <span class="c1"># set pin to &quot;off&quot; (low) level</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># set pin to on/high</span>
 
-<span class="n">p2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>     <span class="c1"># create input pin on GPIO2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p2</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>       <span class="c1"># get value, 0 or 1</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>     <span class="c1"># create input pin on GPIO0.03</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p3</span><span class="o">.</span><span class="n">value</span><span class="p">())</span>       <span class="c1"># get value, 0 or 1</span>
 
 <span class="n">p4</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span> <span class="c1"># enable internal pull-up resistor</span>
 <span class="n">p5</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># set pin high on creation</span>
 </pre></div>
 </div>
-<p>Available Pins are from the following ranges (inclusive): 0-19, 21-23, 25-27, 32-39.
-These correspond to the actual GPIO pin numbers of ESP32 chip.  Note that many
+</div>
+<div class="section" id="id1">
+<h2>Constants<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="machine.Pin.IN">
+<code class="descclassname">Pin.</code><code class="descname">IN</code><a class="headerlink" href="#machine.Pin.IN" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Pin.OUT">
+<code class="descclassname">Pin.</code><code class="descname">OUT</code><a class="headerlink" href="#machine.Pin.OUT" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Pin.PULL_UP">
+<code class="descclassname">Pin.</code><code class="descname">PULL_UP</code><a class="headerlink" href="#machine.Pin.PULL_UP" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Pin.PULL_DOWN">
+<code class="descclassname">Pin.</code><code class="descname">PULL_DOWN</code><a class="headerlink" href="#machine.Pin.PULL_DOWN" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Pin.PULL_DISABLED">
+<code class="descclassname">Pin.</code><code class="descname">PULL_DISABLED</code><a class="headerlink" href="#machine.Pin.PULL_DISABLED" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Pin.IRQ_FALLING">
+<code class="descclassname">Pin.</code><code class="descname">IRQ_FALLING</code><a class="headerlink" href="#machine.Pin.IRQ_FALLING" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.Pin.IRQ_RISING">
+<code class="descclassname">Pin.</code><code class="descname">IRQ_RISING</code><a class="headerlink" href="#machine.Pin.IRQ_RISING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Available Pins are from the following ranges (inclusive): 2-20, 25-31.
+These correspond to the actual GPIO pin numbers of nRF52832 chip.  Note that many
 end-user boards use their own adhoc pin numbering (marked e.g. D0, D1, …).
 For mapping between board logical pins and physical chip pins consult your board
 documentation.</p>
 <p>Notes:</p>
 <ul class="simple">
-<li>Pins 1 and 3 are REPL UART TX and RX respectively</li>
-<li>Pins 6, 7, 8, 11, 16, and 17 are used for connecting the embedded flash,
+<li>Pins 6 and 8 are REPL UART TX and RX respectively</li>
+<li>Pins 7, 15, 16, and 27 are used for connecting the lcd screen driver,
 and are not recommended for other uses</li>
-<li>Pins 34-39 are input only, and also do not have internal pull-up resistors</li>
-<li>The pull value of some pins can be set to <code class="docutils literal notranslate"><span class="pre">Pin.PULL_HOLD</span></code> to reduce power
-consumption during deepsleep.</li>
+<li>Pins 11 and 18 are used for connecting the button, and it have been pull up 10k to 3.3v</li>
+<li>Pins 17 and 19 are used for connecting the led.</li>
 </ul>
 </div>
 <div class="section" id="pwm-pulse-width-modulation">
@@ -345,17 +382,42 @@ range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
 <p>Use the <code class="docutils literal notranslate"><span class="pre">machine.PWM</span></code> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
-<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>      <span class="c1"># create PWM object from a pin</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">()</span>             <span class="c1"># get current frequency</span>
+<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pin</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span><span class="n">duty</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>   <span class="c1"># create PWM object from a pin,and set duty period.</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>             <span class="c1"># get current frequency</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>         <span class="c1"># set frequency</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">()</span>             <span class="c1"># get current duty cycle</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>          <span class="c1"># set duty cycle</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>           <span class="c1">#</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>           <span class="c1"># turn off PWM on the pin</span>
-
-<span class="n">pwm2</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">duty</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span> <span class="c1"># create and configure in one go</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id2">
+<h2>Constants<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="machine.PWM.FREQ_16MHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_16MHZ</code><a class="headerlink" href="#machine.PWM.FREQ_16MHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_8MHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_8MHZ</code><a class="headerlink" href="#machine.PWM.FREQ_8MHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_4MHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_4MHZ</code><a class="headerlink" href="#machine.PWM.FREQ_4MHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_2MHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_2MHZ</code><a class="headerlink" href="#machine.PWM.FREQ_2MHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_1MHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_1MHZ</code><a class="headerlink" href="#machine.PWM.FREQ_1MHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_500KHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_500KHZ</code><a class="headerlink" href="#machine.PWM.FREQ_500KHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_250KHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_250KHZ</code><a class="headerlink" href="#machine.PWM.FREQ_250KHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.FREQ_125KHZ">
+<code class="descclassname">PWM.</code><code class="descname">FREQ_125KHZ</code><a class="headerlink" href="#machine.PWM.FREQ_125KHZ" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.MODE_LOW_HIGH">
+<code class="descclassname">PWM.</code><code class="descname">MODE_LOW_HIGH</code><a class="headerlink" href="#machine.PWM.MODE_LOW_HIGH" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.PWM.MODE_HIGH_LOW">
+<code class="descclassname">PWM.</code><code class="descname">MODE_HIGH_LOW</code><a class="headerlink" href="#machine.PWM.MODE_HIGH_LOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Available Pins are from the following ranges (inclusive): 2-5, 11-20, 25-31.</p>
 </div>
 <div class="section" id="adc-analog-to-digital-conversion">
 <h2>ADC (analog to digital conversion)<a class="headerlink" href="#adc-analog-to-digital-conversion" title="Permalink to this headline">¶</a></h2>
@@ -382,7 +444,7 @@ class:</p>
 <span class="c1"># construct an SPI bus on the given pins</span>
 <span class="c1"># polarity is the idle state of SCK</span>
 <span class="c1"># phase=0 means sample on the first edge of SCK, phase=1 means the second</span>
-<span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
 
 <span class="n">spi</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">baudrate</span><span class="o">=</span><span class="mi">200000</span><span class="p">)</span> <span class="c1"># set the baudrate</span>
 
@@ -509,60 +571,20 @@ but are only supported on a subset of pins.</p>
 <p>Hardware SPI has the same methods as Software SPI above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
 
-<span class="n">hspi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">firstbit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
+<span class="n">hspi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">firstbit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="i2c-bus">
 <h2>I2C bus<a class="headerlink" href="#i2c-bus" title="Permalink to this headline">¶</a></h2>
-<p>Functions</p>
-<dl class="function">
-<dt>
-<code class="descclassname">machine.</code><code class="descname">init</code><span class="sig-paren">(</span><em>freq=100000</em>, <em>sda=Pin(26)</em>, <em>scl=Pin(25)</em><span class="sig-paren">)</span></dt>
-<dd><p>Re-initialize peripheral with the specified clock frequency <code class="docutils literal notranslate"><span class="pre">freq</span></code> on the
-specified <code class="docutils literal notranslate"><span class="pre">sda</span></code> and <code class="docutils literal notranslate"><span class="pre">scl</span></code> pins.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Changing the I²C pins from defaults will make the accelerometer and
-compass stop working, as they are connected internally to those pins.</p>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="machine.scan">
-<code class="descclassname">machine.</code><code class="descname">scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.scan" title="Permalink to this definition">¶</a></dt>
-<dd><p>Scan the bus for devices.  Returns a list of 7-bit addresses corresponding
-to those devices that responded to the scan.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="machine.read">
-<code class="descclassname">machine.</code><code class="descname">read</code><span class="sig-paren">(</span><em>addr</em>, <em>n</em>, <em>repeat=False</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.read" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read <code class="docutils literal notranslate"><span class="pre">n</span></code> bytes from the device with 7-bit address <code class="docutils literal notranslate"><span class="pre">addr</span></code>. If <code class="docutils literal notranslate"><span class="pre">repeat</span></code>
-is <code class="docutils literal notranslate"><span class="pre">True</span></code>, no stop bit will be sent.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="machine.write">
-<code class="descclassname">machine.</code><code class="descname">write</code><span class="sig-paren">(</span><em>addr</em>, <em>buf</em>, <em>repeat=False</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write bytes from <code class="docutils literal notranslate"><span class="pre">buf</span></code> to the device with 7-bit address <code class="docutils literal notranslate"><span class="pre">addr</span></code>. If
-<code class="docutils literal notranslate"><span class="pre">repeat</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, no stop bit will be sent.</p>
-</dd></dl>
-
-<p>Connecting</p>
-<p>You should connect the device’s <code class="docutils literal notranslate"><span class="pre">SCL</span></code> pin to micro:bit pin 25, and the
-device’s <code class="docutils literal notranslate"><span class="pre">SDA</span></code> pin to micro:bit pin 26. You also must connect the device’s
-ground to the micro:bit ground (pin <code class="docutils literal notranslate"><span class="pre">GND</span></code>). You may need to power the device
-using an external power supply or the micro:bit.</p>
-<p>There are internal pull-up resistors on the I²C lines of the board, but with
-particularly long wires or large number of devices you may need to add
-additional pull-up resistors, to ensure noise-free communication.</p>
 <p>The I2C driver is implemented in software and works on all pins,
 and is accessed via the <a class="reference internal" href="../library/machine.I2C.html#machine-i2c"><span class="std std-ref">machine.I2C</span></a> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
 
 <span class="c1"># construct an I2C bus</span>
-<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
 
 <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom</span><span class="p">(</span><span class="mh">0x3a</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>   <span class="c1"># read 4 bytes from slave device with address 0x3a</span>
 <span class="n">i2c</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="mh">0x3a</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">)</span> <span class="c1"># write &#39;12&#39; to slave device with address 0x3a</span>
@@ -571,19 +593,39 @@ and is accessed via the <a class="reference internal" href="../library/machine.I
 <span class="n">i2c</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="mh">0x3a</span><span class="p">,</span> <span class="n">buf</span><span class="p">)</span>  <span class="c1"># write the given buffer to the slave</span>
 </pre></div>
 </div>
+<p>Connecting</p>
+<p>You should connect the device’s <code class="docutils literal notranslate"><span class="pre">SCL</span></code> pin to Bluefruit52 pin 26, and the
+device’s <code class="docutils literal notranslate"><span class="pre">SDA</span></code> pin to Bluefruit52 pin 25. You also must connect the device’s
+ground to the Bluefruit52 ground (pin <code class="docutils literal notranslate"><span class="pre">GND</span></code>). You may need to power the device
+using an external power supply or the Bluefruit52.</p>
+<p>There are internal pull-up resistors on the I²C lines of the board, but with
+particularly long wires or large number of devices you may need to add
+additional pull-up resistors, to ensure noise-free communication.</p>
 </div>
 <div class="section" id="real-time-clock-counter-rtcounter">
 <h2>Real time clock Counter (RTCounter)<a class="headerlink" href="#real-time-clock-counter-rtcounter" title="Permalink to this headline">¶</a></h2>
 <p>See <span class="xref std std-ref">machine.RTCounter</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">RTCounter</span>
 
-<span class="n">rtc</span> <span class="o">=</span> <span class="n">RTCounter</span><span class="p">()</span>
-<span class="n">rtc</span><span class="o">.</span><span class="n">start</span><span class="p">((</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="c1"># set a specific date and time</span>
-<span class="n">rtc</span><span class="o">.</span><span class="n">counter</span><span class="p">()</span> <span class="c1"># get date and time</span>
-<span class="n">rtc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-<span class="n">rtc</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+<span class="n">rtcount</span> <span class="o">=</span> <span class="n">RTCounter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tick&quot;</span><span class="p">))</span>
+<span class="n">rtcount</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">rtcount</span><span class="o">.</span><span class="n">counter</span><span class="p">()</span>
+<span class="n">rtcount</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">rtcount</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id3">
+<h2>Constants<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="machine.RTCounter.ONESHOT">
+<code class="descclassname">RTCounter.</code><code class="descname">ONESHOT</code><a class="headerlink" href="#machine.RTCounter.ONESHOT" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.RTCounter.PERIODIC">
+<code class="descclassname">RTCounter.</code><code class="descname">PERIODIC</code><a class="headerlink" href="#machine.RTCounter.PERIODIC" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.RTCounter.FREQUENCY">
+<code class="descclassname">RTCounter.</code><code class="descname">FREQUENCY</code><a class="headerlink" href="#machine.RTCounter.FREQUENCY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="deep-sleep-mode">
 <h2>Deep-sleep mode<a class="headerlink" href="#deep-sleep-mode" title="Permalink to this headline">¶</a></h2>
@@ -594,8 +636,8 @@ and is accessed via the <a class="reference internal" href="../library/machine.I
 <span class="k">if</span> <span class="n">machine</span><span class="o">.</span><span class="n">reset_cause</span><span class="p">()</span> <span class="o">==</span> <span class="n">machine</span><span class="o">.</span><span class="n">DEEPSLEEP_RESET</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;woke from a deep sleep&#39;</span><span class="p">)</span>
 
-<span class="c1"># put the device to sleep for 10 seconds</span>
-<span class="n">machine</span><span class="o">.</span><span class="n">deepsleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="c1"># put the device to sleep</span>
+<span class="n">machine</span><span class="o">.</span><span class="n">deepsleep</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Notes:</p>
@@ -604,6 +646,17 @@ and is accessed via the <a class="reference internal" href="../library/machine.I
 indefinitely</li>
 <li>A software reset does not change the reset cause</li>
 </ul>
+</div>
+<div class="section" id="temp">
+<h2>Temp<a class="headerlink" href="#temp" title="Permalink to this headline">¶</a></h2>
+<p>The following code can be used to read temperature from on-soc:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">machine</span>
+
+<span class="n">temp</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Temp</span><span class="p">()</span>
+
+<span class="n">temp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="module-machine.UART">
 <span id="uart"></span><h2>UART<a class="headerlink" href="#module-machine.UART" title="Permalink to this headline">¶</a></h2>
@@ -720,35 +773,8 @@ included in the returned bytes.</p>
 <p>Return value: number of bytes written or <code class="docutils literal notranslate"><span class="pre">None</span></code> on timeout.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="webrepl-web-browser-interactive-prompt">
-<h2>WebREPL (web browser interactive prompt)<a class="headerlink" href="#webrepl-web-browser-interactive-prompt" title="Permalink to this headline">¶</a></h2>
-<p>WebREPL (REPL over WebSockets, accessible via a web browser) is an
-experimental feature available in ESP32 port. Download web client
-from <a class="reference external" href="https://github.com/micropython/webrepl">https://github.com/micropython/webrepl</a> (hosted version available
-at <a class="reference external" href="http://micropython.org/webrepl">http://micropython.org/webrepl</a>), and configure it by executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">webrepl_setup</span>
-</pre></div>
-</div>
-<p>and following on-screen instructions. After reboot, it will be available
-for connection. If you disabled automatic start-up on boot, you may
-run configured daemon on demand using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">webrepl</span>
-<span class="n">webrepl</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-
-<span class="c1"># or, start with a specific password</span>
-<span class="n">webrepl</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;mypass&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The WebREPL daemon listens on all active interfaces, which can be STA or
-AP.  This allows you to connect to the ESP32 via a router (the STA
-interface) or directly when connected to its access point.</p>
-<p>In addition to terminal/command prompt access, WebREPL also has provision
-for file transfer (both upload and download).  The web client has buttons for
-the corresponding functions, or you can use the command-line client
-<code class="docutils literal notranslate"><span class="pre">webrepl_cli.py</span></code> from the repository above.</p>
 <p>See the MicroPython forum for other community-supported alternatives
-to transfer files to an ESP32 board.</p>
+to transfer files to an nRF52832 board.</p>
 </div>
 </div>
 
@@ -773,7 +799,7 @@ to transfer files to an ESP32 board.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 17 Apr 2019.
+      Last updated on 18 Apr 2019.
 
     </p>
   </div>
