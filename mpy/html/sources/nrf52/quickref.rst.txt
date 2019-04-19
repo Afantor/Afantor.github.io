@@ -128,8 +128,8 @@ with timer ID of -1::
     tim.period()
     tim.stop()
     tim.deinit()
+
 Constants
----------
 
 .. data:: Timer.ONESHOT
           Timer.PERIODIC
@@ -153,7 +153,6 @@ Use the :ref:`machine.Pin <machine.Pin>` class::
     p5 = Pin(5, Pin.OUT, value=1) # set pin high on creation
 
 Constants
----------
 
 .. data:: Pin.IN
           Pin.OUT
@@ -200,7 +199,6 @@ Use the ``machine.PWM`` class::
     pwm0.deinit()           # turn off PWM on the pin
 
 Constants
----------
 
 .. data:: PWM.FREQ_16MHZ
           PWM.FREQ_8MHZ
@@ -384,7 +382,6 @@ See :ref:`machine.RTCounter <machine.RTCounter>` ::
     rtcount.deinit()
 
 Constants
----------
 
 .. data:: RTCounter.ONESHOT
           RTCounter.PERIODIC
@@ -433,7 +430,7 @@ a serial interface.
 
 Functions
 
-.. method:: init(baudrate=9600, bits=8, parity=None, stop=1, \*, tx=None, rx=None)
+.. method:: UART(id=0,baudrate=115200)
 
     Initialize serial communication with the specified parameters on the
     specified ``tx`` and ``rx`` pins. Note that for correct communication, the parameters
@@ -527,15 +524,566 @@ Functions
    Return value: the line read or ``None`` on timeout. The newline character is
    included in the returned bytes.
 
-.. method:: uart.write(buf)
+.. method:: uart.readchar()
 
-    Write the buffer to the bus, it can be a bytes object or a string::
+   Read a char.
 
-        uart.write('hello world')
-        uart.write(b'hello world')
-        uart.write(bytes([1, 2, 3]))
+   Return value: the char read or ``None`` on timeout. 
 
-    Return value: number of bytes written or ``None`` on timeout.
+.. method:: uart.writechar(buf)
+
+    Write a ASCII char number to the bus::
+
+        uart.writechar(31)  #write '!'
 
 See the MicroPython forum for other community-supported alternatives
 to transfer files to an nRF52832 board.
+
+
+Example
+---------------
+
+.. method:: mountsd.py
+
+    Example for nrf52832 to show how mount and list a sdcard connected over SPI::
+
+    """
+    Example for pca10040 / nrf52832 to show how mount
+    and list a sdcard connected over SPI.
+
+    Direct wireing on SD card (SPI):
+       ______________________________
+      |                              \
+      |             9.      | NC    | \
+      |             1.      | ~CS   | |
+      |             2.      | MOSI  | |
+      |             3.      | GND   | |
+      |             4.      | VCC3.3| |
+      |             5.      | SCK   | |
+      |             6.      | GND   | |
+      |             7.      | MISO  | |
+      |             8.      | NC    | |
+      |                               |
+      ---------------------------------
+    """
+
+    import os
+    from machine import SPI, Pin
+    from sdcard import SDCard
+
+    def mnt():
+        cs = Pin("P11", mode=Pin.OUT)
+        sd = SDCard(SPI(0), cs)
+        os.mount(sd, '/')
+
+    def list():
+        files = os.listdir()
+        print(files)
+
+.. method:: musictest.py
+
+    Example for nrf52832 to usage where "P3" is the Buzzer pin::
+
+    """
+    Example usage where "P3" is the Buzzer pin.
+
+    from musictest import play
+    play("P3")
+
+    """
+
+    from machine import Pin
+    import music
+
+    def play(pin_str):
+        p = Pin(pin_str, mode=Pin.OUT)
+        music.play(music.PRELUDE, pin=p)
+
+.. method:: nrf52_pwm.py
+
+    Example for nrf52832 to out pwm::
+
+    import time
+    from machine import PWM, Pin
+
+    def pulse():
+        for i in range(0, 101):
+            p = PWM(0, Pin("P17", mode=Pin.OUT), freq=PWM.FREQ_16MHZ, duty=i, period=16000)
+            p.init()
+            time.sleep_ms(10)
+            p.deinit()
+
+        for i in range(0, 101):
+            p = PWM(0, Pin("P17", mode=Pin.OUT), freq=PWM.FREQ_16MHZ, duty=100-i, period=16000)
+            p.init()
+            time.sleep_ms(10)
+            p.deinit()
+
+.. method:: nrf52_servo.py
+
+    Example for nrf52832 to driver servo::
+
+    import time
+    from machine import PWM, Pin
+
+    class Servo():
+        def __init__(self, pin_name=""):
+            if pin_name:
+                self.pin = Pin(pin_name, mode=Pin.OUT, pull=Pin.PULL_DOWN)
+            else:
+                self.pin = Pin("P17", mode=Pin.OUT, pull=Pin.PULL_DOWN)
+        def left(self):
+            p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=105, period=2500, mode=PWM.MODE_HIGH_LOW)
+            p.init()
+            time.sleep_ms(200)
+            p.deinit()
+        
+        def center(self):
+            p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=188, period=2500, mode=PWM.MODE_HIGH_LOW)
+            p.init()
+            time.sleep_ms(200)
+            p.deinit()
+        
+        def right(self):
+            p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=275, period=2500, mode=PWM.MODE_HIGH_LOW)
+            p.init()
+            time.sleep_ms(200)
+            p.deinit()
+
+.. method:: powerup.py
+
+    Examples is written for nrf52832, pca10040 using s132 bluetooth stack::
+
+    # MicroPython controller for PowerUp 3.0 paper airplane
+    # https://www.poweruptoys.com/products/powerup-v3
+    #
+    # Examples is written for nrf52832, pca10040 using s132 bluetooth stack.
+    #
+    # Joystick shield pin mapping:
+    #  - analog stick x-direction - ADC0 - P0.02/"P2"
+    #  - buttons P0.13 - P0.16 / "P13", "P14", "P15", "P16"
+    #
+    # Example usage:
+    #
+    #     from powerup import PowerUp3
+    #     p = PowerUp3()
+
+    import time
+    from machine import ADC
+    from machine import Pin
+    from ubluepy import Peripheral, Scanner, constants
+
+    def bytes_to_str(bytes):
+        string = ""
+        for b in bytes:
+            string += chr(b)
+        return string
+
+    def get_device_names(scan_entries):
+        dev_names = []
+        for e in scan_entries:
+            scan = e.getScanData()
+            if scan:
+                for s in scan:
+                    if s[0] == constants.ad_types.AD_TYPE_COMPLETE_LOCAL_NAME:
+                        dev_names.append((e, bytes_to_str(s[2])))
+        return dev_names
+
+    def find_device_by_name(name):
+        s = Scanner()
+        scan_res = s.scan(500)
+
+        device_names = get_device_names(scan_res)
+        for dev in device_names:
+            if name == dev[1]:
+                return dev[0]
+
+    class PowerUp3:
+        def __init__(self):
+            self.x_adc = ADC(1)
+
+            self.btn_speed_up = Pin("P13", mode=Pin.IN, pull=Pin.PULL_UP)
+            self.btn_speed_down = Pin("P15", mode=Pin.IN, pull=Pin.PULL_UP)
+            self.btn_speed_full = Pin("P14", mode=Pin.IN, pull=Pin.PULL_UP)
+            self.btn_speed_off = Pin("P16", mode=Pin.IN, pull=Pin.PULL_UP)
+
+            self.x_mid = 0
+        
+            self.calibrate()
+            self.connect()
+            self.loop()
+        
+        def read_stick_x(self):
+            return self.x_adc.value()
+        
+        def button_speed_up(self):
+            return not bool(self.btn_speed_up.value())
+
+        def button_speed_down(self):
+            return not bool(self.btn_speed_down.value())
+
+        def button_speed_full(self):
+            return not bool(self.btn_speed_full.value())
+
+        def button_speed_off(self):
+            return not bool(self.btn_speed_off.value())
+
+        def calibrate(self):
+            self.x_mid = self.read_stick_x()
+
+        def __str__(self):
+            return "calibration x: %i, y: %i" % (self.x_mid)
+
+        def map_chars(self):
+            s = self.p.getServices()
+
+            service_batt = s[3]
+            service_control = s[4]
+
+            self.char_batt_lvl = service_batt.getCharacteristics()[0]
+            self.char_control_speed = service_control.getCharacteristics()[0]
+            self.char_control_angle = service_control.getCharacteristics()[2]
+
+        def battery_level(self):
+            return int(self.char_batt_lvl.read()[0])
+
+        def speed(self, new_speed=None):
+            if new_speed == None:
+                return int(self.char_control_speed.read()[0])
+            else:
+                self.char_control_speed.write(bytearray([new_speed]))
+
+        def angle(self, new_angle=None):
+            if new_angle == None:
+                return int(self.char_control_angle.read()[0])
+            else:
+                self.char_control_angle.write(bytearray([new_angle]))
+
+        def connect(self):
+            dev = None
+
+            # connect to the airplane
+            while not dev:
+                dev = find_device_by_name("TailorToys PowerUp")
+                if dev:
+                    self.p = Peripheral()
+                    self.p.connect(dev.addr())
+
+            # locate interesting characteristics
+            self.map_chars()
+
+        def rudder_center(self):
+            if self.old_angle != 0:
+                self.old_angle = 0
+                self.angle(0)
+
+        def rudder_left(self, angle):
+            steps = (angle // self.interval_size_left)
+            new_angle = 60 - steps
+
+            if self.old_angle != new_angle:
+                self.angle(new_angle)
+                self.old_angle = new_angle
+
+        def rudder_right(self, angle):
+            steps = (angle // self.interval_size_right)
+            new_angle = -steps
+
+            if self.old_angle != new_angle:
+                self.angle(new_angle)
+                self.old_angle = new_angle
+
+        def throttle(self, speed):
+            if (speed > 200):
+                speed = 200
+            elif (speed < 0):
+                speed = 0
+
+            if self.old_speed != speed:
+                self.speed(speed)
+                self.old_speed = speed
+
+        def loop(self):
+            adc_threshold = 10
+            right_threshold = self.x_mid + adc_threshold
+            left_threshold = self.x_mid - adc_threshold
+
+            self.interval_size_left = self.x_mid // 60
+            self.interval_size_right = (255 - self.x_mid) // 60
+
+            self.old_angle = 0
+            self.old_speed = 0
+
+            while True:
+
+                time.sleep_ms(100)
+
+                # read out new angle
+                new_angle = self.read_stick_x()
+                if (new_angle < 256):
+                    if (new_angle > right_threshold):
+                        self.rudder_right(new_angle - self.x_mid)
+                    elif (new_angle < left_threshold):
+                        self.rudder_left(new_angle)
+                    else:
+                        self.rudder_center()
+
+                # read out new speed
+                    new_speed = self.old_speed
+
+                if self.button_speed_up():
+                    new_speed += 25
+                elif self.button_speed_down():
+                    new_speed -= 25
+                elif self.button_speed_full():
+                    new_speed = 200
+                elif self.button_speed_off():
+                    new_speed = 0
+                else:
+                    pass
+
+                self.throttle(new_speed)
+
+                p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=275, period=2500, mode=PWM.MODE_HIGH_LOW)
+                p.init()
+                time.sleep_ms(200)
+                p.deinit()
+
+.. method:: ssd1306_oled.py
+
+    Examples is written for nrf52832 driver ssd1306 oled displayer::
+
+    # NOTE: Modified version to align with implemented I2C API in nrf port.
+    #
+    # Examples usage of SSD1306_SPI on pca10040
+    #
+    # from machine import Pin, SPI
+    # from ssd1306 import SSD1306_SPI
+    # spi = SPI(0, baudrate=40000000)
+    # dc = Pin.board.PA11
+    # res = Pin.board.PA12
+    # cs = Pin.board.PA13
+    # disp = SSD1306_SPI(128, 64, spi, dc, res, cs)
+    #
+    #
+    # Example usage of SSD1306_I2C on pca10040
+    #
+    # from machine import Pin, I2C
+    # from ssd1306_mod import SSD1306_I2C_Mod
+    # i2c = I2C(0, Pin(26), Pin(25))
+    # disp = SSD1306_I2C_Mod(128, 64, i2c)
+
+    from ssd1306 import SSD1306_I2C
+
+    SET_COL_ADDR        = const(0x21)
+    SET_PAGE_ADDR       = const(0x22)
+
+    class SSD1306_I2C_Mod(SSD1306_I2C):
+
+        def show(self):
+            x0 = 0
+            x1 = self.width - 1
+            if self.width == 64:
+                # displays with width of 64 pixels are shifted by 32
+                x0 += 32
+                x1 += 32
+            self.write_cmd(SET_COL_ADDR)
+            self.write_cmd(x0)
+            self.write_cmd(x1)
+            self.write_cmd(SET_PAGE_ADDR)
+            self.write_cmd(0)
+            self.write_cmd(self.pages - 1)
+
+            chunk_size = 254 # 255, excluding opcode.
+            num_of_chunks = len(self.buffer) // chunk_size
+            leftover = len(self.buffer) - (num_of_chunks * chunk_size)
+
+            for i in range(0, num_of_chunks):
+                self.write_data(self.buffer[chunk_size*i:chunk_size*(i+1)])
+            if (leftover > 0):
+                self.write_data(self.buffer[chunk_size * num_of_chunks:])
+
+
+        def write_data(self, buf):
+            buffer = bytearray([0x40]) + buf # Co=0, D/C#=1
+            self.i2c.writeto(self.addr, buffer)
+
+.. method:: ubluepy_eddystone.py
+
+    Examples is written for nrf52832 ubluepy module API example::
+
+    from ubluepy import Peripheral, constants
+
+    BLE_GAP_ADV_FLAG_LE_GENERAL_DISC_MODE       = const(0x02)
+    BLE_GAP_ADV_FLAG_BR_EDR_NOT_SUPPORTED       = const(0x04)
+
+    BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE = const(BLE_GAP_ADV_FLAG_LE_GENERAL_DISC_MODE | BLE_GAP_ADV_FLAG_BR_EDR_NOT_SUPPORTED)
+
+    EDDYSTONE_FRAME_TYPE_URL                    = const(0x10)
+    EDDYSTONE_URL_PREFIX_HTTP_WWW               = const(0x00) # "http://www".
+    EDDYSTONE_URL_SUFFIX_DOT_COM                = const(0x01) # ".com"
+
+    def string_to_binarray(text):
+        b = bytearray([])
+        for c in text:
+            b.append(ord(c))
+        return b
+
+    def gen_ad_type_content(ad_type, data):
+        b = bytearray(1)
+        b.append(ad_type)
+        b.extend(data)
+        b[0] = len(b) - 1
+        return b
+
+    def generate_eddystone_adv_packet(url):
+        # flags
+        disc_mode = bytearray([BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE])
+        packet_flags = gen_ad_type_content(constants.ad_types.AD_TYPE_FLAGS, disc_mode)
+
+        # 16-bit uuid
+        uuid = bytearray([0xAA, 0xFE])
+        packet_uuid16 = gen_ad_type_content(constants.ad_types.AD_TYPE_16BIT_SERVICE_UUID_COMPLETE, uuid)
+
+        # eddystone data
+        rssi = 0xEE # -18 dB, approx signal strength at 0m.
+        eddystone_data = bytearray([])
+        eddystone_data.append(EDDYSTONE_FRAME_TYPE_URL)
+        eddystone_data.append(rssi)
+        eddystone_data.append(EDDYSTONE_URL_PREFIX_HTTP_WWW)
+        eddystone_data.extend(string_to_binarray(url))
+        eddystone_data.append(EDDYSTONE_URL_SUFFIX_DOT_COM)
+
+        # service data
+        service_data = uuid + eddystone_data
+        packet_service_data = gen_ad_type_content(constants.ad_types.AD_TYPE_SERVICE_DATA, service_data)
+
+        # generate advertisment packet
+        packet = bytearray([])
+        packet.extend(packet_flags)
+        packet.extend(packet_uuid16)
+        packet.extend(packet_service_data)
+
+        return packet
+
+    def start():
+        adv_packet = generate_eddystone_adv_packet("micropython")  
+        p = Peripheral()
+        p.advertise(data=adv_packet, connectable=False)
+
+.. method:: ubluepy_eddystone.py
+
+    Examples is written for nrf52832 ubluepy module scan example::
+
+    from ubluepy import Scanner, constants
+
+    def bytes_to_str(bytes):
+        string = ""
+        for b in bytes:
+            string += chr(b)
+        return string
+
+    def get_device_names(scan_entries):
+        dev_names = []
+        for e in scan_entries:
+            scan = e.getScanData()
+            if scan:
+                for s in scan:
+                    if s[0] == constants.ad_types.AD_TYPE_COMPLETE_LOCAL_NAME:
+                        dev_names.append((e, bytes_to_str(s[2])))
+        return dev_names
+
+    def find_device_by_name(name):
+        s = Scanner()
+        scan_res = s.scan(100)
+    
+        device_names = get_device_names(scan_res)
+        for dev in device_names:
+            if name == dev[1]:
+                return dev[0]
+
+    # >>> res = find_device_by_name("micr")
+    # >>> if res:
+    # ...     print("address:", res.addr())
+    # ...     print("address type:", res.addr_type())
+    # ...     print("rssi:", res.rssi())
+    # ...     
+    # ...     
+    # ... 
+    # address: c2:73:61:89:24:45
+    # address type: 1
+    # rssi: -26
+
+
+.. method:: ubluepy_eddystone.py
+
+    Examples is written for nrf52832 ubluepy module temp example::
+
+    from board import LED
+    from machine import RTCounter, Temp
+    from ubluepy import Service, Characteristic, UUID, Peripheral, constants
+
+    def event_handler(id, handle, data):
+        global rtc
+        global periph
+        global serv_env_sense
+        global notif_enabled
+ 
+        if id == constants.EVT_GAP_CONNECTED:
+            # indicated 'connected'
+            LED(1).on()
+
+        elif id == constants.EVT_GAP_DISCONNECTED:
+            # stop low power timer
+            rtc.stop()
+            # indicate 'disconnected'
+            LED(1).off()
+            # restart advertisment
+            periph.advertise(device_name="micr_temp", services=[serv_env_sense])
+
+        elif id == constants.EVT_GATTS_WRITE:
+            # write to this Characteristic is to CCCD
+            if int(data[0]) == 1:
+                notif_enabled = True
+                # start low power timer
+                rtc.start()
+            else: 
+                notif_enabled = False
+                # stop low power timer
+                rtc.stop()
+
+    def send_temp(timer_id):
+        global notif_enabled
+        global char_temp
+
+        if notif_enabled:
+            # measure chip temperature
+            temp = Temp.read()
+            temp =  temp * 100
+            char_temp.write(bytearray([temp & 0xFF, temp >> 8]))
+
+    # start off with LED(1) off
+    LED(1).off()
+
+    # use RTC1 as RTC0 is used by bluetooth stack 
+    # set up RTC callback every 5 second
+    rtc = RTCounter(1, period=50, mode=RTCounter.PERIODIC, callback=send_temp)
+
+    notif_enabled = False
+
+    uuid_env_sense = UUID("0x181A") # Environmental Sensing service
+    uuid_temp = UUID("0x2A6E") # Temperature characteristic
+ 
+    serv_env_sense = Service(uuid_env_sense)
+
+    temp_props = Characteristic.PROP_NOTIFY | Characteristic.PROP_READ
+    temp_attrs = Characteristic.ATTR_CCCD
+    char_temp = Characteristic(uuid_temp, props = temp_props, attrs = temp_attrs)
+
+    serv_env_sense.addCharacteristic(char_temp)
+
+    periph = Peripheral()
+    periph.addService(serv_env_sense)
+    periph.setConnectionHandler(event_handler)
+    periph.advertise(device_name="micr_temp", services=[serv_env_sense])
+
