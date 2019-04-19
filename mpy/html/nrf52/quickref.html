@@ -13,7 +13,7 @@
 
   
   
-    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
   
   
@@ -26,16 +26,16 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../static/customstyle.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/customstyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="General information about the nRF52832 port" href="general.html" />
     <link rel="prev" title="6. Reset and boot modes" href="../wipy/tutorial/reset.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -103,20 +103,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-machine">Machine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delay-and-timing">Delay and timing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#timers">Timers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pins-and-gpio">Pins and GPIO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#software-spi-bus">Software SPI bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hardware-spi-bus">Hardware SPI bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#i2c-bus">I2C bus</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#real-time-clock-counter-rtcounter">Real time clock Counter (RTCounter)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deep-sleep-mode">Deep-sleep mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#temp">Temp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-machine.UART">UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 </ul>
@@ -170,7 +167,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/nrf52/quickref.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/nrf52/quickref.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,7 +182,7 @@
             
   <div class="section" id="quick-reference-for-the-nrf52832">
 <span id="nrf52832-quickref"></span><h1>Quick reference for the nRF52832<a class="headerlink" href="#quick-reference-for-the-nrf52832" title="Permalink to this headline">¶</a></h1>
-<a class="reference internal image-reference" href="../images/nRF52.JPG"><img alt="nRF52832-Bluefruit52 board" src="../images/nRF52.JPG" style="width: 640px;" /></a>
+<a class="reference internal image-reference" href="../_images/nRF52.JPG"><img alt="nRF52832-Bluefruit52 board" src="../_images/nRF52.JPG" style="width: 640px;" /></a>
 <p>The Afantor nRF52832 Bluefruit52 Development Board (image attribution: Afantor).</p>
 <p>Below is a quick reference for nRF52832-based boards.  If it is your first time
 working with this board it may be useful to get an overview of the microcontroller:</p>
@@ -312,9 +309,7 @@ with timer ID of -1:</p>
 <span class="n">tim</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="constants">
-<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<p>Constants</p>
 <dl class="data">
 <dt id="machine.Timer.ONESHOT">
 <code class="descclassname">Timer.</code><code class="descname">ONESHOT</code><a class="headerlink" href="#machine.Timer.ONESHOT" title="Permalink to this definition">¶</a></dt>
@@ -340,9 +335,7 @@ with timer ID of -1:</p>
 <span class="n">p5</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># set pin high on creation</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h2>Constants<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Constants</p>
 <dl class="data">
 <dt id="machine.Pin.IN">
 <code class="descclassname">Pin.</code><code class="descname">IN</code><a class="headerlink" href="#machine.Pin.IN" title="Permalink to this definition">¶</a></dt>
@@ -391,9 +384,7 @@ range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
 <span class="n">pwm0</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>           <span class="c1"># turn off PWM on the pin</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2>Constants<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Constants</p>
 <dl class="data">
 <dt id="machine.PWM.FREQ_16MHZ">
 <code class="descclassname">PWM.</code><code class="descname">FREQ_16MHZ</code><a class="headerlink" href="#machine.PWM.FREQ_16MHZ" title="Permalink to this definition">¶</a></dt>
@@ -614,9 +605,7 @@ additional pull-up resistors, to ensure noise-free communication.</p>
 <span class="n">rtcount</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2>Constants<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Constants</p>
 <dl class="data">
 <dt id="machine.RTCounter.ONESHOT">
 <code class="descclassname">RTCounter.</code><code class="descname">ONESHOT</code><a class="headerlink" href="#machine.RTCounter.ONESHOT" title="Permalink to this definition">¶</a></dt>
@@ -664,8 +653,8 @@ indefinitely</li>
 a serial interface.</p>
 <p>Functions</p>
 <dl class="method">
-<dt id="machine.UART.init">
-<code class="descclassname">machine.UART.</code><code class="descname">init</code><span class="sig-paren">(</span><em>baudrate=9600</em>, <em>bits=8</em>, <em>parity=None</em>, <em>stop=1</em>, <em>*</em>, <em>tx=None</em>, <em>rx=None</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.init" title="Permalink to this definition">¶</a></dt>
+<dt id="machine.UART.UART">
+<code class="descclassname">machine.UART.</code><code class="descname">UART</code><span class="sig-paren">(</span><em>id=0</em>, <em>baudrate=115200</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.UART" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize serial communication with the specified parameters on the
 specified <code class="docutils literal notranslate"><span class="pre">tx</span></code> and <code class="docutils literal notranslate"><span class="pre">rx</span></code> pins. Note that for correct communication, the parameters
 have to be the same on both communicating devices.</p>
@@ -762,19 +751,617 @@ included in the returned bytes.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.uart.write">
-<code class="descclassname">uart.</code><code class="descname">write</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write the buffer to the bus, it can be a bytes object or a string:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
-<span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
-<span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<dt id="machine.UART.uart.readchar">
+<code class="descclassname">uart.</code><code class="descname">readchar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.readchar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a char.</p>
+<p>Return value: the char read or <code class="docutils literal notranslate"><span class="pre">None</span></code> on timeout.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.uart.writechar">
+<code class="descclassname">uart.</code><code class="descname">writechar</code><span class="sig-paren">(</span><em>buf</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.uart.writechar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a ASCII char number to the bus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uart</span><span class="o">.</span><span class="n">writechar</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span>  <span class="c1">#write &#39;!&#39;</span>
 </pre></div>
 </div>
-<p>Return value: number of bytes written or <code class="docutils literal notranslate"><span class="pre">None</span></code> on timeout.</p>
 </dd></dl>
 
 <p>See the MicroPython forum for other community-supported alternatives
 to transfer files to an nRF52832 board.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="machine.UART.mountsd.py">
+<code class="descclassname">mountsd.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.mountsd.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example for nrf52832 to show how mount and list a sdcard connected over SPI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Example for pca10040 / nrf52832 to show how mount
+and list a sdcard connected over SPI.</p>
+<dl class="docutils">
+<dt>Direct wireing on SD card (SPI):</dt>
+<dd><blockquote class="first">
+<div></div></blockquote>
+<div class="last line-block">
+<div class="line-block">
+<div class="line"></div>
+</div>
+<div class="line">9.      | NC    | </div>
+<div class="line">1.      | ~CS   | |</div>
+<div class="line">2.      | MOSI  | |</div>
+<div class="line">3.      | GND   | |</div>
+<div class="line">4.      | VCC3.3| |</div>
+<div class="line">5.      | SCK   | |</div>
+<div class="line">6.      | GND   | |</div>
+<div class="line">7.      | MISO  | |</div>
+<div class="line">8.      | NC    | |</div>
+<div class="line-block">
+<div class="line"><a href="#id1"><span class="problematic" id="id2">|</span></a></div>
+</div>
+</div>
+</dd>
+</dl>
+<p>“”“</p>
+<p>import os
+from machine import SPI, Pin
+from sdcard import SDCard</p>
+<dl class="docutils">
+<dt>def mnt():</dt>
+<dd>cs = Pin(“P11”, mode=Pin.OUT)
+sd = SDCard(SPI(0), cs)
+os.mount(sd, ‘/’)</dd>
+<dt>def list():</dt>
+<dd>files = os.listdir()
+print(files)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.musictest.py">
+<code class="descclassname">musictest.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.musictest.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example for nrf52832 to usage where “P3” is the Buzzer pin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Example usage where “P3” is the Buzzer pin.</p>
+<p>from musictest import play
+play(“P3”)</p>
+<p>“”“</p>
+<p>from machine import Pin
+import music</p>
+<dl class="docutils">
+<dt>def play(pin_str):</dt>
+<dd>p = Pin(pin_str, mode=Pin.OUT)
+music.play(music.PRELUDE, pin=p)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.nrf52_pwm.py">
+<code class="descclassname">nrf52_pwm.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.nrf52_pwm.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example for nrf52832 to out pwm:</p>
+<p>import time
+from machine import PWM, Pin</p>
+<dl class="docutils">
+<dt>def pulse():</dt>
+<dd><dl class="first last docutils">
+<dt>for i in range(0, 101):</dt>
+<dd>p = PWM(0, Pin(“P17”, mode=Pin.OUT), freq=PWM.FREQ_16MHZ, duty=i, period=16000)
+p.init()
+time.sleep_ms(10)
+p.deinit()</dd>
+<dt>for i in range(0, 101):</dt>
+<dd>p = PWM(0, Pin(“P17”, mode=Pin.OUT), freq=PWM.FREQ_16MHZ, duty=100-i, period=16000)
+p.init()
+time.sleep_ms(10)
+p.deinit()</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.nrf52_servo.py">
+<code class="descclassname">nrf52_servo.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.nrf52_servo.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Example for nrf52832 to driver servo:</p>
+<p>import time
+from machine import PWM, Pin</p>
+<dl class="docutils">
+<dt>class Servo():</dt>
+<dd><dl class="first last docutils">
+<dt>def __init__(self, pin_name=”“):</dt>
+<dd><dl class="first last docutils">
+<dt>if pin_name:</dt>
+<dd>self.pin = Pin(pin_name, mode=Pin.OUT, pull=Pin.PULL_DOWN)</dd>
+<dt>else:</dt>
+<dd>self.pin = Pin(“P17”, mode=Pin.OUT, pull=Pin.PULL_DOWN)</dd>
+</dl>
+</dd>
+<dt>def left(self):</dt>
+<dd>p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=105, period=2500, mode=PWM.MODE_HIGH_LOW)
+p.init()
+time.sleep_ms(200)
+p.deinit()</dd>
+<dt>def center(self):</dt>
+<dd>p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=188, period=2500, mode=PWM.MODE_HIGH_LOW)
+p.init()
+time.sleep_ms(200)
+p.deinit()</dd>
+<dt>def right(self):</dt>
+<dd>p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=275, period=2500, mode=PWM.MODE_HIGH_LOW)
+p.init()
+time.sleep_ms(200)
+p.deinit()</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.powerup.py">
+<code class="descclassname">powerup.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.powerup.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examples is written for nrf52832, pca10040 using s132 bluetooth stack:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># MicroPython controller for PowerUp 3.0 paper airplane</span>
+<span class="c1"># https://www.poweruptoys.com/products/powerup-v3</span>
+<span class="c1">#</span>
+<span class="c1"># Examples is written for nrf52832, pca10040 using s132 bluetooth stack.</span>
+<span class="c1">#</span>
+<span class="c1"># Joystick shield pin mapping:</span>
+<span class="c1">#  - analog stick x-direction - ADC0 - P0.02/&quot;P2&quot;</span>
+<span class="c1">#  - buttons P0.13 - P0.16 / &quot;P13&quot;, &quot;P14&quot;, &quot;P15&quot;, &quot;P16&quot;</span>
+<span class="c1">#</span>
+<span class="c1"># Example usage:</span>
+<span class="c1">#</span>
+<span class="c1">#     from powerup import PowerUp3</span>
+<span class="c1">#     p = PowerUp3()</span>
+</pre></div>
+</div>
+<p>import time
+from machine import ADC
+from machine import Pin
+from ubluepy import Peripheral, Scanner, constants</p>
+<dl class="docutils">
+<dt>def bytes_to_str(bytes):</dt>
+<dd><p class="first">string = “”
+for b in bytes:</p>
+<blockquote>
+<div>string += chr(b)</div></blockquote>
+<p class="last">return string</p>
+</dd>
+<dt>def get_device_names(scan_entries):</dt>
+<dd><p class="first">dev_names = []
+for e in scan_entries:</p>
+<blockquote>
+<div><p>scan = e.getScanData()
+if scan:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>for s in scan:</dt>
+<dd><dl class="first last docutils">
+<dt>if s[0] == constants.ad_types.AD_TYPE_COMPLETE_LOCAL_NAME:</dt>
+<dd>dev_names.append((e, bytes_to_str(s[2])))</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p class="last">return dev_names</p>
+</dd>
+<dt>def find_device_by_name(name):</dt>
+<dd><p class="first">s = Scanner()
+scan_res = s.scan(500)</p>
+<p>device_names = get_device_names(scan_res)
+for dev in device_names:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>if name == dev[1]:</dt>
+<dd>return dev[0]</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>class PowerUp3:</dt>
+<dd><dl class="first last docutils">
+<dt>def __init__(self):</dt>
+<dd><p class="first">self.x_adc = ADC(1)</p>
+<p>self.btn_speed_up = Pin(“P13”, mode=Pin.IN, pull=Pin.PULL_UP)
+self.btn_speed_down = Pin(“P15”, mode=Pin.IN, pull=Pin.PULL_UP)
+self.btn_speed_full = Pin(“P14”, mode=Pin.IN, pull=Pin.PULL_UP)
+self.btn_speed_off = Pin(“P16”, mode=Pin.IN, pull=Pin.PULL_UP)</p>
+<p>self.x_mid = 0</p>
+<p class="last">self.calibrate()
+self.connect()
+self.loop()</p>
+</dd>
+<dt>def read_stick_x(self):</dt>
+<dd>return self.x_adc.value()</dd>
+<dt>def button_speed_up(self):</dt>
+<dd>return not bool(self.btn_speed_up.value())</dd>
+<dt>def button_speed_down(self):</dt>
+<dd>return not bool(self.btn_speed_down.value())</dd>
+<dt>def button_speed_full(self):</dt>
+<dd>return not bool(self.btn_speed_full.value())</dd>
+<dt>def button_speed_off(self):</dt>
+<dd>return not bool(self.btn_speed_off.value())</dd>
+<dt>def calibrate(self):</dt>
+<dd>self.x_mid = self.read_stick_x()</dd>
+<dt>def __str__(self):</dt>
+<dd>return “calibration x: %i, y: %i” % (self.x_mid)</dd>
+<dt>def map_chars(self):</dt>
+<dd><p class="first">s = self.p.getServices()</p>
+<p>service_batt = s[3]
+service_control = s[4]</p>
+<p class="last">self.char_batt_lvl = service_batt.getCharacteristics()[0]
+self.char_control_speed = service_control.getCharacteristics()[0]
+self.char_control_angle = service_control.getCharacteristics()[2]</p>
+</dd>
+<dt>def battery_level(self):</dt>
+<dd>return int(self.char_batt_lvl.read()[0])</dd>
+<dt>def speed(self, new_speed=None):</dt>
+<dd><dl class="first last docutils">
+<dt>if new_speed == None:</dt>
+<dd>return int(self.char_control_speed.read()[0])</dd>
+<dt>else:</dt>
+<dd>self.char_control_speed.write(bytearray([new_speed]))</dd>
+</dl>
+</dd>
+<dt>def angle(self, new_angle=None):</dt>
+<dd><dl class="first last docutils">
+<dt>if new_angle == None:</dt>
+<dd>return int(self.char_control_angle.read()[0])</dd>
+<dt>else:</dt>
+<dd>self.char_control_angle.write(bytearray([new_angle]))</dd>
+</dl>
+</dd>
+<dt>def connect(self):</dt>
+<dd><p class="first">dev = None</p>
+<p># connect to the airplane
+while not dev:</p>
+<blockquote>
+<div><p>dev = find_device_by_name(“TailorToys PowerUp”)
+if dev:</p>
+<blockquote>
+<div>self.p = Peripheral()
+self.p.connect(dev.addr())</div></blockquote>
+</div></blockquote>
+<p class="last"># locate interesting characteristics
+self.map_chars()</p>
+</dd>
+<dt>def rudder_center(self):</dt>
+<dd><dl class="first last docutils">
+<dt>if self.old_angle != 0:</dt>
+<dd>self.old_angle = 0
+self.angle(0)</dd>
+</dl>
+</dd>
+<dt>def rudder_left(self, angle):</dt>
+<dd><p class="first">steps = (angle // self.interval_size_left)
+new_angle = 60 - steps</p>
+<dl class="last docutils">
+<dt>if self.old_angle != new_angle:</dt>
+<dd>self.angle(new_angle)
+self.old_angle = new_angle</dd>
+</dl>
+</dd>
+<dt>def rudder_right(self, angle):</dt>
+<dd><p class="first">steps = (angle // self.interval_size_right)
+new_angle = -steps</p>
+<dl class="last docutils">
+<dt>if self.old_angle != new_angle:</dt>
+<dd>self.angle(new_angle)
+self.old_angle = new_angle</dd>
+</dl>
+</dd>
+<dt>def throttle(self, speed):</dt>
+<dd><dl class="first last docutils">
+<dt>if (speed &gt; 200):</dt>
+<dd>speed = 200</dd>
+<dt>elif (speed &lt; 0):</dt>
+<dd>speed = 0</dd>
+<dt>if self.old_speed != speed:</dt>
+<dd>self.speed(speed)
+self.old_speed = speed</dd>
+</dl>
+</dd>
+<dt>def loop(self):</dt>
+<dd><p class="first">adc_threshold = 10
+right_threshold = self.x_mid + adc_threshold
+left_threshold = self.x_mid - adc_threshold</p>
+<p>self.interval_size_left = self.x_mid // 60
+self.interval_size_right = (255 - self.x_mid) // 60</p>
+<p>self.old_angle = 0
+self.old_speed = 0</p>
+<p>while True:</p>
+<blockquote class="last">
+<div><p>time.sleep_ms(100)</p>
+<p># read out new angle
+new_angle = self.read_stick_x()
+if (new_angle &lt; 256):</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if (new_angle &gt; right_threshold):</dt>
+<dd>self.rudder_right(new_angle - self.x_mid)</dd>
+<dt>elif (new_angle &lt; left_threshold):</dt>
+<dd>self.rudder_left(new_angle)</dd>
+<dt>else:</dt>
+<dd>self.rudder_center()</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt># read out new speed</dt>
+<dd>new_speed = self.old_speed</dd>
+<dt>if self.button_speed_up():</dt>
+<dd>new_speed += 25</dd>
+<dt>elif self.button_speed_down():</dt>
+<dd>new_speed -= 25</dd>
+<dt>elif self.button_speed_full():</dt>
+<dd>new_speed = 200</dd>
+<dt>elif self.button_speed_off():</dt>
+<dd>new_speed = 0</dd>
+<dt>else:</dt>
+<dd>pass</dd>
+</dl>
+<p>self.throttle(new_speed)</p>
+<p>p = PWM(0, self.pin, freq=PWM.FREQ_125KHZ, pulse_width=275, period=2500, mode=PWM.MODE_HIGH_LOW)
+p.init()
+time.sleep_ms(200)
+p.deinit()</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.ssd1306_oled.py">
+<code class="descclassname">ssd1306_oled.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.ssd1306_oled.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examples is written for nrf52832 driver ssd1306 oled displayer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: Modified version to align with implemented I2C API in nrf port.</span>
+<span class="c1">#</span>
+<span class="c1"># Examples usage of SSD1306_SPI on pca10040</span>
+<span class="c1">#</span>
+<span class="c1"># from machine import Pin, SPI</span>
+<span class="c1"># from ssd1306 import SSD1306_SPI</span>
+<span class="c1"># spi = SPI(0, baudrate=40000000)</span>
+<span class="c1"># dc = Pin.board.PA11</span>
+<span class="c1"># res = Pin.board.PA12</span>
+<span class="c1"># cs = Pin.board.PA13</span>
+<span class="c1"># disp = SSD1306_SPI(128, 64, spi, dc, res, cs)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># Example usage of SSD1306_I2C on pca10040</span>
+<span class="c1">#</span>
+<span class="c1"># from machine import Pin, I2C</span>
+<span class="c1"># from ssd1306_mod import SSD1306_I2C_Mod</span>
+<span class="c1"># i2c = I2C(0, Pin(26), Pin(25))</span>
+<span class="c1"># disp = SSD1306_I2C_Mod(128, 64, i2c)</span>
+</pre></div>
+</div>
+<p>from ssd1306 import SSD1306_I2C</p>
+<p>SET_COL_ADDR        = const(0x21)
+SET_PAGE_ADDR       = const(0x22)</p>
+<p>class SSD1306_I2C_Mod(SSD1306_I2C):</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>def show(self):</dt>
+<dd><p class="first">x0 = 0
+x1 = self.width - 1
+if self.width == 64:</p>
+<blockquote>
+<div># displays with width of 64 pixels are shifted by 32
+x0 += 32
+x1 += 32</div></blockquote>
+<p>self.write_cmd(SET_COL_ADDR)
+self.write_cmd(x0)
+self.write_cmd(x1)
+self.write_cmd(SET_PAGE_ADDR)
+self.write_cmd(0)
+self.write_cmd(self.pages - 1)</p>
+<p>chunk_size = 254 # 255, excluding opcode.
+num_of_chunks = len(self.buffer) // chunk_size
+leftover = len(self.buffer) - (num_of_chunks * chunk_size)</p>
+<dl class="last docutils">
+<dt>for i in range(0, num_of_chunks):</dt>
+<dd>self.write_data(self.buffer[chunk_size*i:chunk_size*(i+1)])</dd>
+<dt>if (leftover &gt; 0):</dt>
+<dd>self.write_data(self.buffer[chunk_size * num_of_chunks:])</dd>
+</dl>
+</dd>
+<dt>def write_data(self, buf):</dt>
+<dd>buffer = bytearray([0x40]) + buf # Co=0, D/C#=1
+self.i2c.writeto(self.addr, buffer)</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="machine.UART.ubluepy_eddystone.py">
+<code class="descclassname">ubluepy_eddystone.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.ubluepy_eddystone.py" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examples is written for nrf52832 ubluepy module API example:</p>
+<p>from ubluepy import Peripheral, constants</p>
+<p>BLE_GAP_ADV_FLAG_LE_GENERAL_DISC_MODE       = const(0x02)
+BLE_GAP_ADV_FLAG_BR_EDR_NOT_SUPPORTED       = const(0x04)</p>
+<p>BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE = const(BLE_GAP_ADV_FLAG_LE_GENERAL_DISC_MODE | BLE_GAP_ADV_FLAG_BR_EDR_NOT_SUPPORTED)</p>
+<p>EDDYSTONE_FRAME_TYPE_URL                    = const(0x10)
+EDDYSTONE_URL_PREFIX_HTTP_WWW               = const(0x00) # “<a class="reference external" href="http://www">http://www</a>”.
+EDDYSTONE_URL_SUFFIX_DOT_COM                = const(0x01) # “.com”</p>
+<dl class="docutils">
+<dt>def string_to_binarray(text):</dt>
+<dd><p class="first">b = bytearray([])
+for c in text:</p>
+<blockquote>
+<div>b.append(ord(c))</div></blockquote>
+<p class="last">return b</p>
+</dd>
+<dt>def gen_ad_type_content(ad_type, data):</dt>
+<dd>b = bytearray(1)
+b.append(ad_type)
+b.extend(data)
+b[0] = len(b) - 1
+return b</dd>
+<dt>def generate_eddystone_adv_packet(url):</dt>
+<dd><p class="first"># flags
+disc_mode = bytearray([BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE])
+packet_flags = gen_ad_type_content(constants.ad_types.AD_TYPE_FLAGS, disc_mode)</p>
+<p># 16-bit uuid
+uuid = bytearray([0xAA, 0xFE])
+packet_uuid16 = gen_ad_type_content(constants.ad_types.AD_TYPE_16BIT_SERVICE_UUID_COMPLETE, uuid)</p>
+<p># eddystone data
+rssi = 0xEE # -18 dB, approx signal strength at 0m.
+eddystone_data = bytearray([])
+eddystone_data.append(EDDYSTONE_FRAME_TYPE_URL)
+eddystone_data.append(rssi)
+eddystone_data.append(EDDYSTONE_URL_PREFIX_HTTP_WWW)
+eddystone_data.extend(string_to_binarray(url))
+eddystone_data.append(EDDYSTONE_URL_SUFFIX_DOT_COM)</p>
+<p># service data
+service_data = uuid + eddystone_data
+packet_service_data = gen_ad_type_content(constants.ad_types.AD_TYPE_SERVICE_DATA, service_data)</p>
+<p># generate advertisment packet
+packet = bytearray([])
+packet.extend(packet_flags)
+packet.extend(packet_uuid16)
+packet.extend(packet_service_data)</p>
+<p class="last">return packet</p>
+</dd>
+<dt>def start():</dt>
+<dd>adv_packet = generate_eddystone_adv_packet(“micropython”)
+p = Peripheral()
+p.advertise(data=adv_packet, connectable=False)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descclassname">ubluepy_eddystone.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Examples is written for nrf52832 ubluepy module scan example:</p>
+<p>from ubluepy import Scanner, constants</p>
+<dl class="docutils">
+<dt>def bytes_to_str(bytes):</dt>
+<dd><p class="first">string = “”
+for b in bytes:</p>
+<blockquote>
+<div>string += chr(b)</div></blockquote>
+<p class="last">return string</p>
+</dd>
+<dt>def get_device_names(scan_entries):</dt>
+<dd><p class="first">dev_names = []
+for e in scan_entries:</p>
+<blockquote>
+<div><p>scan = e.getScanData()
+if scan:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>for s in scan:</dt>
+<dd><dl class="first last docutils">
+<dt>if s[0] == constants.ad_types.AD_TYPE_COMPLETE_LOCAL_NAME:</dt>
+<dd>dev_names.append((e, bytes_to_str(s[2])))</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p class="last">return dev_names</p>
+</dd>
+<dt>def find_device_by_name(name):</dt>
+<dd><p class="first">s = Scanner()
+scan_res = s.scan(100)</p>
+<p>device_names = get_device_names(scan_res)
+for dev in device_names:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>if name == dev[1]:</dt>
+<dd>return dev[0]</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+<p># &gt;&gt;&gt; res = find_device_by_name(“micr”)
+# &gt;&gt;&gt; if res:
+# …     print(“address:”, res.addr())
+# …     print(“address type:”, res.addr_type())
+# …     print(“rssi:”, res.rssi())
+# …
+# …
+# …
+# address: c2:73:61:89:24:45
+# address type: 1
+# rssi: -26</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descclassname">ubluepy_eddystone.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Examples is written for nrf52832 ubluepy module temp example:</p>
+<p>from board import LED
+from machine import RTCounter, Temp
+from ubluepy import Service, Characteristic, UUID, Peripheral, constants</p>
+<dl class="docutils">
+<dt>def event_handler(id, handle, data):</dt>
+<dd><p class="first">global rtc
+global periph
+global serv_env_sense
+global notif_enabled</p>
+<dl class="last docutils">
+<dt>if id == constants.EVT_GAP_CONNECTED:</dt>
+<dd># indicated ‘connected’
+LED(1).on()</dd>
+<dt>elif id == constants.EVT_GAP_DISCONNECTED:</dt>
+<dd># stop low power timer
+rtc.stop()
+# indicate ‘disconnected’
+LED(1).off()
+# restart advertisment
+periph.advertise(device_name=”micr_temp”, services=[serv_env_sense])</dd>
+<dt>elif id == constants.EVT_GATTS_WRITE:</dt>
+<dd><p class="first"># write to this Characteristic is to CCCD
+if int(data[0]) == 1:</p>
+<blockquote>
+<div>notif_enabled = True
+# start low power timer
+rtc.start()</div></blockquote>
+<dl class="last docutils">
+<dt>else:</dt>
+<dd>notif_enabled = False
+# stop low power timer
+rtc.stop()</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>def send_temp(timer_id):</dt>
+<dd><p class="first">global notif_enabled
+global char_temp</p>
+<dl class="last docutils">
+<dt>if notif_enabled:</dt>
+<dd># measure chip temperature
+temp = Temp.read()
+temp =  temp * 100
+char_temp.write(bytearray([temp &amp; 0xFF, temp &gt;&gt; 8]))</dd>
+</dl>
+</dd>
+</dl>
+<p># start off with LED(1) off
+LED(1).off()</p>
+<p># use RTC1 as RTC0 is used by bluetooth stack
+# set up RTC callback every 5 second
+rtc = RTCounter(1, period=50, mode=RTCounter.PERIODIC, callback=send_temp)</p>
+<p>notif_enabled = False</p>
+<p>uuid_env_sense = UUID(“0x181A”) # Environmental Sensing service
+uuid_temp = UUID(“0x2A6E”) # Temperature characteristic</p>
+<p>serv_env_sense = Service(uuid_env_sense)</p>
+<p>temp_props = Characteristic.PROP_NOTIFY | Characteristic.PROP_READ
+temp_attrs = Characteristic.ATTR_CCCD
+char_temp = Characteristic(uuid_temp, props = temp_props, attrs = temp_attrs)</p>
+<p>serv_env_sense.addCharacteristic(char_temp)</p>
+<p>periph = Peripheral()
+periph.addService(serv_env_sense)
+periph.setConnectionHandler(event_handler)
+periph.advertise(device_name=”micr_temp”, services=[serv_env_sense])</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -799,7 +1386,7 @@ to transfer files to an nRF52832 board.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 18 Apr 2019.
+      Last updated on 19 Apr 2019.
 
     </p>
   </div>
@@ -860,14 +1447,14 @@ to transfer files to an nRF52832 board.</p>
               SOURCELINK_SUFFIX: '.txt'
           };
       </script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
