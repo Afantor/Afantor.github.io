@@ -105,7 +105,7 @@
 <div class="flyout-content row">
 <div class="column col-lg-6 col-md-6 col-sm-6">
 <div class="title categories">
-GUIDE CATEGORIES <br class="hidden-lg"><a href="https://www.afantor.cc/">(SEE ALL 1833)</a>
+GUIDE CATEGORIES <br class="hidden-lg"><a href="https://www.afantor.cc/">(SEE ALL 8)</a>
 </div>
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6">
@@ -240,9 +240,6 @@ FEATURED GUIDES <br class="hidden-lg"><a href="https://www.afantor.cc/guides/fea
 </li>
 <li class="parent  ">
 <a href="./nRF52_bluefruit_Learning_Guide.html#device-pinout" class="published">Device Pinout</a>
-</li>
-<li class="parent  ">
-<a href="./nRF52_bluefruit_Learning_Guide.html#ktownsend-assembly" class="published">Assembly</a>
 </li>
 <li class="parent  ">
 <a href="./nRF52_bluefruit_Learning_Guide.html#arduino-bsp-setup" class="published">Arduino Support Setup</a>
@@ -392,8 +389,8 @@ CSDN BLOG
 <div class="page-content all-page-view-content">
 <div class="">
 <div class="row-fluid build-text">
-<p>The <strong>Adafruit Feather nRF52 Bluefruit</strong> is our latest easy-to-use all-in-one Bluetooth Low Energy board, with a native-bluetooth chip, the nRF52832!&nbsp; It's our take on an 'all-in-one' Arduino-compatible + Bluetooth Low Energy with built in USB and battery charging.</p>
-<p>This chip has twice the flash, SRAM and performance of the earlier nRF51-based Bluefruit modules. Best of all it has Arduino IDE support so there is no 'helper' chip like the ATmega32u4 or ATSAMD21. Instead, this chip is programmed directly! It's got tons of awesome peripherals: plenty of GPIO, analog inputs, PWM, timers, etc. Leaving out the extra microcontroller means the price, complexity and power-usage are all lower/better. It allows you to run code directly on the nRF52832, straight from the Arduino IDE as you would with any other MCU or Arduino compatible device. A single MCU means better performance, lower overall power consumption, and lower production costs if you ever want to design your own hardware based on your Bluefruit nRF52 Feather project!</p>
+<p>The <strong>Afantor Bluefruit52 Board </strong> is our latest easy-to-use all-in-one Bluetooth Low Energy board, with a native-bluetooth chip, the nRF52832!&nbsp; It's our take on an 'all-in-one' Arduino-compatible + Bluetooth Low Energy with built in USB.</p>
+<p>This chip has twice the flash, SRAM and performance of the nRF51-based board. Best of all it has Arduino IDE support so there is no 'helper' chip like the ATmega32u4 or ATSAMD21. Instead, this chip is programmed directly! It's got tons of awesome peripherals: plenty of GPIO, analog inputs, PWM, timers, etc. Leaving out the extra microcontroller means the price, complexity and power-usage are all lower/better. It allows you to run code directly on the nRF52832, straight from the Arduino IDE as you would with any other MCU or Arduino compatible device. A single MCU means better performance, lower overall power consumption, and lower production costs if you ever want to design your own hardware based on your Bluefruit nRF52 Feather project!</p>
 <p>The chips are pre-programed with an auto-resetting bootloader so you can upload quickly in the Arduino IDE with no button-pressing. Want to program the chip directly? You can use our command line tools with your favorite editor and toolchain.</p>
 <p>And to get you up and running quickly, we've done all the heavy lifting&nbsp;of getting the&nbsp;low level BLE stack into shape so that you can focus on your project from day one!</p>
 </div>
@@ -408,51 +405,40 @@ CSDN BLOG
 <li><strong>FCC / IC / TELEC certified module</strong></li>
 <li>Up to +4dBm output power</li>
 <li>1.7v to 3.3v operation with internal linear and DC/DC voltage regulators</li>
-<li>19 GPIO, 8 x 12-bit ADC pins, up to 12 PWM outputs (3 PWM modules with 4 outputs each)</li>
+<li>26 GPIO, 8 x 12-bit ADC pins, up to 12 PWM outputs (3 PWM modules with 4 outputs each)</li>
 <li>Pin #17 red LED for general purpose blinking</li>
-<li>Power/enable pin</li>
-<li>Measures 2.0" x 0.9" x 0.28" (51mm x 23mm x 8mm) without headers soldered in</li>
-<li>Light as a (large?) feather - 5.7 grams</li>
+<li>Measures 2.0" x 1.01" x 0.28" (51mm x 28mm x 8mm) without headers soldered in</li>
+<li>Light as a (large?) feather - 8.7 grams</li>
 <li>4 mounting holes</li>
 <li>Reset button</li>
 <li>Optional SWD connector for debugging</li>
-<li>
-<a href="https://www.adafruit.com/categories/814">Works out of the box with just about all of our Adafruit FeatherWings!</a> (Wings that require the UART like the GPS FeatherWing won't work)</li>
+
 </ul>
 <p>Further technical details available in the <a href="https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52832" target="_blank">nRF52832</a> product specification.</p>
 </div>
 <div class="element row-fluid build-alert alert-info">
 <div class="alert">
 <i class="fa fa-exclamation-circle"></i>
-Like all of our Feather boards, the Bluefruit nRF52 Feather includes on board USB-based LIPO charging, and has a standard LIPO battery connector to make your wireless projects genuinely 'wireless' at no additional cost (aside from the LIPO cell itself).
+The Bluefruit52 Board includes on board has a standard LIPO battery connector to make your wireless projects genuinely 'wireless' at no additional cost (aside from the LIPO cell itself).
 </div>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/40292">
-<img class="40292-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/040/292/medium260/microcontrollers_Banner1000px.png?1489956671 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/292/medium640/microcontrollers_Banner1000px.png?1489956671 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/292/medium800/microcontrollers_Banner1000px.png?1489956671 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/292/large1024/microcontrollers_Banner1000px.png?1489956671 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Banner1000px.png" alt="microcontrollers_Banner1000px.png">
+<a href="#">
+<img class="40292-asset img-responsive" src="./img/nrf52/blue2.png" alt="blue2.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
 <h1>
-<a href="./nRF52_bluefruit_Learning_Guide.html#nrf51-or-nrf52-bluefruit-devices-1-5" class="anchor-link"><span class="fa fa-link"></span></a><span id="nrf51-or-nrf52-bluefruit-devices-1-5" class="anchor-link-target"></span><span id="nrf51-or-nrf52-bluefruit-devices" class="anchor-link-target"></span>nRF51 or nRF52 Bluefruit Devices?</h1>
-<p>The Bluefruit nRF52 Feather (based on the <a href="https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52832" target="_blank">nRF52832</a> SoC) is quite different from the earlier nRF51822 based Bluefruit products (<a href="https://www.adafruit.com/product/2995">Bluefruit M0 Feather</a>, etc.), both of which will continue to exist.</p>
-<p>From a hardware perspective, the nRF52 Feather is based on a much more powerful ARM Cortex M4F processor, with 512KB flash, 64KB SRAM and hardware floating point acceleration ... whereas the earlier nRF51822 is based on the smaller ARM Cortex M0 core (fewer internal instructions), with 256KB flash and either 16KB or 32KB SRAM.</p>
+<a href="./nRF52_bluefruit_Learning_Guide.html#nrf51-or-nrf52-bluefruit-devices-1-5" class="anchor-link"><span class="fa fa-link"></span></a><span id="nrf51-or-nrf52-bluefruit-devices-1-5" class="anchor-link-target"></span><span id="nrf51-or-nrf52-bluefruit-devices" class="anchor-link-target"></span>nRF51 or nRF52 Devices?</h1>
+<p>The Bluefruit52 Board (based on the <a href="https://www.nordicsemi.com/eng/Products/Bluetooth-low-energy/nRF52832" target="_blank">nRF52832</a> SoC) is quite different from the earlier nRF51822 based products.</p>
+<p>From a hardware perspective, the nRF52832 is based on a much more powerful ARM Cortex M4F processor, with 512KB flash, 64KB SRAM and hardware floating point acceleration ... whereas the earlier nRF51822 is based on the smaller ARM Cortex M0 core (fewer internal instructions), with 256KB flash and either 16KB or 32KB SRAM.</p>
 <p>More importantly, the design approach that we took with the nRF52 is completely different:</p>
 <ul>
-<li>nRF51 based Bluefruit boards run as modules that you connect to via an external MCU (typically an Atmel 32u4 or a SAMD21), sending AT style commands over SPI or UART.</li>
+<li>nRF51 based boards run as modules that you connect to via an external MCU (typically an Atmel 32u4 or a SAMD21), sending AT style commands over SPI or UART.</li>
 <li><strong>With the nRF52, you run all of your code directly on the nRF52832 and no external MCU is used or required!</strong></li>
 </ul>
 <p>This change of design helps keep the overall costs lower, allows for far better performance since you aren't limited by the SPI or UART transport channel, and can help improve overall power consumption.</p>
 <p>As a tradeoff, it also means a completely different API and development process, though!</p>
-</div>
-<div class="element row-fluid build-alert alert-danger">
-<div class="alert">
-<i class="fa fa-exclamation-circle"></i>
-nRF51 Bluefruit sketches won't run on nRF52 Bluefruit hardware without modification! The two device families have different APIs and programming models, and aim to solve your wireless problems in two different ways.
-</div>
 </div>
 </div>
 </div>
@@ -461,26 +447,20 @@ nRF51 Bluefruit sketches won't run on nRF52 Bluefruit hardware without modificat
 <span id="device-pinout">Device Pinout</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
-<span class="name">Kevin Townsend</span>
+<a href="#">
+<span class="name">Afantor</span>
 </a> </div>
 </div>
 <div class="page-content all-page-view-content">
 <div class="">
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/46248">
-<img class="46248-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/046/248/medium260/microcontrollers_Feather_NRF52_Pinout_v1.2-1.png?1504885794 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/046/248/medium640/microcontrollers_Feather_NRF52_Pinout_v1.2-1.png?1504885794 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/046/248/medium800/microcontrollers_Feather_NRF52_Pinout_v1.2-1.png?1504885794 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/046/248/large1024/microcontrollers_Feather_NRF52_Pinout_v1.2-1.png?1504885794 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Feather_NRF52_Pinout_v1.2-1.png" alt="microcontrollers_Feather_NRF52_Pinout_v1.2-1.png">
+<a href="#">
+<img class="46248-asset img-responsive" src="./img/nrf52/blue4.png" alt="blue4.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/43921">
-<img class="43921-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/043/921/medium260/microcontrollers_nRF52Pinout.png?1500272417 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/043/921/medium640/microcontrollers_nRF52Pinout.png?1500272417 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/043/921/medium800/microcontrollers_nRF52Pinout.png?1500272417 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/043/921/large1024/microcontrollers_nRF52Pinout.png?1500272417 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_nRF52Pinout.png" alt="microcontrollers_nRF52Pinout.png">
+<a href="#">
+<img class="43921-asset img-responsive" src="./img/nrf52/nrf52_pin.jpg" alt="nrf52_pin.jpg">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="element element element row-fluid build-alert alert-warning">
@@ -498,9 +478,6 @@ Please note that the nRF52832 uses a USB serial adapter to RXD/TXD are with resp
 <strong>PIN_DFU / P0.20</strong>: If this pin is detected to be at GND level at startup, the board will enter a special serial bootloader mode and will not execute any user code, going straight into bootloader mode. If you wish to use this pin as a standard GPIO, make sure that it is pulled high with a pullup resistor so that your code will execute normally when the MCU starts up.</li>
 <li>
 <strong>P0.31 / A7</strong>: This pin is hard wired to a voltage-divider on the LIPO battery input, allow you to safely measure the LIPO battery level on your device. If possible, you should avoid using this pin as an <em>input</em> because you will lose the ability to read the battery voltage. You can use it as an <em>output</em> just make sure to switch the pin to analog input when you want to do the battery read, then back to output when toggling pins</li>
-<li>
-<strong>FRST/P0.22</strong>: Setting this pin to GND at startup will cause the device to perform a factory reset at startup, erasing and config data as well as the user sketch. At the next reset, you should enter serial bootloader mode by default, since no user sketch will be present. You can use this to recover 'bricked' boards, but if you don't wish to do this be careful not to have FRST low at startup. By default, a weak internal pull-up resistor is enabled on this pin during the bootloader phase.&nbsp;<strong>FRST does not work with Mynewt bootloader !!</strong>
-</li>
 </ul>
 </div>
 <div class="row-fluid build-text">
@@ -510,9 +487,7 @@ Please note that the nRF52832 uses a USB serial adapter to RXD/TXD are with resp
 <li>
 <strong>3.3V Output</strong>: This two pins are connected to the output of the on board 3.3V regulator. They can be used to supply 3.3V power to external sensors, breakouts or Feather Wings.</li>
 <li>
-<strong>LIPO Input (VBAT)</strong>: This is the voltage supply off the optional LIPO cell that can be connected via the JST PH connector. It is nominally ~3.5-4.2V.</li>
-<li>
-<strong>VREG Enable</strong>: This pin can be set to GND to disable the 3.3V output from the on board voltage regulator. By default it is set high via a pullup resistor.</li>
+<strong>LIPO Input (VBAT)</strong>: This is the voltage supply off the optional LIPO cell that can be connected via the JST PH2.0 connector. It is nominally ~3.5-4.2V.</li>
 <li>
 <strong>USB Power&nbsp;(VBUS)</strong>: This is the voltage supply off USB connector, nominally 4.5-5.2V.</li>
 </ul>
@@ -551,319 +526,24 @@ Please note that DMA based PWM output is still a work in progress in the initial
 <div class="row-fluid build-text">
 <h1>
 <a href="./nRF52_bluefruit_Learning_Guide.html#i2c-pins-2-10" class="anchor-link"><span class="fa fa-link"></span></a><span id="i2c-pins-2-10" class="anchor-link-target"></span><span id="i2c-pins" class="anchor-link-target"></span>I2C Pins</h1>
-<p>I2C pins on the nRF52832 require external pullup resistors to function, which are not present on the Adafruit nRF52 Feather by default. You will need to supply external pullups to use these. All Adafruit I2C breakouts have appropriate pullups on them already, so this normally won't be an issue for you.</p>
+<p>I2C pins on the nRF52832 require external pullup resistors to function, which have been on the Bluefruit52 board by default. All Adafruit I2C breakouts have appropriate pullups on them already, so this normally won't be an issue for you.</p>
 </div>
 </div>
 </div>
-<div class="page-title-wrapper">
-<h1 class="headline">
-<span id="ktownsend-assembly">Assembly</span>
-</h1>
-<div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
-<span class="name">Kevin Townsend</span>
-</a> </div>
-</div>
-<div class="page-content all-page-view-content">
-<div class="mirror">
-<div class="row-fluid build-text">
-<p>We ship Feathers fully tested but without headers attached - this gives you the most flexibility on choosing how to use and configure your Feather</p>
-</div>
-<div class="row-fluid build-text">
-<h1>
-<a href="./nRF52_bluefruit_Learning_Guide.html#header-options-3-2" class="anchor-link"><span class="fa fa-link"></span></a><span id="header-options-3-2" class="anchor-link-target"></span><span id="header-options" class="anchor-link-target"></span>Header Options!</h1>
-<p>Before you go gung-ho on soldering, there's a few options to consider!</p>
-</div>
-<table class="build-table">
-<tbody><tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-3" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-3" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30192">
-<img class="30192-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_3010-05.jpg" alt="feather_3010-05.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30192">
-<img class="30192-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_3010-05(1).jpg" alt="feather_3010-05.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30201">
-<img class="30201-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_3010-01.jpg" alt="feather_3010-01.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>The first option is soldering in plain male headers, this lets you plug in the Feather into a solderless breadboard</p></div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-4" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-4" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30195">
-<img class="30195-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2886-01.jpg" alt="feather_2886-01.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30195">
-<img class="30195-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2886-01(1).jpg" alt="feather_2886-01.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30196">
-<img class="30196-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2886-02.jpg" alt="feather_2886-02.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>Another option is to go with socket female headers. This won't let you plug the Feather into a breadboard but it will let you attach featherwings very easily</p></div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-5" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-5" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30197">
-<img class="30197-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2940-01.jpg" alt="feather_2940-01.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30197">
-<img class="30197-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2940-01(1).jpg" alt="feather_2940-01.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30198">
-<img class="30198-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2940-04.jpg" alt="feather_2940-04.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>We also&nbsp; have 'slim' versions of the female headers, that are a little shorter and give a more compact shape</p></div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-6" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-6" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30199">
-<img class="30199-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2830-01.jpg" alt="feather_2830-01.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30199">
-<img class="30199-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2830-01(1).jpg" alt="feather_2830-01.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30200">
-<img class="30200-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_2830-00.jpg" alt="feather_2830-00.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>Finally, there's the "Stacking Header" option. This one is sort of the best-of-both-worlds. You get the ability to plug into a solderless breadboard <em>and</em> plug a featherwing on top. But its a little bulky</p></div></td>
-</tr>
-</tbody></table>
-<div class="row-fluid build-text">
-<h1>
-<a href="./nRF52_bluefruit_Learning_Guide.html#soldering-in-plain-headers-3-7" class="anchor-link"><span class="fa fa-link"></span></a><span id="soldering-in-plain-headers-3-7" class="anchor-link-target"></span><span id="soldering-in-plain-headers" class="anchor-link-target"></span>Soldering in Plain Headers</h1>
-</div>
-<table class="build-table">
-<tbody><tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-8" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-8" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30183">
-<img class="30183-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_headers.jpg" alt="feather_headers.jpg">
-</a></li>
-</ul>
-</td>
-<td class="side-text"><div class="text">
-<h2>Prepare the header strip:</h2>
-<p>Cut the strip to length if necessary. It will be easier to solder if you insert it into a breadboard - <strong>long pins down</strong></p>
-</div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-9" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-9" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30184">
-<img class="30184-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder1.jpg" alt="feather_solder1.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30184">
-<img class="30184-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder1(1).jpg" alt="feather_solder1.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30185">
-<img class="30185-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder2.jpg" alt="feather_solder2.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30186">
-<img class="30186-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder3.jpg" alt="feather_solder3.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text">
-<h2>Add the breakout board:</h2>
-<p>Place the breakout board over the pins so that the short pins poke through the breakout pads</p>
-<h2>And Solder!</h2>
-<p>Be sure to solder all pins for reliable electrical contact.<br><br><em>(For tips on soldering, be sure to check out our </em><a href="http://learn.adafruit.com/adafruit-guide-excellent-soldering"><em>Guide to Excellent Soldering</em></a><em>).</em></p>
-</div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-10" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-10" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30187">
-<img class="30187-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder4.jpg" alt="feather_solder4.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30187">
-<img class="30187-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder4(1).jpg" alt="feather_solder4.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30188">
-<img class="30188-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder5.jpg" alt="feather_solder5.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30189">
-<img class="30189-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder6.jpg" alt="feather_solder6.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>Solder the other strip as well.</p></div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-11" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-11" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30190">
-<img class="30190-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_done.jpg" alt="feather_done.jpg">
-</a></li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>You're done! Check your solder joints visually and continue onto the next steps</p></div></td>
-</tr>
-</tbody></table>
-<div class="row-fluid build-text">
-<h1>
-<a href="./nRF52_bluefruit_Learning_Guide.html#soldering-on-female-header-3-12" class="anchor-link"><span class="fa fa-link"></span></a><span id="soldering-on-female-header-3-12" class="anchor-link-target"></span><span id="soldering-on-female-header" class="anchor-link-target"></span>Soldering on Female Header</h1>
-</div>
-<table class="build-table">
-<tbody><tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-13" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-13" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30203">
-<img class="30203-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_taped.jpg" alt="feather_taped.jpg">
-</a></li>
-</ul>
-</td>
-<td class="side-text"><div class="text">
-<h2>Tape In Place</h2>
-<p>For sockets you'll want to tape them in place so when you flip over the board they don't fall out</p>
-</div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-14" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-14" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30204">
-<img class="30204-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_tack1.jpg" alt="feather_tack1.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30204">
-<img class="30204-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_tack1(1).jpg" alt="feather_tack1.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30205">
-<img class="30205-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_tack2.jpg" alt="feather_tack2.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30206">
-<img class="30206-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_tack3.jpg" alt="feather_tack3.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text">
-<h2>Flip &amp; Tack Solder</h2>
-<p>After flipping over, solder one or two points on each strip, to 'tack' the header in place</p>
-</div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-15" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-15" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30207">
-<img class="30207-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_soldre1.jpg" alt="feather_soldre1.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30207">
-<img class="30207-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_soldre1(1).jpg" alt="feather_soldre1.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30208">
-<img class="30208-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder2(1).jpg" alt="feather_solder2.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30209">
-<img class="30209-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_solder3(1).jpg" alt="feather_solder3.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text">
-<h2>And Solder!</h2>
-<p>Be sure to solder all pins for reliable electrical contact.<br><br><em>(For tips on soldering, be sure to check out our </em><a href="http://learn.adafruit.com/adafruit-guide-excellent-soldering"><em>Guide to Excellent Soldering</em></a><em>).</em></p>
-</div></td>
-</tr>
-<tr class="build-row">
-<td class="side-images">
-<a href="./nRF52_bluefruit_Learning_Guide.html#step-16" class="anchor-link"><span class="fa fa-link"></span></a>
-<span id="step-16" class="anchor-link-target"></span>
-<ul>
-<li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/30210">
-<img class="30210-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_soldered.jpg" alt="feather_soldered.jpg">
-</a></li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30210">
-<img class="30210-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_soldered(1).jpg" alt="feather_soldered.jpg">
-</a> </li>
-<li class="small-side">
-<a class="medium-side-image-link" href="https://learn.adafruit.com/assets/30211">
-<img class="30211-asset small-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/feather_done(1).jpg" alt="feather_done.jpg">
-</a> </li>
-</ul>
-</td>
-<td class="side-text"><div class="text"><p>You're done! Check your solder joints visually and continue onto the next steps</p></div></td>
-</tr>
-</tbody></table>
-</div>
-</div>
+
 <div class="page-title-wrapper">
 <h1 class="headline">
 <span id="arduino-bsp-setup">Arduino Support Setup</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
-<span class="name">Kevin Townsend</span>
+<a href="#">
+<span class="name">Afantor</span>
 </a> </div>
 </div>
 <div class="page-content all-page-view-content">
 <div class="">
 <div class="row-fluid build-text">
-<p>You can&nbsp;install the Adafruit Bluefruit nRF52 BSP (Board Support Package) in two steps:</p>
+<p>You can&nbsp;install the Bluefruit52 nRF52832 BSP (Board Support Package) in two steps:</p>
 </div>
 <div class="element element element element element row-fluid build-alert">
 <div class="alert">
@@ -891,11 +571,8 @@ Please consult the FAQ section at the bottom of this page if you run into any pr
 </ul>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/40294">
-<img class="40294-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/040/294/medium260/microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png?1489958245 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/294/medium640/microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png?1489958245 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/294/medium800/microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png?1489958245 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/294/large1024/microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png?1489958245 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png" alt="microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png">
+<a href="#">
+<img class="40294-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png" alt="microcontrollers_Screen_Shot_2017-03-19_at_22.16.49.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -906,11 +583,8 @@ Please consult the FAQ section at the bottom of this page if you run into any pr
 </ul>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/39907">
-<img class="39907-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/039/907/medium260/microcontrollers_nRF52BSP.png?1488964156 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/907/medium640/microcontrollers_nRF52BSP.png?1488964156 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/907/medium800/microcontrollers_nRF52BSP.png?1488964156 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/907/large1024/microcontrollers_nRF52BSP.png?1488964156 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_nRF52BSP.png" alt="microcontrollers_nRF52BSP.png">
+<a href="#">
+<img class="39907-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_nRF52BSP.png" alt="microcontrollers_nRF52BSP.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -918,11 +592,8 @@ Please consult the FAQ section at the bottom of this page if you run into any pr
 <p><strong>The delay during the installation stage shown in the image below is normal</strong>, please be patient and let the installation terminate normally:</p>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/40938">
-<img class="40938-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/040/938/medium260/microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png?1492626239 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/938/medium640/microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png?1492626239 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/938/medium800/microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png?1492626239 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/040/938/large1024/microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png?1492626239 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png" alt="microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png">
+<a href="#">
+<img class="40938-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png" alt="microcontrollers_Screen_Shot_2017-04-19_at_20.23.20.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -931,11 +602,8 @@ Please consult the FAQ section at the bottom of this page if you run into any pr
 </ul>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/68583">
-<img class="68583-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/068/583/medium260/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546450459 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/583/medium640/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546450459 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/583/medium800/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546450459 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/583/large1024/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546450459 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png" alt="microcontrollers_Screenshot_2019-01-01_at_12.59.47.png">
+<a href="#">
+<img class="68583-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png" alt="microcontrollers_Screenshot_2019-01-01_at_12.59.47.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -958,7 +626,7 @@ This step is only required on Linux, pre-built binaries of adafruit-nrfutil for 
 <a data-turbolinks="false" href="https://learn.adafruit.com/pages/8790/elements/2998970/download">
 file
 </a> <div class="code-copy-container">
-<a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
+<a href="" class="code-copy-button hidden-xs">Copy Code</a>
 </div>
 </div>
 <pre class="code-text-only" style="display: none;">$ sudo apt-get install python3</pre>
@@ -973,7 +641,7 @@ file
 <a data-turbolinks="false" href="https://learn.adafruit.com/pages/8790/elements/2998851/download">
 file
 </a> <div class="code-copy-container">
-<a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
+<a href="#" class="code-copy-button hidden-xs">Copy Code</a>
 </div>
 </div>
 <pre class="code-text-only" style="display: none;">$ pip3 install --user adafruit-nrfutil</pre>
@@ -989,7 +657,7 @@ file
 <a data-turbolinks="false" href="https://learn.adafruit.com/pages/8790/elements/2998856/download">
 file
 </a> <div class="code-copy-container">
-<a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
+<a href="#" class="code-copy-button hidden-xs">Copy Code</a>
 </div>
 </div>
 <pre class="code-text-only" style="display: none;">$ adafruit-nrfutil version
@@ -999,7 +667,7 @@ adafruit-nrfutil version 0.5.3.post12</pre>
 <div class="row-fluid build-text">
 <h1>
 <a href="./nRF52_bluefruit_Learning_Guide.html#3-update-the-bootloader-nrf52832-only-5-20" class="anchor-link"><span class="fa fa-link"></span></a><span id="3-update-the-bootloader-nrf52832-only-5-20" class="anchor-link-target"></span><span id="3-update-the-bootloader-nrf52832-only" class="anchor-link-target"></span>3. Update the bootloader (nRF52832 ONLY)</h1>
-<p>To keep up with Nordic's SoftDevice advances, you will likely need to update your bootloader if you are using the original nRF52832 based&nbsp;<strong>Bluefruit nRF52 Feather</strong> boards.</p>
+<p>To keep up with Nordic's SoftDevice advances, you will likely need to update your bootloader if you are using the original nRF52832 based&nbsp;<strong>Bluefruit52</strong> boards.</p>
 <p>Follow this link for instructions on how to do that</p>
 </div>
 <div class="element element element element element element element row-fluid build-alert alert-info">
@@ -1009,7 +677,7 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 </div>
 </div>
 <div id="element-3013510" class="button-element" data-github-release="">
-<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/updating-the-bootloader" class="btn btn-large btn-block btn-primary" target="_self" data-zip-folder="" type="button">Update the nRF52832 Bootloader</a>
+<a href="./nRF52_bluefruit_Learning_Guide.html#updating-the-bootloader" class="btn btn-large btn-block btn-primary" target="_self" data-zip-folder="" type="button">Update the nRF52832 Bootloader</a>
 </div>
 <div class="row-fluid build-text">
 <h1>
@@ -1057,11 +725,8 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 </ul>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/68538">
-<img class="68538-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/068/538/medium260/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546364737 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/538/medium640/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546364737 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/538/medium800/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546364737 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/538/large1024/microcontrollers_Screenshot_2019-01-01_at_12.59.47.png?1546364737 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screenshot_2019-01-01_at_12.59.47(1).png" alt="microcontrollers_Screenshot_2019-01-01_at_12.59.47.png">
+<a href="#">
+<img class="68538-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screenshot_2019-01-01_at_12.59.47(1).png" alt="microcontrollers_Screenshot_2019-01-01_at_12.59.47.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -1073,16 +738,13 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 </ul>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/38676">
-<img class="38676-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/038/676/medium260/microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png?1485451711 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/038/676/medium640/microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png?1485451711 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/038/676/medium800/microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png?1485451711 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/038/676/large1024/microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png?1485451711 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png" alt="microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png">
+<a href="#">
+<img class="38676-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png" alt="microcontrollers_Screen_Shot_2017-01-26_at_18.27.51.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
 <h2>
-<a href="./nRF52_bluefruit_Learning_Guide.html#download-and-install-cp2104-driver-nrf52832-6-5" class="anchor-link"><span class="fa fa-link"></span></a><span id="download-and-install-cp2104-driver-nrf52832-6-5" class="anchor-link-target"></span><span id="download-and-install-cp2104-driver-nrf52832" class="anchor-link-target"></span>Download &amp; Install CP2104 Driver (nRF52832)</h2>
+<a href="#" class="anchor-link"><span class="fa fa-link"></span></a><span id="download-and-install-cp2104-driver-nrf52832-6-5" class="anchor-link-target"></span><span id="download-and-install-cp2104-driver-nrf52832" class="anchor-link-target"></span>Download &amp; Install CP2104 Driver (nRF52832)</h2>
 <p>For Feather nRF52832 If you don't see the SiLabs device listed, you may need to install the <a href="http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx" target="_blank">SiLabs CP2104 driver</a> on your system.</p>
 <p>On MacOS&nbsp;If you see this dialog message while installing driver</p>
 </div>
@@ -1093,7 +755,7 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 <span id="step-6" class="anchor-link-target"></span>
 <ul>
 <li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/55243">
+<a class="large-side-image-link" href="#">
 <img class="55243-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_tn2459_blocked.png" alt="microcontrollers_tn2459_blocked.png">
 </a></li>
 </ul>
@@ -1108,7 +770,7 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 <span id="step-7" class="anchor-link-target"></span>
 <ul>
 <li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/55242">
+<a class="large-side-image-link" href="#">
 <img class="55242-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_tn2459_approval.png" alt="microcontrollers_tn2459_approval.png">
 </a></li>
 </ul>
@@ -1116,11 +778,7 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 <td class="side-text"><div class="text"><p>To enable it go to <strong>System Preferences -&gt; Security &amp; Privacy</strong> and click allow if you see Silab in the developer name.</p></div></td>
 </tr>
 </tbody></table>
-<div class="row-fluid build-text">
-<h2>
-<a href="./nRF52_bluefruit_Learning_Guide.html#download-and-install-adafruit-driver-nrf52840-windows-6-8" class="anchor-link"><span class="fa fa-link"></span></a><span id="download-and-install-adafruit-driver-nrf52840-windows-6-8" class="anchor-link-target"></span><span id="download-and-install-adafruit-driver-nrf52840-windows" class="anchor-link-target"></span>Download &amp; Install Adafruit Driver (nRF52840 Windows)</h2>
-<p>For Feather nRF52840, If you are using Windows, you will need to follows&nbsp;<a href="https://learn.adafruit.com/adafruit-arduino-ide-setup/windows-driver-installation%C2%A0">Windows Driver Installation</a>&nbsp;to download and install driver.</p>
-</div>
+
 <div class="row-fluid build-text">
 <h1>
 <a href="./nRF52_bluefruit_Learning_Guide.html#3-update-the-bootloader-nrf52832-feather-only-6-9" class="anchor-link"><span class="fa fa-link"></span></a><span id="3-update-the-bootloader-nrf52832-feather-only-6-9" class="anchor-link-target"></span><span id="3-update-the-bootloader-nrf52832-feather-only" class="anchor-link-target"></span>3. Update the bootloader (nRF52832 Feather Only)</h1>
@@ -1130,11 +788,11 @@ This step ISN'T required for the newer nRF52840 Feather Express, which has a dif
 <div class="element element element element element element element element element element element element row-fluid build-alert alert-info">
 <div class="alert">
 <i class="fa fa-exclamation-circle"></i>
-This step is only necessary on the nRF52832-based devices, NOT on the newer nRF52840 Feather Express.
+This step is only necessary on the nRF52832-based devices.
 </div>
 </div>
 <div id="element-3013641" class="button-element" data-github-release="">
-<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/updating-the-bootloader" class="btn btn-large btn-block btn-primary" target="_self" data-zip-folder="" type="button">Update the Bootloader</a>
+<a href="./nRF52_bluefruit_Learning_Guide.html#updating-the-bootloader" class="btn btn-large btn-block btn-primary" target="_self" data-zip-folder="" type="button">Update the Bootloader</a>
 </div>
 <div class="row-fluid build-text">
 <h1>
@@ -1144,10 +802,10 @@ This step is only necessary on the nRF52832-based devices, NOT on the newer nRF5
 <div class="build-code code-element">
 <div class="download-code">
 <i class="fa fa-cloud-download"></i> Download:
-<a data-turbolinks="false" href="https://learn.adafruit.com/pages/8792/elements/2860621/download">
+<a data-turbolinks="false" href="#">
 file
 </a> <div class="code-copy-container">
-<a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
+<a href="#" class="code-copy-button hidden-xs">Copy Code</a>
 </div>
 </div>
 <pre class="code-text-only" style="display: none;">void setup() {
@@ -1179,7 +837,7 @@ void loop() {
 </div>
 <div class="answer"><h4><strong>If you get this error:</strong></h4>
 <p><code>Timed out waiting for acknowledgement from device.<br><br>Failed to upgrade target. Error is: No data received on serial port. Not able to proceed.<br>Traceback (most recent call last):<br>&nbsp; File "nordicsemi\__main__.py", line 294, in serial<br>&nbsp; File "nordicsemi\dfu\dfu.py", line 235, in dfu_send_images<br>&nbsp; File "nordicsemi\dfu\dfu.py", line 203, in _dfu_send_image<br>&nbsp; File "nordicsemi\dfu\dfu_transport_serial.py", line 155, in send_init_packet<br>&nbsp; File "nordicsemi\dfu\dfu_transport_serial.py", line 243, in send_packet<br>&nbsp; File "nordicsemi\dfu\dfu_transport_serial.py", line 282, in get_ack_nr<br>nordicsemi.exceptions.NordicSemiException: No data received on serial port. Not able to proceed.</code></p>
-<p>This is probably caused by the <strong>bootloader</strong> version mismatched on your feather and installed BSP. Due to the difference in flash layout (<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/hathach-memory-map">more details</a>) and Softdevice API (which is bundled with bootloader), sketch built with selected bootloader can only upload to board having the same version. In short, you need to <strong>upgrade/burn bootloader to match</strong> on your Feather, follow above&nbsp;<a href="https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/updating-the-bootloader">Update The Bootloader</a>&nbsp;guide</p>
+<p>This is probably caused by the <strong>bootloader</strong> version mismatched on your feather and installed BSP. Due to the difference in flash layout (<a href="./nRF52_bluefruit_Learning_Guide.html#hathach-memory-map">more details</a>) and Softdevice API (which is bundled with bootloader), sketch built with selected bootloader can only upload to board having the same version. In short, you need to <strong>upgrade/burn bootloader to match</strong> on your Feather, follow above&nbsp;<a href="./nRF52_bluefruit_Learning_Guide.html#updating-the-bootloader">Update The Bootloader</a>&nbsp;guide</p>
 <p>It only has to be done once to update your Feather</p></div>
 </div>
 </div>
@@ -1205,7 +863,7 @@ void loop() {
 <span id="using-the-bootloader">Using the Bootloader</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
+<a href="#">
 <span class="name">Kevin Townsend</span>
 </a> </div>
 </div>
@@ -1218,14 +876,13 @@ This page is for information purposes only. Normally the bootloader will work tr
 </div>
 </div>
 <div class="row-fluid build-text">
-<p>The Bluefruit nRF52 Feather includes a customized version of the Nordic bootloader that enables serial support, over the air (OTA) DFU support, and various fail safe features like factory reset when the FRST pin is grounded at startup.</p>
-<p>The bootloader that all Bluefruit nRF52 Feathers ships with allows you to flash user sketches to the nRF52832 using only the CP2104 USB to serial adapter populated on the board.</p>
-<p>The bootloader source code can be found here&nbsp;<a href="https://github.com/adafruit/Adafruit_nRF52_Bootloader">Adafruit_nRF52_Bootloader</a></p>
+<p>The Bluefruit52 board includes a customized version of the Nordic bootloader that enables serial support, over the air (OTA) DFU support, and various fail safe features like factory reset when the FRST pin is grounded at startup.</p>
+<p>The bootloader that all Bluefruit52 board ships with allows you to flash user sketches to the nRF52832 using only the CP2104 USB to serial adapter populated on the board.</p>
 </div>
 <div class="row-fluid build-text">
 <h1>
 <a href="./nRF52_bluefruit_Learning_Guide.html#forcing-serial-boot-mode-7-3" class="anchor-link"><span class="fa fa-link"></span></a><span id="forcing-serial-boot-mode-7-3" class="anchor-link-target"></span><span id="forcing-serial-boot-mode" class="anchor-link-target"></span>Forcing Serial Boot Mode</h1>
-<p>The Bluefruit nRF52 Feather is designed to briefly enter serial bootloader mode for a short delay every time the device comes out of reset, and the DTR line on the CP2104 USB to Serial adapter will trigger a reset every time the Serial Monitor is opened. This means that you can normally flash a user sketch to the nRF52 with no manual intervention on your part at a HW level.</p>
+<p>The Bluefruit52 board is designed to briefly enter serial bootloader mode for a short delay every time the device comes out of reset, and the DTR line on the CP2104 USB to Serial adapter will trigger a reset every time the Serial Monitor is opened. This means that you can normally flash a user sketch to the nRF52 with no manual intervention on your part at a HW level.</p>
 <p>If you need to force the serial bootloader mode, however, you can connect the&nbsp;<strong>DFU</strong> pin to&nbsp;<strong>GND</strong>&nbsp;at startup, which will force you to enter serial bootloader mode and stay in that mode until you reset or power cycle the board.</p>
 <p>This can be used to recover bricked boards where a bad user sketch has been uploaded, since you will enter serial bootloader mode without executing the user sketch, and you can flash a new sketch directly from the Arduino IDE.</p>
 </div>
@@ -1235,47 +892,17 @@ This page is for information purposes only. Normally the bootloader will work tr
 Forcing the serial bootloader can often be used to recover bricked devices.
 </div>
 </div>
-<div class="element element element element element element element element element element element element element element row-fluid build-alert alert-info">
-<div class="alert">
-<i class="fa fa-exclamation-circle"></i>
-nRF52840-based board can also use double reset trick to force into serial bootloader
-</div>
-</div>
-<div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/39910">
-<img class="39910-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/039/910/medium260/microcontrollers_ForceBoot.png?1488971341 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/910/medium640/microcontrollers_ForceBoot.png?1488971341 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/910/medium800/microcontrollers_ForceBoot.png?1488971341 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/910/large1024/microcontrollers_ForceBoot.png?1488971341 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_ForceBoot.png" alt="microcontrollers_ForceBoot.png">
-<span class="image-expand"><i class="fa fa-search-plus"></i></span>
-</a> </div>
-<div class="row-fluid build-text">
-<h1>
-<a href="./nRF52_bluefruit_Learning_Guide.html#factory-reset-7-7" class="anchor-link"><span class="fa fa-link"></span></a><span id="factory-reset-7-7" class="anchor-link-target"></span><span id="factory-reset" class="anchor-link-target"></span>Factory Reset</h1>
-<p>The Bluefruit nRF52 Feather has an optional FRST pad on the bottom of the PCB.</p>
-<p>If you brick your device, you can solder a wire to the <strong>FRST</strong>&nbsp;pad, connecting it to <strong>GND</strong>. When a GND state is detected at power up the following actions will be performed:</p>
-<ul>
-<li>The user application flash section will be erased</li>
-<li>The user 'App Data' section that stores non volatile config data will be erased</li>
-</ul>
-<p>This will cause the device to enter serial bootloader mode at startup, and the user sketch or config data that caused the device to stop responding should be removed.</p>
-</div>
-<div class="element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element row-fluid build-alert alert-info">
-<div class="alert">
-<i class="fa fa-exclamation-circle"></i>
-Be sure to disconnect the pin from GND after a successful factory reset!
-</div>
-</div>
+
 <div class="row-fluid build-text">
 <h1>
 <a href="./nRF52_bluefruit_Learning_Guide.html#advanced-ota-dfu-bootloader-7-9" class="anchor-link"><span class="fa fa-link"></span></a><span id="advanced-ota-dfu-bootloader-7-9" class="anchor-link-target"></span><span id="advanced-ota-dfu-bootloader" class="anchor-link-target"></span>Advanced: OTA DFU Bootloader</h1>
 <p>While this is only recommended for advanced users, you can also force OTA (Over The Air) DFU bootloader mode to enable OTA updates using BLE and Nordic's proprietary update protocol (which is support by both Nordic mobile apps, and out own Bluefruit LE Connect).</p>
-<p><strong>To force OTA DFU mode, set both FRST and DFU to GND at startup</strong>. Power cycling the board will cause the device to boot up into OTA DFU mode.</p>
+<p><strong>To force OTA DFU mode, set DFU to GND at startup</strong>. Power cycling the board will cause the device to boot up into OTA DFU mode.</p>
 </div>
 <div class="element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element row-fluid build-alert alert-danger">
 <div class="alert">
 <i class="fa fa-exclamation-circle"></i>
-This option is not actively support nor recommended by Adafruit, and we are still working on making this as safe as possible for users via our Bluefruit LE Connect application. Use OTA DFU at your own risk knowing you can brick your device and may need a Segger J-Link or similar device to regain control of it!
+This option is not actively support nor recommended by Afantor, and we are still working on making this as safe as possible for users via our Bluefruit LE Connect application. Use OTA DFU at your own risk knowing you can brick your device and may need a Segger J-Link or similar device to regain control of it!
 </div>
 </div>
 </div>
@@ -1285,7 +912,7 @@ This option is not actively support nor recommended by Adafruit, and we are stil
 <span id="updating-the-bootloader">Updating the Bootloader</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
+<a href="#">
 <span class="name">Kevin Townsend</span>
 </a> </div>
 </div>
@@ -1300,7 +927,7 @@ Upgrading the Bootloader is only possible from BSP release 0.8.0 and higher.
 <div class="row-fluid build-text">
 <h1>
 <a href="./nRF52_bluefruit_Learning_Guide.html#upgrading-an-existing-bootloader-8-2" class="anchor-link"><span class="fa fa-link"></span></a><span id="upgrading-an-existing-bootloader-8-2" class="anchor-link-target"></span><span id="upgrading-an-existing-bootloader" class="anchor-link-target"></span>Upgrading an Existing Bootloader</h1>
-<p>The Adafruit Feather nRF52 Bootloader binary contains not only the DFU code, but also the Bluetooth stack (a.k.a&nbsp;SoftDevice) to make sure they work together reliably. To get the latest and greatest features from the stack such as Bluetooth 5.0 with higher throughput, increased broadcast capacities or larger MTU it is necessary to upgrade Bootloader to get the latest stack.</p>
+<p>The nRF52832 Bootloader binary contains not only the DFU code, but also the Bluetooth stack (a.k.a&nbsp;SoftDevice) to make sure they work together reliably. To get the latest and greatest features from the stack such as Bluetooth 5.0 with higher throughput, increased broadcast capacities or larger MTU it is necessary to upgrade Bootloader to get the latest stack.</p>
 <p>Therefore latest BSP release could support newer SoftDevice version than one currently exists on your board. Due to the flash memory &amp; API difference between SoftDevice major versions, upgrade your board's bootloader to match one supported by BSP is required to upload compiled sketch. Luckily the Bluefruit nRF52 Bootloader can be upgraded/downgraded without any additional hardware, and we can even do that right in Arduino IDE without at risk of typos or common user errors.</p>
 </div>
 <div class="element element element element element element element element element element element element element element element element element element element element element element element element element element element element element element row-fluid build-alert alert-danger">
@@ -1316,7 +943,7 @@ Close the Serial Monitor before you click "Burn Bootloader". Afterwards, you sho
 <span id="step-4" class="anchor-link-target"></span>
 <ul>
 <li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/68260">
+<a class="large-side-image-link" href="#">
 <img class="68260-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_image.png" alt="microcontrollers_image.png">
 </a></li>
 </ul>
@@ -1329,7 +956,7 @@ Close the Serial Monitor before you click "Burn Bootloader". Afterwards, you sho
 <span id="step-5" class="anchor-link-target"></span>
 <ul>
 <li class="medium-side">
-<a class="large-side-image-link" href="https://learn.adafruit.com/assets/68261">
+<a class="large-side-image-link" href="#">
 <img class="68261-asset medium-side-image img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_image(1).png" alt="microcontrollers_image.png">
 </a></li>
 </ul>
@@ -1342,22 +969,16 @@ Close the Serial Monitor before you click "Burn Bootloader". Afterwards, you sho
 <p>Select <strong>Tools-&gt;Burn Bootloader</strong> to start the upgrade.</p>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/68265">
-<img class="68265-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/068/265/medium260/microcontrollers_image.png?1545932654 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/265/medium640/microcontrollers_image.png?1545932654 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/265/medium800/microcontrollers_image.png?1545932654 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/265/large1024/microcontrollers_image.png?1545932654 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_image(2).png" alt="microcontrollers_image.png">
+<a href="#">
+<img class="68265-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_image(2).png" alt="microcontrollers_image.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
 <p>After receiving the new Bootloader over the serial connection, the old Bootloader will erase itself! The new bootloader will then be flashed. The process typically takes 30-60 seconds to complete. Make sure you see the "<strong>Device programmed</strong>" in the output log before launching Serial monitor or uploadinga new sketch.</p>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/68264">
-<img class="68264-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/068/264/medium260/microcontrollers_Screenshot_from_2017-12-24_00-42-24.png?1545932518 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/264/medium640/microcontrollers_Screenshot_from_2017-12-24_00-42-24.png?1545932518 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/264/medium800/microcontrollers_Screenshot_from_2017-12-24_00-42-24.png?1545932518 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/068/264/large1024/microcontrollers_Screenshot_from_2017-12-24_00-42-24.png?1545932518 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screenshot_from_2017-12-24_00-42-24.png" alt="microcontrollers_Screenshot_from_2017-12-24_00-42-24.png">
+<a href="#">
+<img class="68264-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screenshot_from_2017-12-24_00-42-24.png" alt="microcontrollers_Screenshot_from_2017-12-24_00-42-24.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -1366,13 +987,13 @@ Close the Serial Monitor before you click "Burn Bootloader". Afterwards, you sho
 <div class="build-code code-element">
 <div class="download-code">
 <i class="fa fa-cloud-download"></i> Download:
-<a data-turbolinks="false" href="https://learn.adafruit.com/pages/14664/elements/3020138/download">
+<a data-turbolinks="false" href="#">
 file
 </a> <div class="code-copy-container">
 <a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
 </div>
 </div>
-<pre class="code-text-only" style="display: none;">$ adafruit-nrfutil --verbose dfu serial --package feather_nrf52832_bootloader-0.2.8_s132_6.1.1.zip
+<pre class="code-text-only" style="display: none;">$ adafruit-nrfutil --verbose dfu serial --package feather_nrf52832_bootloader-0.2.9_s132_6.1.1.zip
  -p /dev/ttyACM0 -b 115200 --singlebank --touch 1200</pre>
 <pre class="prettyprint linenums prettyprinted" style=""><ol class="linenums"><li class="L0"><span class="pln">$ adafruit</span><span class="pun">-</span><span class="pln">nrfutil </span><span class="pun">--</span><span class="pln">verbose dfu serial </span><span class="pun">--</span><span class="kwd">package</span><span class="pln"> feather_nrf52832_bootloader</span><span class="pun">-</span><span class="lit">0.2</span><span class="pun">.</span><span class="lit">8</span><span class="pln">_s132_6</span><span class="pun">.</span><span class="lit">1.1</span><span class="pun">.</span><span class="pln">zip</span></li><li class="L1"><span class="pln"> </span><span class="pun">-</span><span class="pln">p </span><span class="pun">/</span><span class="pln">dev</span><span class="pun">/</span><span class="pln">ttyACM0 </span><span class="pun">-</span><span class="pln">b </span><span class="lit">115200</span><span class="pln"> </span><span class="pun">--</span><span class="pln">singlebank </span><span class="pun">--</span><span class="pln">touch </span><span class="lit">1200</span></li></ol></pre>
 </div>
@@ -1383,7 +1004,7 @@ file
 <span id="flashing-the-bootloader">Flashing the Bootloader</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
+<a href="#">
 <span class="name">Kevin Townsend</span>
 </a> </div>
 </div>
@@ -1393,11 +1014,11 @@ file
 <div class="alert">
 <i class="fa fa-exclamation-circle"></i>
 
-All Adafruit nRF52 boards chip with the bootloader pre-flashed. This page is provided for information purposes only!
+All Bluefruit52 nRF52832 boards chip with the bootloader pre-flashed. This page is provided for information purposes only!
 </div>
 </div>
 <div class="row-fluid build-text">
-<p>All Bluefruit nRF52 Feather boards and Bluefruit nRF52 modules ship with the serial bootloader pre-flashed, so this page is normally not required when setting your device and system up.</p>
+<p>All Bluefruit52 nRF52832 boards ship with the serial bootloader pre-flashed, so this page is normally not required when setting your device and system up.</p>
 <p>The information provided here is only intended for for rare cases where you may&nbsp;want or need to reflash the bootloader yourself, and have access to the HW required to do so.</p>
 </div>
 <div class="row-fluid build-text">
@@ -1426,11 +1047,8 @@ You will need a Segger J-Link to flash the bootloader to the nRF52832/nRF52840 S
 </div>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/38675">
-<img class="38675-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/038/675/medium260/microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png?1485450461 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/038/675/medium640/microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png?1485450461 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/038/675/medium800/microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png?1485450461 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/038/675/large1024/microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png?1485450461 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png" alt="microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png">
+<a href="#">
+<img class="38675-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png" alt="microcontrollers_Screen_Shot_2017-01-26_at_18.07.08.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -1443,7 +1061,7 @@ You will need a Segger J-Link to flash the bootloader to the nRF52832/nRF52840 S
 <div class="build-code code-element">
 <div class="download-code">
 <i class="fa fa-cloud-download"></i> Download:
-<a data-turbolinks="false" href="https://learn.adafruit.com/pages/8791/elements/3012867/download">
+<a data-turbolinks="false" href="#">
 file
 </a> <div class="code-copy-container">
 <a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
@@ -1464,7 +1082,7 @@ All commands below were run from 'tools/nrf5x-command-line-tools/osx/nrfjprog'
 <div class="build-code code-element">
 <div class="download-code">
 <i class="fa fa-cloud-download"></i> Download:
-<a data-turbolinks="false" href="https://learn.adafruit.com/pages/8791/elements/2860642/download">
+<a data-turbolinks="false" href="#">
 file
 </a> <div class="code-copy-container">
 <a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
@@ -1497,7 +1115,7 @@ Run.</pre>
 <div class="build-code code-element">
 <div class="download-code">
 <i class="fa fa-cloud-download"></i> Download:
-<a data-turbolinks="false" href="https://learn.adafruit.com/pages/8791/elements/2860645/download">
+<a data-turbolinks="false" href="#">
 file
 </a> <div class="code-copy-container">
 <a href="./nRF52_bluefruit_Learning_Guide.html#" class="code-copy-button hidden-xs">Copy Code</a>
@@ -1517,21 +1135,18 @@ $ adalink nrf52832 -p jlink -h feather52_bootloader_v050_s132_v201.hex</pre>
 <span id="examples">Arduino Examples</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
+<a href="#">
 <span class="name">Kevin Townsend</span>
 </a> </div>
 </div>
 <div class="page-content all-page-view-content">
 <div class="">
 <div class="row-fluid build-text">
-<p>There are numerous examples available for the Bluefruit nRF52/nRF52840 Feathers in the&nbsp;<strong>Examples</strong> menu of the nRF52 BSP, and these are always up to date. You're first stop looking for example code should be there:</p>
+<p>There are numerous examples available for the Bluefruit52 board in the&nbsp;<strong>Examples</strong> menu of the nRF52 BSP, and these are always up to date. You're first stop looking for example code should be there:</p>
 </div>
 <div class="row-fluid build-image">
-<a href="https://learn.adafruit.com/assets/39998">
-<img class="39998-asset img-responsive" srcset="https://cdn-learn.adafruit.com/assets/assets/000/039/998/medium260/microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png?1489071326 260w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/998/medium640/microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png?1489071326 640w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/998/medium800/microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png?1489071326 800w,
-               https://cdn-learn.adafruit.com/assets/assets/000/039/998/large1024/microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png?1489071326 1024w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 65vw, (max-width: 1365px) 47vw, 750px" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png" alt="microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png">
+<a href="#">
+<img class="39998-asset img-responsive" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png" alt="microcontrollers_Screen_Shot_2017-03-09_at_15.55.02.png">
 <span class="image-expand"><i class="fa fa-search-plus"></i></span>
 </a> </div>
 <div class="row-fluid build-text">
@@ -1564,7 +1179,7 @@ $ adalink nrf52832 -p jlink -h feather52_bootloader_v050_s132_v201.hex</pre>
 <span id="advertising-beacon">Advertising: Beacon</span>
 </h1>
 <div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
+<a href="#">
 <span class="name">Kevin Townsend</span>
 </a> </div>
 </div>
@@ -9497,78 +9112,14 @@ Your browser does not support the video tag.
 </video>
 </div>
 <div class="product-details">
-<div class="product-title">Adafruit Feather nRF52 Bluefruit LE</div>
+<div class="product-title">Afantor Bluefruit52 nRF52832</div>
 <span class="product-price">$24.95</span>
 </div>
 </a> <div class="product-purchase-link">
-<a id="3406-product" class="product-buy btn-primary " data-pid="3406" data-qty="1" data-name="Adafruit Feather nRF52 Bluefruit LE" href="https://www.adafruit.com/product/3406">Add to Cart</a>
+<a id="3406-product" class="product-buy btn-primary " data-pid="3406" data-qty="1" data-name="Adafruit Feather nRF52 Bluefruit LE" href="https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.25911deb2UXpjn&ft=t&id=592703895006">Go to Shop</a>
 </div>
 </div>
-<div class="product-wrapper">
-<a href="https://www.adafruit.com/product/2743">
-<div class="product-image">
-<img src="./nRF52_bluefruit_Learning_Guide/2743-00.jpg" alt="" height="233" class="img-responsive" data-error="/assets/missing%2Fmissing.png">
-</div>
-<div class="product-details">
-<div class="product-title">SWD (2x5 1.27mm) Cable Breakout Board</div>
-<span class="product-price">$1.95</span>
-</div>
-</a> <div class="product-purchase-link">
-<a id="2743-product" class="product-buy btn-primary " data-pid="2743" data-qty="1" data-name="SWD (2x5 1.27mm) Cable Breakout Board" href="https://www.adafruit.com/product/2743">Add to Cart</a>
-</div>
-</div>
-<div class="product-wrapper">
-<a href="https://www.adafruit.com/product/752">
-<div class="product-image">
-<img src="./nRF52_bluefruit_Learning_Guide/752-00.jpg" alt="" height="233" class="img-responsive" data-error="/assets/missing%2Fmissing.png">
-</div>
-<div class="product-details">
-<div class="product-title">SWD 0.05" Pitch Connector - 10 Pin SMT Box Header</div>
-<span class="product-price">$1.50</span>
-</div>
-</a> <div class="product-purchase-link">
-<a id="752-product" class="product-buy btn-primary " data-pid="752" data-qty="1" data-name="SWD 0.05&quot; Pitch Connector - 10 Pin SMT Box Header" href="https://www.adafruit.com/product/752">Add to Cart</a>
-</div>
-</div>
-<div class="product-wrapper">
-<a href="https://www.adafruit.com/product/2209">
-<div class="product-image">
-<img src="./nRF52_bluefruit_Learning_Guide/2209-00.jpg" alt="" height="233" class="img-responsive" data-error="/assets/missing%2Fmissing.png">
-</div>
-<div class="product-details">
-<div class="product-title">SEGGER J-Link BASE - JTAG/SWD Debugger</div>
-<span class="product-price">$399.95</span>
-</div>
-</a> <div class="product-purchase-link">
-<a id="2209-product" class="product-buy btn-primary " data-pid="2209" data-qty="1" data-name="SEGGER J-Link BASE - JTAG/SWD Debugger" href="https://www.adafruit.com/product/2209">Add to Cart</a>
-</div>
-</div>
-<div class="product-wrapper">
-<a href="https://www.adafruit.com/product/1369">
-<div class="product-image">
-<img src="./nRF52_bluefruit_Learning_Guide/1369-05.jpg" alt="" height="233" class="img-responsive" data-error="/assets/missing%2Fmissing.png">
-</div>
-<div class="product-details">
-<div class="product-title">SEGGER J-Link EDU - JTAG/SWD Debugger</div>
-<span class="product-price">$69.95</span>
-</div>
-</a> <div class="product-purchase-link">
-<a id="1369-product" class="product-buy btn-primary " data-pid="1369" data-qty="1" data-name="SEGGER J-Link EDU - JTAG/SWD Debugger" href="https://www.adafruit.com/product/1369">Add to Cart</a>
-</div>
-</div>
-<div class="product-wrapper">
-<a href="https://www.adafruit.com/product/2764">
-<div class="product-image">
-<img src="./nRF52_bluefruit_Learning_Guide/2764-06.jpg" alt="" height="233" class="img-responsive" data-error="/assets/missing%2Fmissing.png">
-</div>
-<div class="product-details">
-<div class="product-title">IBDAP - CMSIS-DAP JTAG/SWD Debug Adapter Kit</div>
-<span class="product-price">$29.95</span>
-</div>
-</a> <div class="product-purchase-link">
-<a id="2764-product" class="product-buy btn-primary " data-pid="2764" data-qty="1" data-name="IBDAP - CMSIS-DAP JTAG/SWD Debug Adapter Kit" href="https://www.adafruit.com/product/2764">Add to Cart</a>
-</div>
-</div>
+
 <div class="product-wrapper">
 <a href="https://www.adafruit.com/product/1675">
 <div class="product-image">
@@ -9579,7 +9130,7 @@ Your browser does not support the video tag.
 <span class="product-price">$2.95</span>
 </div>
 </a> <div class="product-purchase-link">
-<a id="1675-product" class="product-buy btn-primary " data-pid="1675" data-qty="1" data-name="10-pin 2x5 Socket-Socket 1.27mm IDC (SWD) Cable - 150mm long" href="https://www.adafruit.com/product/1675">Add to Cart</a>
+<a id="1675-product" class="product-buy btn-primary " data-pid="1675" data-qty="1" data-name="10-pin 2x5 Socket-Socket 1.27mm IDC (SWD) Cable - 150mm long" href="https://item.taobao.com/item.htm?spm=a2oq0.12575281.0.0.25911deb2UXpjn&ft=t&id=592703895006">Go to Shop</a>
 </div>
 </div>
 <div class="clear"></div>
@@ -9588,81 +9139,7 @@ Your browser does not support the video tag.
 </div>
 </div>
 </div>
-<div class="related-guides-wrapper container">
-<div class="guide-group border">
-<div class="header">
-<h3>Related Guides</h3>
-</div>
-<div class="guide-preview">
-<div class="image-container">
-<a href="https://learn.adafruit.com/adafruit-seesaw-atsamd09-breakout">
-<img class="image-preview" data-error="/assets/missing%2Fmissing.png" src="./nRF52_bluefruit_Learning_Guide/seesaw.jpg">
-<div class="tagline">
-An I2C to ... whatever! interface
-</div>
-</a> </div>
-<div class="title">
-<a href="https://learn.adafruit.com/adafruit-seesaw-atsamd09-breakout">
-Adafruit seesaw
-</a> </div>
-<div class="author">by
-<a href="https://learn.adafruit.com/users/real_dean">
-<span class="name">Dean Miller</span>
-</a> </div>
-</div>
-<div class="guide-preview">
-<div class="image-container">
-<a href="https://learn.adafruit.com/how-to-program-samd-bootloaders">
-<img class="image-preview" data-error="/assets/missing%2Fmissing.png" src="./nRF52_bluefruit_Learning_Guide/micropython___circuitpython_gemma_wiring.jpeg">
-<div class="tagline">
-Program or Re-Program a SAMD Bootloader
-</div>
-</a> </div>
-<div class="title">
-<a href="https://learn.adafruit.com/how-to-program-samd-bootloaders">
-How to Program SAMD Bootloaders
-</a> </div>
-<div class="author">by
-<a href="https://learn.adafruit.com/users/brubell">
-<span class="name">Brent Rubell</span>
-</a> </div>
-</div>
-<div class="guide-preview">
-<div class="image-container">
-<a href="https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi">
-<img class="image-preview" data-error="/assets/missing%2Fmissing.png" src="./nRF52_bluefruit_Learning_Guide/nrf.jpg">
-<div class="tagline">
-Native GPIO bit twiddling your way to success
-</div>
-</a> </div>
-<div class="title">
-<a href="https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi">
-Programming Microcontrollers using OpenOCD on a Raspberry Pi
-</a> </div>
-<div class="author">by
-<a href="https://learn.adafruit.com/users/adafruit2">
-<span class="name">lady ada</span>
-</a> </div>
-</div>
-<div class="guide-preview">
-<div class="image-container">
-<a href="https://learn.adafruit.com/introduction-to-bluetooth-low-energy">
-<img class="image-preview" data-error="/assets/missing%2Fmissing.png" src="./nRF52_bluefruit_Learning_Guide/microcontrollers_LogoBluetoothSmart">
-<div class="tagline">
-A basic overview of key concepts for BLE
-</div>
-</a> </div>
-<div class="title">
-<a href="https://learn.adafruit.com/introduction-to-bluetooth-low-energy">
-Introduction to Bluetooth Low Energy
-</a> </div>
-<div class="author">by
-<a href="https://learn.adafruit.com/users/ktownsend">
-<span class="name">Kevin Townsend</span>
-</a> </div>
-</div>
-</div>
-</div>
+
 <div class="footer-spacer"></div>
 </div>
 <div class="modal fade" id="notify-modal">
@@ -9709,22 +9186,9 @@ Introduction to Bluetooth Low Energy
 <div class="row">
 <div class=" col-lg-6 col-md-6 col-sm-4 col-xs-12">
 <nav>
-<ul>
-<li><a href="https://www.adafruit.com/contact_us">CONTACT</a></li>
-<li><a href="https://www.adafruit.com/support">SUPPORT</a>
-</li><li><a href="https://www.adafruit.com/distributors">DISTRIBUTORS</a></li>
-<li><a href="https://www.adafruit.com/educators">EDUCATORS</a></li>
-<li><a href="https://jobs.adafruit.com/">JOBS</a></li>
-<li><a href="https://www.adafruit.com/faq">FAQ</a></li>
-<li><a href="https://www.adafruit.com/shippinginfo/">SHIPPING &amp; RETURNS</a></li>
-<li><a href="https://www.adafruit.com/terms_of_service/">TERMS OF SERVICE</a></li>
-<li><a href="https://www.adafruit.com/privacy">PRIVACY &amp; LEGAL</a></li>
-<li><a href="https://www.adafruit.com/about">ABOUT US</a></li>
-</ul>
+
 </nav>
-<div id="footer-copyright">
-<a href="http://nytm.org/made-in-nyc/">ENGINEERED IN NYC</a> <span>Adafruit&nbsp;®</span>
-</div>
+
 </div>
 <div class="col-lg-6 col-md-6 col-sm-8 hidden-xs">
 <div id="footer-quote" class="">
