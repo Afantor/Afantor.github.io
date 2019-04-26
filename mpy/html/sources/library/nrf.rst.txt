@@ -25,21 +25,21 @@ Functions
         * ``direction = 2`` -- Vertical screen show to up direction,
         * ``direction = 3`` -- Vertical screen show to down direction.
 
-.. function:: clear()
+.. function:: clear(LCD.BLACK)
 
-    Clear all screen to Black.
+    Clear all screen to color you want.
 
-.. function:: drawBiPoint(x, y, color)
+.. function:: drawBigPoint(x, y, color)
 
-    Draw a big point, input parameters position coordinate :*x,y* and set color value *color*.
+    Draw a big point, input parameters position coordinate :'x','y' and set color value 'color'.
 
 .. function:: drawPoint(x, y, color)
 
-    Draw a point, input parameters position coordinate :*x,y* and set color value color*.
+    Draw a point, input parameters position coordinate :'x','y' and set color value 'color'.
 
-.. function:: drawCircle()
+.. function:: drawCircle(x, y, rad, color)
 
-    Draw a Circle, input parameters :*x, y, radius, color*.
+    Draw a Circle, input parameters :'x', 'y', 'radius', 'color'.
 
 .. function:: drawLine(x1, y1, x2, y2, color)
 
@@ -77,10 +77,17 @@ Functions
 .. function:: showChar(x, y, char, mode, color)
 
     Show a Char, input parameters :*x, y, char, mode, color*.
+    x,y : Starting point coordinates.
+    char: ASCII Code Decimal number(e. 48: show number 0).
+    mode: 1: Superposition background color, 0: Non-superimposed(default white color).
+    color: character color.
+
 
 .. function:: showFloat(x, y, float, len, color)
 
     show Float, input parameters : *x, y, float, len, color*.
+    float: float number,just two decimal places.
+    len : show number size len.
 
 .. function:: showLogo()
 
@@ -95,9 +102,10 @@ Functions
     Show penguin logo image.set start coordinates.image resolution 40*40.
     input parameters start coordinates:*x, y*.
 
-.. function:: showString(start, length)
+.. function:: showString(x, y, 'Hello', color)
 
-    **Note**: Not support now.
+    show string, input parameters : *x, y, string, color*.
+    e. LCD.showString(10, 10, 'Hello World!', LCD.RED)
 
 .. function:: showChinese(start, length)
     

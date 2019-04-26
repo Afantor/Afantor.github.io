@@ -203,26 +203,26 @@ value. If the function is called without parameters, default direction = 3, Hori
 
 <dl class="function">
 <dt id="LCD.clear">
-<code class="descclassname">LCD.</code><code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LCD.clear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear all screen to Black.</p>
+<code class="descclassname">LCD.</code><code class="descname">clear</code><span class="sig-paren">(</span><em>LCD.BLACK</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all screen to color you want.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="LCD.drawBiPoint">
-<code class="descclassname">LCD.</code><code class="descname">drawBiPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawBiPoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a big point, input parameters position coordinate :<em>x,y</em> and set color value <em>color</em>.</p>
+<dt id="LCD.drawBigPoint">
+<code class="descclassname">LCD.</code><code class="descname">drawBigPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawBigPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a big point, input parameters position coordinate :’x’,’y’ and set color value ‘color’.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="LCD.drawPoint">
 <code class="descclassname">LCD.</code><code class="descname">drawPoint</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawPoint" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a point, input parameters position coordinate :<em>x,y</em> and set color value color*.</p>
+<dd><p>Draw a point, input parameters position coordinate :’x’,’y’ and set color value ‘color’.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="LCD.drawCircle">
-<code class="descclassname">LCD.</code><code class="descname">drawCircle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawCircle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a Circle, input parameters :<em>x, y, radius, color</em>.</p>
+<code class="descclassname">LCD.</code><code class="descname">drawCircle</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>rad</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.drawCircle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a Circle, input parameters :’x’, ‘y’, ‘radius’, ‘color’.</p>
 </dd></dl>
 
 <dl class="function">
@@ -271,13 +271,19 @@ input parameters start coordinates:<em>x, y</em>.</p>
 <dl class="function">
 <dt id="LCD.showChar">
 <code class="descclassname">LCD.</code><code class="descname">showChar</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>char</em>, <em>mode</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showChar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show a Char, input parameters :<em>x, y, char, mode, color</em>.</p>
+<dd><p>Show a Char, input parameters :<em>x, y, char, mode, color</em>.
+x,y : Starting point coordinates.
+char: ASCII Code Decimal number(e. 48: show number 0).
+mode: 1: Superposition background color, 0: Non-superimposed(default white color).
+color: character color.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="LCD.showFloat">
 <code class="descclassname">LCD.</code><code class="descname">showFloat</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>float</em>, <em>len</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showFloat" title="Permalink to this definition">¶</a></dt>
-<dd><p>show Float, input parameters : <em>x, y, float, len, color</em>.</p>
+<dd><p>show Float, input parameters : <em>x, y, float, len, color</em>.
+float: float number,just two decimal places.
+len : show number size len.</p>
 </dd></dl>
 
 <dl class="function">
@@ -301,8 +307,9 @@ input parameters start coordinates:<em>x, y</em>.</p>
 
 <dl class="function">
 <dt id="LCD.showString">
-<code class="descclassname">LCD.</code><code class="descname">showString</code><span class="sig-paren">(</span><em>start</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showString" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Note</strong>: Not support now.</p>
+<code class="descclassname">LCD.</code><code class="descname">showString</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>'Hello'</em>, <em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#LCD.showString" title="Permalink to this definition">¶</a></dt>
+<dd><p>show string, input parameters : <em>x, y, string, color</em>.
+e. LCD.showString(10, 10, ‘Hello World!’, LCD.RED)</p>
 </dd></dl>
 
 <dl class="function">
@@ -384,7 +391,7 @@ input parameters start coordinates:<em>x, y</em>.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 19 Apr 2019.
+      Last updated on 26 Apr 2019.
 
     </p>
   </div>

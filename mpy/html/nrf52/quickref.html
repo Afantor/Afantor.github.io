@@ -199,7 +199,7 @@ a troubleshooting subsection.</p>
 </div>
 <div class="section" id="general-board-control">
 <h2>General board control<a class="headerlink" href="#general-board-control" title="Permalink to this headline">¶</a></h2>
-<p>The MicroPython REPL is on UART1 (GPIO10.06=TX, GPIO0.08=RX) at baudrate 115200.
+<p>The MicroPython REPL is on UART1 (GPIO0.06=TX, GPIO0.08=RX) at baudrate 115200.
 Tab-completion is useful to find out what methods an object has.
 Paste mode (ctrl-E) is useful to paste a large slab of Python code into
 the REPL.</p>
@@ -302,11 +302,11 @@ with timer ID of -1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Timer</span>
 
 <span class="n">tim</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tick&quot;</span><span class="p">))</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-<span class="n">tim</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>         <span class="c1">#enable timer,start count.</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>          <span class="c1">#return counter value(us)</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>        <span class="c1">#return counter value(us)</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>          <span class="c1">#disable timer,stop count.</span>
+<span class="n">tim</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>        <span class="c1">#Free resources associated with the timer.</span>
 </pre></div>
 </div>
 <p>Constants</p>
@@ -375,13 +375,14 @@ range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
 <p>Use the <code class="docutils literal notranslate"><span class="pre">machine.PWM</span></code> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
-<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pin</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span><span class="n">duty</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>   <span class="c1"># create PWM object from a pin,and set duty period.</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>             <span class="c1"># get current frequency</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>         <span class="c1"># set frequency</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">()</span>             <span class="c1"># get current duty cycle</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>          <span class="c1"># set duty cycle</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>           <span class="c1">#</span>
-<span class="n">pwm0</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>           <span class="c1"># turn off PWM on the pin</span>
+<span class="c1"># create PWM object from a pin,and set duty period.</span>
+<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pin</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span><span class="n">duty</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>             <span class="c1"># start pwm out</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>         <span class="c1"># nothing work</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">()</span>             <span class="c1"># nothing work</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>          <span class="c1"># nothing work</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">period</span><span class="p">()</span>           <span class="c1"># nothing work</span>
+<span class="n">pwm0</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>           <span class="c1"># turn off PWM on the pin,Free resources associated with the timer.</span>
 </pre></div>
 </div>
 <p>Constants</p>
@@ -415,13 +416,21 @@ range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
 <p>On the nRF52832 ADC functionality is available 8 channels（0~7）. Note that, when
 using the default configuration, input voltages on the ADC pin must be between
 0.0v and 3.3v.  Attenuation must be applied in order to increase this usable voltage range.</p>
+<p>Analog Pin:
+ADC(1)—&gt;GPIO0.02
+ADC(2)—&gt;GPIO0.03
+ADC(3)—&gt;GPIO0.04
+ADC(4)—&gt;GPIO0.05
+ADC(5)—&gt;GPIO0.28
+ADC(6)—&gt;GPIO0.29
+ADC(7)—&gt;GPIO0.30</p>
 <p>Use the <a class="reference internal" href="../library/machine.ADC.html#machine-adc"><span class="std std-ref">machine.ADC</span></a> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">ADC</span>
 
-<span class="n">adc3</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                <span class="c1"># create ADC object on ADC pin</span>
+<span class="n">adc3</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                <span class="c1"># create ADC object on ADC pin.(ADC(3)---&gt;GPIO0.04)</span>
 <span class="n">adc3</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>                 <span class="c1"># read value, 0-255 across voltage range 0.0v - 3.3v</span>
 
-<span class="n">adc3</span><span class="o">.</span><span class="n">battery_level</span><span class="p">()</span>        <span class="c1"># read battery value.</span>
+<span class="n">ADC</span><span class="o">.</span><span class="n">battery_level</span><span class="p">()</span>          <span class="c1"># read battery value.</span>
 </pre></div>
 </div>
 </div>
@@ -599,10 +608,14 @@ additional pull-up resistors, to ensure noise-free communication.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">RTCounter</span>
 
 <span class="n">rtcount</span> <span class="o">=</span> <span class="n">RTCounter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tick&quot;</span><span class="p">))</span>
+<span class="c1"># Start the RTCounter. Timeout occurs after number of periods</span>
+<span class="c1"># in the configured frequency has been reached.</span>
 <span class="n">rtcount</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="c1"># Return the current counter value. Wraps around after about 24 days</span>
+<span class="c1"># with the current prescaler (2^24 / 8 = 2097152 seconds).</span>
 <span class="n">rtcount</span><span class="o">.</span><span class="n">counter</span><span class="p">()</span>
-<span class="n">rtcount</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
-<span class="n">rtcount</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+<span class="n">rtcount</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>          <span class="c1"># Stop the RTCounter.</span>
+<span class="n">rtcount</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>        <span class="c1"># Free resources associated with this RTC.</span>
 </pre></div>
 </div>
 <p>Constants</p>
@@ -643,7 +656,7 @@ indefinitely</li>
 
 <span class="n">temp</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Temp</span><span class="p">()</span>
 
-<span class="n">temp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">temp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>         <span class="c1"># Get temperature.</span>
 </pre></div>
 </div>
 </div>
@@ -1364,7 +1377,7 @@ to transfer files to an nRF52832 board.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 20 Apr 2019.
+      Last updated on 26 Apr 2019.
 
     </p>
   </div>
