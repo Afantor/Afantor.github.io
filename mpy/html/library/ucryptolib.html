@@ -205,11 +205,14 @@ or vice versa is not supported.</p>
 <blockquote>
 <div><ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">1</span></code> (or <code class="docutils literal notranslate"><span class="pre">ucryptolib.MODE_ECB</span></code> if it exists) for Electronic Code Book (ECB).</li>
-<li><code class="docutils literal notranslate"><span class="pre">2</span></code> (or <code class="docutils literal notranslate"><span class="pre">ucryptolib.MODE_CBC</span></code> if it exists) for Cipher Block Chaining (CBC)</li>
+<li><code class="docutils literal notranslate"><span class="pre">2</span></code> (or <code class="docutils literal notranslate"><span class="pre">ucryptolib.MODE_CBC</span></code> if it exists) for Cipher Block Chaining (CBC).</li>
+<li><code class="docutils literal notranslate"><span class="pre">6</span></code> (or <code class="docutils literal notranslate"><span class="pre">ucryptolib.MODE_CTR</span></code> if it exists) for Counter mode (CTR).</li>
 </ul>
 </div></blockquote>
 </li>
 <li><p class="first"><em>IV</em> is an initialization vector for CBC mode.</p>
+</li>
+<li><p class="first">For Counter mode, <em>IV</em> is the initial value for the counter.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -256,7 +259,7 @@ to the same mutable buffer, in which case data is encrypted in-place.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 26 Apr 2019.
+      Last updated on 09 May 2019.
 
     </p>
   </div>

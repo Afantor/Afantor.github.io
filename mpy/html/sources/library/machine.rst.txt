@@ -93,7 +93,7 @@ Power related functions
 
    Get the wake reason. See :ref:`constants <machine_constants>` for the possible return values.
 
-   Availability: ESP32, WiPy, nRF52832.
+   Availability: ESP32, WiPy.
 
 Miscellaneous functions
 -----------------------
