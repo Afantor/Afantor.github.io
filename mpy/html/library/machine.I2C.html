@@ -337,6 +337,21 @@ generated at the end of the transfer, even if a NACK is received.
 The function returns the number of ACKs that were received.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="machine.I2C.writevto">
+<code class="descclassname">I2C.</code><code class="descname">writevto</code><span class="sig-paren">(</span><em>addr</em>, <em>vector</em>, <em>stop=True</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.I2C.writevto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the bytes contained in <em>vector</em> to the slave specified by <em>addr</em>.
+<em>vector</em> should be a tuple or list of objects with the buffer protocol.
+The <em>addr</em> is sent once and then the bytes from each object in <em>vector</em>
+are written out sequentially.  The objects in <em>vector</em> may be zero bytes
+in length in which case they don’t contribute to the output.</p>
+<p>If a NACK is received following the write of a byte from one of the
+objects in <em>vector</em> then the remaining bytes, and any remaining objects,
+are not sent.  If <em>stop</em> is true then a STOP condition is generated at
+the end of the transfer, even if a NACK is received.  The function
+returns the number of ACKs that were received.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="memory-operations">
 <h2>Memory operations<a class="headerlink" href="#memory-operations" title="Permalink to this headline">¶</a></h2>
@@ -398,7 +413,7 @@ this argument is not recognised and the address size is always 8 bits).</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 09 May 2019.
+      Last updated on 24 May 2019.
 
     </p>
   </div>

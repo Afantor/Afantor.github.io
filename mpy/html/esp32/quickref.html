@@ -300,7 +300,7 @@ with timer ID of -1:</p>
 <p>The period is in milliseconds.</p>
 </div>
 <div class="section" id="pins-and-gpio">
-<h2>Pins and GPIO<a class="headerlink" href="#pins-and-gpio" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Pins and GPIO<a class="headerlink" href="#pins-and-gpio" title="Permalink to this headline">¶</a></h2>
 <p>Use the <a class="reference internal" href="../library/machine.Pin.html#machine-pin"><span class="std std-ref">machine.Pin</span></a> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span>
 
@@ -449,8 +449,13 @@ initialising Software SPI.</p>
 </div>
 <div class="section" id="hardware-spi-bus">
 <h2>Hardware SPI bus<a class="headerlink" href="#hardware-spi-bus" title="Permalink to this headline">¶</a></h2>
-<p>There are two hardware SPI channels that allow faster (up to 80Mhz)
-transmission rates, but are only supported on a subset of pins.</p>
+<p>There are two hardware SPI channels that allow faster transmission
+rates (up to 80Mhz). These may be used on any IO pins that support the
+required direction and are otherwise unused (see <a class="reference internal" href="#pins-and-gpio"><span class="std std-ref">Pins and GPIO</span></a>)
+but if they are not configured to their default pins then they need to
+pass through an extra layer of GPIO multiplexing, which can impact
+their reliability at high speeds. Hardware SPI channels are limited
+to 40MHz when used on pins other than the default ones listed below.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -700,7 +705,7 @@ to transfer files to an ESP32 board.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 09 May 2019.
+      Last updated on 24 May 2019.
 
     </p>
   </div>

@@ -366,17 +366,25 @@ this board please consider reading the following sections first:</p>
 </div>
 <div class="section" id="i2c-bus">
 <h2>I2C bus<a class="headerlink" href="#i2c-bus" title="Permalink to this headline">¶</a></h2>
-<p>See <a class="reference internal" href="../library/pyb.I2C.html#pyb-i2c"><span class="std std-ref">pyb.I2C</span></a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyb</span> <span class="k">import</span> <span class="n">I2C</span>
+<p>Hardware I2C is available on the X and Y halves of the pyboard via <code class="docutils literal notranslate"><span class="pre">I2C('X')</span></code>
+and <code class="docutils literal notranslate"><span class="pre">I2C('Y')</span></code>.  Alternatively pass in the integer identifier of the peripheral,
+eg <code class="docutils literal notranslate"><span class="pre">I2C(1)</span></code>.  Software I2C is also available by explicitly specifying the
+<code class="docutils literal notranslate"><span class="pre">scl</span></code> and <code class="docutils literal notranslate"><span class="pre">sda</span></code> pins instead of the bus name.  For more details see
+<a class="reference internal" href="../library/machine.I2C.html#machine-i2c"><span class="std std-ref">machine.I2C</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">I2C</span>
 
-<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">I2C</span><span class="o">.</span><span class="n">MASTER</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
-<span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span> <span class="c1"># returns list of slave addresses</span>
-<span class="n">i2c</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">)</span> <span class="c1"># send 5 bytes to slave with address 0x42</span>
-<span class="n">i2c</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">)</span> <span class="c1"># receive 5 bytes from slave</span>
-<span class="n">i2c</span><span class="o">.</span><span class="n">mem_read</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">)</span> <span class="c1"># read 2 bytes from slave 0x42, slave memory 0x10</span>
-<span class="n">i2c</span><span class="o">.</span><span class="n">mem_write</span><span class="p">(</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="mh">0x42</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">)</span> <span class="c1"># write 2 bytes to slave 0x42, slave memory 0x10</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>                 <span class="c1"># create hardware I2c object</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="s1">&#39;X2&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>  <span class="c1"># create software I2C object</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>                          <span class="c1"># returns list of slave addresses</span>
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="mh">0x42</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">)</span>          <span class="c1"># write 5 bytes to slave with address 0x42</span>
+<span class="n">i2c</span><span class="o">.</span><span class="n">readfrom</span><span class="p">(</span><span class="mh">0x42</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>               <span class="c1"># read 5 bytes from slave</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="mh">0x42</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>     <span class="c1"># read 2 bytes from slave 0x42, slave memory 0x10</span>
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="mh">0x42</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span> <span class="s1">&#39;xy&#39;</span><span class="p">)</span>   <span class="c1"># write 2 bytes to slave 0x42, slave memory 0x10</span>
 </pre></div>
 </div>
+<p>Note: for legacy I2C support see <a class="reference internal" href="../library/pyb.I2C.html#pyb-i2c"><span class="std std-ref">pyb.I2C</span></a>.</p>
 </div>
 <div class="section" id="can-bus-controller-area-network">
 <h2>CAN bus (controller area network)<a class="headerlink" href="#can-bus-controller-area-network" title="Permalink to this headline">¶</a></h2>
@@ -423,7 +431,7 @@ this board please consider reading the following sections first:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 09 May 2019.
+      Last updated on 24 May 2019.
 
     </p>
   </div>
