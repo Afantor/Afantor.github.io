@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ubluepy libraries for nRF52832 &mdash; MicroPython 1.10 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../static/customstyle.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Getting started with MicroPython on the nRF52832" href="tutorial/intro.html" /> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> MicroPython
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.10
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../library/index.html">MicroPython libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">The MicroPython language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genrst/index.html">MicroPython differences from CPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../develop/index.html">Developing and building MicroPython</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">MicroPython license information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyboard/quickref.html">Quick reference for the pyboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp8266/quickref.html">Quick reference for the ESP8266</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../esp32/quickref.html">Quick reference for the ESP32</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wipy/quickref.html">Quick reference for the WiPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickref.html">Quick reference for the nRF52832</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ubluepy libraries for nRF52832</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubluepy">ubluepy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uuid-class">UUID Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#service-class">Service Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scanner-class">Scanner Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scanentry-class">ScanEntry Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#peripheral-class">Peripheral Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defaultdelegate-class">DefaultDelegate Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#characteristic-class">Characteristic Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MicroPython</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>ubluepy libraries for nRF52832</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../sources/nrf52/ubluepy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ubluepy-libraries-for-nrf52832">
+<h1>ubluepy libraries for nRF52832<a class="headerlink" href="#ubluepy-libraries-for-nrf52832" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="../images/nRF52.JPG"><img alt="nRF52832-Bluefruit52 board" src="../images/nRF52.JPG" style="width: 640px;" /></a>
+<div class="section" id="module-ubluepy">
+<span id="ubluepy"></span><h2>ubluepy<a class="headerlink" href="#module-ubluepy" title="Permalink to this headline">¶</a></h2>
+<p>This is the <code class="docutils literal notranslate"><span class="pre">ubluepy</span></code> module. Micropython Bluetooth LE API for nrf5x device series. You can use it to connect a bluetooth device to your board. This module provide some BLE control functions.</p>
+<p>To access this module you need to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ubluepy</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="ubluepy.constants">
+<code class="descclassname">ubluepy.</code><code class="descname">constants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.constants" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>They are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">constants.EVT_GAP_CONNECTED</span></code> - value is 16.</li>
+<li><code class="docutils literal notranslate"><span class="pre">constants.EVT_GAP_DISCONNECTED</span></code> - value is 17.</li>
+<li><code class="docutils literal notranslate"><span class="pre">constants.EVT_GATTS_WRITE</span></code> - value is 80.</li>
+<li><code class="docutils literal notranslate"><span class="pre">constants.UUID_CCCD</span></code> - value is 0x2902.</li>
+<li><code class="docutils literal notranslate"><span class="pre">constants.ADDR_TYPE_PUBLIC</span></code> - value is 0.</li>
+<li><code class="docutils literal notranslate"><span class="pre">constants.ADDR_TYPE_RANDOMstatic</span></code> - value is 1.</li>
+</ul>
+</div></blockquote>
+<p>We assume you have done this for the examples below.</p>
+</div>
+<div class="section" id="uuid-class">
+<h2>UUID Class<a class="headerlink" href="#uuid-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.UUID">
+<code class="descclassname">ubluepy.</code><code class="descname">UUID</code><span class="sig-paren">(</span><em>&quot;0x181A&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.UUID" title="Permalink to this definition">¶</a></dt>
+<dd><p># Environmental Sensing service.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.UUID.binVal">
+<code class="descclassname">UUID.</code><code class="descname">binVal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.UUID.binVal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get binary value of the 16 or 128 bit UUID. Returned as bytearray type.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Examples for UUID:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ubluepy</span> <span class="k">import</span> <span class="n">Service</span><span class="p">,</span> <span class="n">Characteristic</span><span class="p">,</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">Peripheral</span><span class="p">,</span> <span class="n">constants</span>
+
+<span class="n">uuid_env_sense</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x181A&quot;</span><span class="p">)</span> <span class="c1"># Environmental Sensing service</span>
+<span class="n">uuid_temp</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x2A6E&quot;</span><span class="p">)</span> <span class="c1"># Temperature characteristic</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="service-class">
+<h2>Service Class<a class="headerlink" href="#service-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.Service">
+<code class="descclassname">ubluepy.</code><code class="descname">Service</code><span class="sig-paren">(</span><em>UUID(&quot;0x181A&quot;)</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Service" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a Service object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Service.getCharacteristics">
+<code class="descclassname">Service.</code><code class="descname">getCharacteristics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Service.getCharacteristics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list with all characteristics registered in the Service.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Service.getCharacteristic">
+<code class="descclassname">Service.</code><code class="descname">getCharacteristic</code><span class="sig-paren">(</span><em>UUID</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Service.getCharacteristic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Characteristic with the given UUID.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Service.addCharacteristic">
+<code class="descclassname">Service.</code><code class="descname">addCharacteristic</code><span class="sig-paren">(</span><em>Characteristic</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Service.addCharacteristic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Characteristic to the Service.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Service.uuid">
+<code class="descclassname">Service.</code><code class="descname">uuid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Service.uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get UUID instance of the Service.</p>
+</dd></dl>
+
+<p>Constants they are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Service.PRIMARY</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Service.SECONDARY</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Examples for Service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ubluepy</span> <span class="k">import</span> <span class="n">Service</span><span class="p">,</span> <span class="n">Characteristic</span><span class="p">,</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">Peripheral</span><span class="p">,</span> <span class="n">constants</span>
+
+<span class="n">uuid_env_sense</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x181A&quot;</span><span class="p">)</span> <span class="c1"># Environmental Sensing service</span>
+<span class="n">uuid_temp</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x2A6E&quot;</span><span class="p">)</span> <span class="c1"># Temperature characteristic</span>
+
+<span class="n">serv_env_sense</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">uuid_env_sense</span><span class="p">)</span>
+
+<span class="n">temp_props</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">PROP_NOTIFY</span> <span class="o">|</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">PROP_READ</span>
+<span class="n">temp_attrs</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">ATTR_CCCD</span>
+<span class="n">char_temp</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="p">(</span><span class="n">uuid_temp</span><span class="p">,</span> <span class="n">props</span> <span class="o">=</span> <span class="n">temp_props</span><span class="p">,</span> <span class="n">attrs</span> <span class="o">=</span> <span class="n">temp_attrs</span><span class="p">)</span>
+
+<span class="n">serv_env_sense</span><span class="o">.</span><span class="n">addCharacteristic</span><span class="p">(</span><span class="n">char_temp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scanner-class">
+<h2>Scanner Class<a class="headerlink" href="#scanner-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Functions<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.Scanner">
+<code class="descclassname">ubluepy.</code><code class="descname">Scanner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Scanner" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a Scanner object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Scanner.scan">
+<code class="descclassname">Scanner.</code><code class="descname">scan</code><span class="sig-paren">(</span><em>time_out</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Scanner.scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan for devices. Timeout is in milliseconds and will set the duration of the scanning.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h3>Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Examples for Scanner:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ubluepy</span> <span class="k">import</span> <span class="n">Scanner</span><span class="p">,</span> <span class="n">Peripheral</span><span class="p">,</span> <span class="n">constants</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Scanner</span><span class="p">()</span>
+<span class="n">scan_res</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scanentry-class">
+<h2>ScanEntry Class<a class="headerlink" href="#scanentry-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Functions<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.ScanEntry">
+<code class="descclassname">ubluepy.</code><code class="descname">ScanEntry</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.ScanEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a ScanEntry object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.ScanEntry.addr">
+<code class="descclassname">ScanEntry.</code><code class="descname">addr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.ScanEntry.addr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return address as text string.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.ScanEntry.addr_type">
+<code class="descclassname">ScanEntry.</code><code class="descname">addr_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.ScanEntry.addr_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return address type value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.ScanEntry.rssi">
+<code class="descclassname">ScanEntry.</code><code class="descname">rssi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.ScanEntry.rssi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return RSSI value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.ScanEntry.getScanData">
+<code class="descclassname">ScanEntry.</code><code class="descname">getScanData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.ScanEntry.getScanData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list of the scan data tupples (ad_type, description, value).</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="peripheral-class">
+<h2>Peripheral Class<a class="headerlink" href="#peripheral-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>Functions<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.Peripheral">
+<code class="descclassname">ubluepy.</code><code class="descname">Peripheral</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a Peripheral object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.withDelegate">
+<code class="descclassname">Peripheral.</code><code class="descname">withDelegate</code><span class="sig-paren">(</span><em>DefaultDelegate</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.withDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set delegate instance for handling Bluetooth LE events.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.setNotificationHandler">
+<code class="descclassname">Peripheral.</code><code class="descname">setNotificationHandler</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.setNotificationHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set handler for Bluetooth LE notification events.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.setConnectionHandler">
+<code class="descclassname">Peripheral.</code><code class="descname">setConnectionHandler</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.setConnectionHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set handler for Bluetooth LE connection events.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.advertise">
+<code class="descclassname">Peripheral.</code><code class="descname">advertise</code><span class="sig-paren">(</span><em>device_name, [service=[service1, service2, ...]], [data=bytearray], [connectable=True]</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.advertise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start advertising. Connectable advertisment type by default.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.advertise_stop">
+<code class="descclassname">Peripheral.</code><code class="descname">advertise_stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.advertise_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop advertisment if any onging advertisment.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.disconnect">
+<code class="descclassname">Peripheral.</code><code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnect connection.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.addService">
+<code class="descclassname">Peripheral.</code><code class="descname">addService</code><span class="sig-paren">(</span><em>Service</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.addService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add service to the Peripheral.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.getServices">
+<code class="descclassname">Peripheral.</code><code class="descname">getServices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.getServices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return list with all service registered in the Peripheral.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Peripheral.connect">
+<code class="descclassname">Peripheral.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>device_address</em><span class="optional">[</span>, <em>addr_type=ADDR_TYPE_PUBLIC</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Peripheral.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to device peripheral with the given device address. addr_type can be either ADDR_TYPE_PUBLIC (default) or ADDR_TYPE_RANDOMstatic.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id7">
+<h3>Example<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Examples for Peripheral:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ubluepy</span> <span class="k">import</span> <span class="n">Service</span><span class="p">,</span> <span class="n">Characteristic</span><span class="p">,</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">Peripheral</span><span class="p">,</span> <span class="n">constants</span>
+
+<span class="n">uuid_env_sense</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x181A&quot;</span><span class="p">)</span> <span class="c1"># Environmental Sensing service</span>
+<span class="n">uuid_temp</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x2A6E&quot;</span><span class="p">)</span> <span class="c1"># Temperature characteristic</span>
+
+<span class="n">serv_env_sense</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">uuid_env_sense</span><span class="p">)</span>
+
+<span class="n">temp_props</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">PROP_NOTIFY</span> <span class="o">|</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">PROP_READ</span>
+<span class="n">temp_attrs</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">ATTR_CCCD</span>
+<span class="n">char_temp</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="p">(</span><span class="n">uuid_temp</span><span class="p">,</span> <span class="n">props</span> <span class="o">=</span> <span class="n">temp_props</span><span class="p">,</span> <span class="n">attrs</span> <span class="o">=</span> <span class="n">temp_attrs</span><span class="p">)</span>
+
+<span class="n">serv_env_sense</span><span class="o">.</span><span class="n">addCharacteristic</span><span class="p">(</span><span class="n">char_temp</span><span class="p">)</span>
+
+<span class="n">periph</span> <span class="o">=</span> <span class="n">Peripheral</span><span class="p">()</span>
+<span class="n">periph</span><span class="o">.</span><span class="n">addService</span><span class="p">(</span><span class="n">serv_env_sense</span><span class="p">)</span>
+<span class="n">periph</span><span class="o">.</span><span class="n">setConnectionHandler</span><span class="p">(</span><span class="n">event_handler</span><span class="p">)</span>
+<span class="n">periph</span><span class="o">.</span><span class="n">advertise</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;micr_temp&quot;</span><span class="p">,</span> <span class="n">services</span><span class="o">=</span><span class="p">[</span><span class="n">serv_env_sense</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="defaultdelegate-class">
+<h2>DefaultDelegate Class<a class="headerlink" href="#defaultdelegate-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>Functions<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.DefaultDelegate">
+<code class="descclassname">ubluepy.</code><code class="descname">DefaultDelegate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.DefaultDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a DefaultDelegate object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.DefaultDelegate.handleConnection">
+<code class="descclassname">DefaultDelegate.</code><code class="descname">handleConnection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.DefaultDelegate.handleConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle connection events.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.DefaultDelegate.handleNotification">
+<code class="descclassname">DefaultDelegate.</code><code class="descname">handleNotification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.DefaultDelegate.handleNotification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle notification events.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="characteristic-class">
+<h2>Characteristic Class<a class="headerlink" href="#characteristic-class" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Functions<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="ubluepy.Characteristic">
+<code class="descclassname">ubluepy.</code><code class="descname">Characteristic</code><span class="sig-paren">(</span><em>uuid</em>, <em>props</em>, <em>attrs</em><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Characteristic" title="Permalink to this definition">¶</a></dt>
+<dd><p>New a Characteristic object.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Characteristic.read">
+<code class="descclassname">Characteristic.</code><code class="descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Characteristic.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read Characteristic value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Characteristic.write">
+<code class="descclassname">Characteristic.</code><code class="descname">write</code><span class="sig-paren">(</span><em>data</em><span class="optional">[</span>, <em>with_response=False</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Characteristic.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write Characteristic value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Characteristic.properties">
+<code class="descclassname">Characteristic.</code><code class="descname">properties</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Characteristic.properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read Characteristic value properties.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubluepy.Characteristic.uuid">
+<code class="descclassname">Characteristic.</code><code class="descname">uuid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ubluepy.Characteristic.uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get UUID instance of the characteristic.</p>
+</dd></dl>
+
+<p>Constants they are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_BROADCAST</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_READ</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_WRITE_WO_RESP</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_WRITE</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_NOTIFY</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_INDICATE</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.PROP_AUTH_SIGNED_WR</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.ATTR_CCCD</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">Characteristic.AUTH_SIGNED_WR</span></code></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3>Example<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>Examples for Characteristic:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ubluepy</span> <span class="k">import</span> <span class="n">Service</span><span class="p">,</span> <span class="n">Characteristic</span><span class="p">,</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">Peripheral</span><span class="p">,</span> <span class="n">constants</span>
+
+<span class="n">uuid_env_sense</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x181A&quot;</span><span class="p">)</span> <span class="c1"># Environmental Sensing service</span>
+<span class="n">uuid_temp</span> <span class="o">=</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;0x2A6E&quot;</span><span class="p">)</span> <span class="c1"># Temperature characteristic</span>
+
+<span class="n">serv_env_sense</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">uuid_env_sense</span><span class="p">)</span>
+
+<span class="n">temp_props</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">PROP_NOTIFY</span> <span class="o">|</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">PROP_READ</span>
+<span class="n">temp_attrs</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="o">.</span><span class="n">ATTR_CCCD</span>
+<span class="n">char_temp</span> <span class="o">=</span> <span class="n">Characteristic</span><span class="p">(</span><span class="n">uuid_temp</span><span class="p">,</span> <span class="n">props</span> <span class="o">=</span> <span class="n">temp_props</span><span class="p">,</span> <span class="n">attrs</span> <span class="o">=</span> <span class="n">temp_attrs</span><span class="p">)</span>
+
+<span class="n">serv_env_sense</span><span class="o">.</span><span class="n">addCharacteristic</span><span class="p">(</span><span class="n">char_temp</span><span class="p">)</span>
+
+<span class="n">periph</span> <span class="o">=</span> <span class="n">Peripheral</span><span class="p">()</span>
+<span class="n">periph</span><span class="o">.</span><span class="n">addService</span><span class="p">(</span><span class="n">serv_env_sense</span><span class="p">)</span>
+<span class="n">periph</span><span class="o">.</span><span class="n">setConnectionHandler</span><span class="p">(</span><span class="n">event_handler</span><span class="p">)</span>
+<span class="n">periph</span><span class="o">.</span><span class="n">advertise</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;micr_temp&quot;</span><span class="p">,</span> <span class="n">services</span><span class="o">=</span><span class="p">[</span><span class="n">serv_env_sense</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="tutorial/intro.html" class="btn btn-neutral" title="Getting started with MicroPython on the nRF52832" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
+      Last updated on 30 May 2019.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book"> Versions and Downloads</span>
+    latest
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Versions</dt>
+      
+        <dd><a href="//en/latest">latest</a></dd>
+      
+    </dl>
+    <dl>
+      <dt>Downloads</dt>
+      
+        <dd><a href="//en/latest/micropython-docs.pdf">PDF</a></dd>
+      
+    </dl>
+    <hr/>
+    <dl>
+      <dt>External links</dt>
+        <dd>
+          <a href="https://www.micropython.org">micropython.org</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/micropython/micropython">GitHub</a>
+        </dd>
+    </dl>
+  </div>
+</div>
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'1.10',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../static/jquery.js"></script>
+        <script type="text/javascript" src="../static/underscore.js"></script>
+        <script type="text/javascript" src="../static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

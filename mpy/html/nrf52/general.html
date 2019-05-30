@@ -108,6 +108,8 @@
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#delay-and-timing">Delay and timing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#timers">Timers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#pins-and-gpio">Pins and GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#leds-on-board-leds">LEDs (on board leds)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#button-on-board-buttons">BUTTON (on board buttons)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#software-spi-bus">Software SPI bus</a></li>
@@ -117,9 +119,12 @@
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#deep-sleep-mode">Deep-sleep mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#temp">Temp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#module-machine.UART">UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#module-music">Music</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#module-ble">ble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="quickref.html#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ubluepy.html">ubluepy libraries for nRF52832</a></li>
 </ul>
 
             
@@ -224,9 +229,13 @@ operating modes, internal functioning, etc.</p>
 <li>GPIO: 32 (GPIOs are multiplexed with other functions, including
 external SWD, UART, etc.)</li>
 <li>UART: 1 RX/TX UART (hardware handshaking)</li>
-<li>SPI: 1 SPI interfaces</li>
+<li>SPI: 3 SPI interfaces,support soft SPI and Hard SPI.</li>
 <li>I2C: 2 I2C</li>
 <li>I2S: 1</li>
+<li>PWM: 3 PWM interfaces.</li>
+<li>Timer: 5 Timers.</li>
+<li>RTCounter: 3 Real time  clock Counter.</li>
+<li>temp: temperature register.</li>
 <li>ADC: 12-bit SAADC up to 8 channels</li>
 <li>Programming: using bootloader from UART -
 and always-available BootROM bootloader</li>
@@ -256,7 +265,7 @@ and always-available BootROM bootloader</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 24 May 2019.
+      Last updated on 30 May 2019.
 
     </p>
   </div>

@@ -104,6 +104,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#delay-and-timing">Delay and timing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#timers">Timers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pins-and-gpio">Pins and GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#leds-on-board-leds">LEDs (on board leds)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#button-on-board-buttons">BUTTON (on board buttons)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pwm-pulse-width-modulation">PWM (pulse width modulation)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adc-analog-to-digital-conversion">ADC (analog to digital conversion)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#software-spi-bus">Software SPI bus</a></li>
@@ -113,9 +115,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#deep-sleep-mode">Deep-sleep mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#temp">Temp</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-machine.UART">UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-music">Music</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ble">ble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="ubluepy.html">ubluepy libraries for nRF52832</a></li>
 </ul>
 
             
@@ -353,7 +358,7 @@ with timer ID of -1:</p>
 <code class="descclassname">Pin.</code><code class="descname">IRQ_RISING</code><a class="headerlink" href="#machine.Pin.IRQ_RISING" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<p>Available Pins are from the following ranges (inclusive): 2-20, 25-31.
+<p>Available Pins are from the following ranges (inclusive): 2-20, 23-31.
 These correspond to the actual GPIO pin numbers of nRF52832 chip.  Note that many
 end-user boards use their own adhoc pin numbering (marked e.g. D0, D1, …).
 For mapping between board logical pins and physical chip pins consult your board
@@ -361,22 +366,72 @@ documentation.</p>
 <p>Notes:</p>
 <ul class="simple">
 <li>Pins 6 and 8 are REPL UART TX and RX respectively</li>
-<li>Pins 7, 15, 16, and 27 are used for connecting the lcd screen driver,
+<li>Pins 7, 16, 23, 24， and 27 are used for connecting the lcd screen driver,
 and are not recommended for other uses</li>
 <li>Pins 11 and 18 are used for connecting the button, and it have been pull up 10k to 3.3v</li>
 <li>Pins 17 and 19 are used for connecting the led.</li>
 </ul>
+</div>
+<div class="section" id="leds-on-board-leds">
+<h2>LEDs (on board leds)<a class="headerlink" href="#leds-on-board-leds" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>nRF52832-Bluefruit52 board have two leds, connect to pin 17 and 19. Here are some function:</div></blockquote>
+<dl class="docutils">
+<dt>Use the <code class="docutils literal notranslate"><span class="pre">board.LED</span></code> class::</dt>
+<dd>import board
+led1 = board.LED(1)         #LED(1) connect pin17
+led2 = board.LED(2)         #LED(2) connect pin19
+led1.on()                   #LED(1) show on.
+led2.on()                   #LED(2) show on.
+led1.off()                  #LED(1) show off.
+led2.off()                  #LED(2) show off.
+led1.toggle()               #LED(1) toggle show.
+led2.toggle()               #LED(2) toggle show.</dd>
+</dl>
+</div>
+<div class="section" id="button-on-board-buttons">
+<h2>BUTTON (on board buttons)<a class="headerlink" href="#button-on-board-buttons" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>nRF52832-Bluefruit52 board have two buttons, connect to pin 11 and 18. Here are some function:</div></blockquote>
+<dl class="docutils">
+<dt>Use the <code class="docutils literal notranslate"><span class="pre">board.BUTTON</span></code> class::</dt>
+<dd>import board
+btn1 = board.BUTTON(1)      #BUTTON(1) connect pin18
+btn2 = board.BUTTON(2)      #BUTTON(2) connect pin11
+btn1.isPressed()            #check button is pressed, if pressed return True, else return False
+btn1.getPresses()           #get button pin level state. Default HIGH is 1, if button is pressed return 0.</dd>
+<dt>example for button control led::</dt>
+<dd><p class="first">import board
+led1 = board.LED(1)
+led2 = board.LED(2)</p>
+<p>btn1 = board.BUTTON(1)
+btn2 = board.BUTTON(2)</p>
+<dl class="last docutils">
+<dt>while True:</dt>
+<dd><dl class="first last docutils">
+<dt>if btn1.isPressed():       #scan button 1</dt>
+<dd>led1.toggle()          #LED(1) toggle</dd>
+<dt>if btn2.isPressed():       #scan button 2</dt>
+<dd>led2.toggle()          #LED(2) toggle</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 <div class="section" id="pwm-pulse-width-modulation">
 <h2>PWM (pulse width modulation)<a class="headerlink" href="#pwm-pulse-width-modulation" title="Permalink to this headline">¶</a></h2>
 <p>PWM can be enabled on all output-enabled pins. The base frequency can
 range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
 <em>increases</em> the duty resolution <em>decreases</em>.</p>
+<p>PWM id optional is 0,1,2.</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">machine.PWM</span></code> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
-<span class="c1"># create PWM object from a pin,and set duty period.</span>
-<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pin</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span><span class="n">duty</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="c1"># create PWM object from id, pin, freq and set duty, period.</span>
+<span class="c1"># eg. use PWM(0) for P11 pin out, and set frequency is 1000Hz, duty is 90%.</span>
+<span class="c1"># if you want to change frequency, you need change &#39;freq&#39; and &#39;period&#39; parameter. freq_out = freq/period.</span>
+<span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pin</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span><span class="n">freq</span><span class="o">=</span><span class="n">PWM</span><span class="o">.</span><span class="n">FREQ_16MHZ</span><span class="p">,</span><span class="n">duty</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">16000</span><span class="p">)</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>             <span class="c1"># start pwm out</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>         <span class="c1"># nothing work</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">duty</span><span class="p">()</span>             <span class="c1"># nothing work</span>
@@ -416,14 +471,16 @@ range from 1Hz to 16MHz but there is a tradeoff; as the base frequency
 <p>On the nRF52832 ADC functionality is available 8 channels（0~7）. Note that, when
 using the default configuration, input voltages on the ADC pin must be between
 0.0v and 3.3v.  Attenuation must be applied in order to increase this usable voltage range.</p>
-<p>Analog Pin:
-ADC(1)—&gt;GPIO0.02
-ADC(2)—&gt;GPIO0.03
-ADC(3)—&gt;GPIO0.04
-ADC(4)—&gt;GPIO0.05
-ADC(5)—&gt;GPIO0.28
-ADC(6)—&gt;GPIO0.29
-ADC(7)—&gt;GPIO0.30</p>
+<p>Notes, Analog Pin:</p>
+<ul class="simple">
+<li>ADC(1)—&gt;GPIO0.02</li>
+<li>ADC(2)—&gt;GPIO0.03</li>
+<li>ADC(3)—&gt;GPIO0.04</li>
+<li>ADC(4)—&gt;GPIO0.05</li>
+<li>ADC(5)—&gt;GPIO0.28</li>
+<li>ADC(6)—&gt;GPIO0.29</li>
+<li>ADC(7)—&gt;GPIO0.30</li>
+</ul>
 <p>Use the <a class="reference internal" href="../library/machine.ADC.html#machine-adc"><span class="std std-ref">machine.ADC</span></a> class:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">ADC</span>
 
@@ -779,14 +836,195 @@ included in the returned bytes.</p>
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="module-music">
+<span id="music"></span><h2>Music<a class="headerlink" href="#module-music" title="Permalink to this headline">¶</a></h2>
+<p>This is the <code class="docutils literal notranslate"><span class="pre">music</span></code> module. You can use it to play simple tunes, provided
+that you connect a speaker to your board. By default the <code class="docutils literal notranslate"><span class="pre">music</span></code> module
+expects the speaker to be connected via pin 30:</p>
+<p>This arrangement can be overridden (as discussed below).</p>
+<p>To access this module you need to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">music</span>
+</pre></div>
+</div>
+<p>We assume you have done this for the examples below.</p>
+<p>Musical Notation</p>
+<p>An individual note is specified thus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NOTE</span><span class="p">[</span><span class="n">octave</span><span class="p">][:</span><span class="n">duration</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">A1:4</span></code> refers to the note “A” in octave 1 that lasts for four
+ticks (a tick is an arbitrary length of time defined by a tempo setting
+function - see below). If the note name <code class="docutils literal notranslate"><span class="pre">R</span></code> is used then it is treated as a
+rest (silence).</p>
+<p>Accidentals (flats and sharps) are denoted by the <code class="docutils literal notranslate"><span class="pre">b</span></code> (flat - a lower case b)
+and <code class="docutils literal notranslate"><span class="pre">#</span></code> (sharp - a hash symbol). For example, <code class="docutils literal notranslate"><span class="pre">Ab</span></code> is A-flat and <code class="docutils literal notranslate"><span class="pre">C#</span></code> is
+C-sharp.</p>
+<p><strong>Note names are case-insensitive.</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">octave</span></code> and <code class="docutils literal notranslate"><span class="pre">duration</span></code> parameters are states that carry over to
+subsequent notes until re-specified. The default states are <code class="docutils literal notranslate"><span class="pre">octave</span> <span class="pre">=</span> <span class="pre">4</span></code>
+(containing middle C) and <code class="docutils literal notranslate"><span class="pre">duration</span> <span class="pre">=</span> <span class="pre">4</span></code> (a crotchet, given the default tempo
+settings - see below).</p>
+<p>For example, if 4 ticks is a crotchet, the following list is crotchet, quaver,
+quaver, crotchet based arpeggio:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;c1:4&#39;</span><span class="p">,</span> <span class="s1">&#39;e:2&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;c2:4&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The opening of Beethoven’s 5th Symphony would be encoded thus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;r4:2&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;eb:8&#39;</span><span class="p">,</span> <span class="s1">&#39;r:2&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;d:8&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The definition and scope of an octave conforms to the table listed <a class="reference external" href="https://en.wikipedia.org/wiki/Scientific_pitch_notation#Table_of_note_frequencies">on this
+page about scientific pitch notation</a>.  For example, middle “C” is <code class="docutils literal notranslate"><span class="pre">'c4'</span></code> and
+concert “A” (440) is <code class="docutils literal notranslate"><span class="pre">'a4'</span></code>. Octaves start on the note “C”.</p>
+<p>Functions</p>
+<dl class="function">
+<dt id="music.set_tempo">
+<code class="descclassname">music.</code><code class="descname">set_tempo</code><span class="sig-paren">(</span><em>ticks=4</em>, <em>bpm=120</em><span class="sig-paren">)</span><a class="headerlink" href="#music.set_tempo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the approximate tempo for playback.</p>
+<p>A number of ticks (expressed as an integer) constitute a beat. Each beat is to be played at a certain frequency per minute (expressed as the more familiar BPM - beats per minute - also as an integer).</p>
+<p>Suggested default values allow the following useful behaviour:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">music.set_tempo()</span></code> - reset the tempo to default of ticks = 4, bpm = 120</li>
+<li><code class="docutils literal notranslate"><span class="pre">music.set_tempo(ticks=8)</span></code> - change the “definition” of a beat</li>
+<li><code class="docutils literal notranslate"><span class="pre">music.set_tempo(bpm=180)</span></code> - just change the tempo</li>
+</ul>
+<p>To work out the length of a tick in milliseconds is very simple arithmetic: <code class="docutils literal notranslate"><span class="pre">60000/bpm/ticks_per_beat</span></code> . For the default values that’s <code class="docutils literal notranslate"><span class="pre">60000/120/4</span> <span class="pre">=</span> <span class="pre">125</span> <span class="pre">milliseconds</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">beat</span> <span class="pre">=</span> <span class="pre">500</span> <span class="pre">milliseconds</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="music.get_tempo">
+<code class="descclassname">music.</code><code class="descname">get_tempo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#music.get_tempo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current tempo as a tuple of integers: <code class="docutils literal notranslate"><span class="pre">(ticks,</span> <span class="pre">bpm)</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="music.play">
+<code class="descclassname">music.</code><code class="descname">play</code><span class="sig-paren">(</span><em>music</em>, <em>pin=microbit.pin0</em>, <em>wait=True</em>, <em>loop=False</em><span class="sig-paren">)</span><a class="headerlink" href="#music.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays <code class="docutils literal notranslate"><span class="pre">music</span></code> containing the musical DSL defined above.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">music</span></code> is a string it is expected to be a single note such as,
+<code class="docutils literal notranslate"><span class="pre">'c1:4'</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">music</span></code> is specified as a list of notes (as defined in the section on
+the musical DSL, above) then they are played one after the other to perform
+a melody.</p>
+<p>In both cases, the <code class="docutils literal notranslate"><span class="pre">duration</span></code> and <code class="docutils literal notranslate"><span class="pre">octave</span></code> values are reset to
+their defaults before the music (whatever it may be) is played.</p>
+<p>An optional argument to specify the output pin can be used to override the
+default of <code class="docutils literal notranslate"><span class="pre">microbit.pin0</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wait</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this function is blocking.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">loop</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the tune repeats until <code class="docutils literal notranslate"><span class="pre">stop</span></code> is called
+(see below) or the blocking call is interrupted.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="music.pitch">
+<code class="descclassname">music.</code><code class="descname">pitch</code><span class="sig-paren">(</span><em>frequency</em>, <em>duration=-1</em>, <em>pin=microbit.pin0</em>, <em>wait=True</em><span class="sig-paren">)</span><a class="headerlink" href="#music.pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays a pitch at the integer frequency given for the specified number of
+milliseconds. For example, if the frequency is set to 440 and the length to
+1000 then we hear a standard concert A for one second.</p>
+<p>Note that you can only play one pitch on one pin at any one time.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">wait</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, this function is blocking.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">duration</span></code> is negative the pitch is played continuously until either the
+blocking call is interrupted or, in the case of a background call, a new
+frequency is set or <code class="docutils literal notranslate"><span class="pre">stop</span></code> is called (see below).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="music.stop">
+<code class="descclassname">music.</code><code class="descname">stop</code><span class="sig-paren">(</span><em>pin=microbit.pin0</em><span class="sig-paren">)</span><a class="headerlink" href="#music.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops all music playback on a given pin, eg. <code class="docutils literal notranslate"><span class="pre">music.stop(pin1)</span></code>.
+If no pin is given, eg. <code class="docutils literal notranslate"><span class="pre">music.stop()</span></code> pin0 is assumed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="music.reset">
+<code class="descclassname">music.</code><code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#music.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the state of the following attributes in the following way:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ticks</span> <span class="pre">=</span> <span class="pre">4</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">bpm</span> <span class="pre">=</span> <span class="pre">120</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">duration</span> <span class="pre">=</span> <span class="pre">4</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">octave</span> <span class="pre">=</span> <span class="pre">4</span></code></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<p>Built in Melodies</p>
+<p>For the purposes of education and entertainment, the module contains several
+example tunes that are expressed as Python lists. They can be used like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">music</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">music</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">music</span><span class="o">.</span><span class="n">NYAN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All the tunes are either out of copyright, composed by Nicholas H.Tollervey and
+released to the public domain or have an unknown composer and are covered by a
+fair (educational) use provision.</p>
+<p>They are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">DADADADUM</span></code> - the opening to Beethoven’s 5th Symphony in C minor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENTERTAINER</span></code> - the opening fragment of Scott Joplin’s Ragtime classic “The Entertainer”.</li>
+<li><code class="docutils literal notranslate"><span class="pre">PRELUDE</span></code> - the opening of the first Prelude in C Major of J.S.Bach’s 48 Preludes and Fugues.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ODE</span></code> - the “Ode to Joy” theme from Beethoven’s 9th Symphony in D minor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">NYAN</span></code> - the Nyan Cat theme (<a class="reference external" href="http://www.nyan.cat/">http://www.nyan.cat/</a>). The composer is unknown. This is fair use for educational porpoises (as they say in New York).</li>
+<li><code class="docutils literal notranslate"><span class="pre">RINGTONE</span></code> - something that sounds like a mobile phone ringtone. To be used to indicate an incoming message.</li>
+<li><code class="docutils literal notranslate"><span class="pre">FUNK</span></code> - a funky bass line for secret agents and criminal masterminds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">BLUES</span></code> - a boogie-woogie 12-bar blues walking bass.</li>
+<li><code class="docutils literal notranslate"><span class="pre">BIRTHDAY</span></code> - “Happy Birthday to You…” for copyright status see: <a class="reference external" href="http://www.bbc.co.uk/news/world-us-canada-34332853">http://www.bbc.co.uk/news/world-us-canada-34332853</a></li>
+<li><code class="docutils literal notranslate"><span class="pre">WEDDING</span></code> - the bridal chorus from Wagner’s opera “Lohengrin”.</li>
+<li><code class="docutils literal notranslate"><span class="pre">FUNERAL</span></code> - the “funeral march” otherwise known as Frédéric Chopin’s Piano Sonata No. 2 in B♭ minor, Op. 35.</li>
+<li><code class="docutils literal notranslate"><span class="pre">PUNCHLINE</span></code> - a fun fragment that signifies a joke has been made.</li>
+<li><code class="docutils literal notranslate"><span class="pre">PYTHON</span></code> - John Philip Sousa’s march “Liberty Bell” aka, the theme for “Monty Python’s Flying Circus” (after which the Python programming language is named).</li>
+<li><code class="docutils literal notranslate"><span class="pre">BADDY</span></code> - silent movie era entrance of a baddy.</li>
+<li><code class="docutils literal notranslate"><span class="pre">CHASE</span></code> - silent movie era chase scene.</li>
+<li><code class="docutils literal notranslate"><span class="pre">BA_DING</span></code> - a short signal to indicate something has happened.</li>
+<li><code class="docutils literal notranslate"><span class="pre">WAWAWAWAA</span></code> - a very sad trombone.</li>
+<li><code class="docutils literal notranslate"><span class="pre">JUMP_UP</span></code> - for use in a game, indicating upward movement.</li>
+<li><code class="docutils literal notranslate"><span class="pre">JUMP_DOWN</span></code> - for use in a game, indicating downward movement.</li>
+<li><code class="docutils literal notranslate"><span class="pre">POWER_UP</span></code> - a fanfare to indicate an achievement unlocked.</li>
+<li><code class="docutils literal notranslate"><span class="pre">POWER_DOWN</span></code> - a sad fanfare to indicate an achievement lost.</li>
+</ul>
+</div></blockquote>
 <p>See the MicroPython forum for other community-supported alternatives
 to transfer files to an nRF52832 board.</p>
+</div>
+<div class="section" id="module-ble">
+<span id="ble"></span><h2>ble<a class="headerlink" href="#module-ble" title="Permalink to this headline">¶</a></h2>
+<p>The ble module contains specific functions related to the nRF52832 bluetooth
+hardware. Used incorrectly, this can lead to malfunction, lockups,
+crashes of your board, and in extreme cases, hardware damage.</p>
+<p>Functions</p>
+<dl class="method">
+<dt id="ble.ble.enable">
+<code class="descclassname">ble.</code><code class="descname">enable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.ble.enable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable BLE softdevice.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ble.ble.disable">
+<code class="descclassname">ble.</code><code class="descname">disable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.ble.disable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disable BLE softdevice.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ble.ble.enabled">
+<code class="descclassname">ble.</code><code class="descname">enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.ble.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get state of whether the softdevice is enabled or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ble.ble.address">
+<code class="descclassname">ble.</code><code class="descname">address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.ble.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return device address as text string.</p>
+</dd></dl>
+
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
-<dt id="machine.UART.mountsd.py">
-<code class="descclassname">mountsd.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.mountsd.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.mountsd.py">
+<code class="descclassname">mountsd.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.mountsd.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Example for nrf52832 to show how mount and list a sdcard connected over SPI:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Example for pca10040 / nrf52832 to show how mount and list a sdcard connected over SPI.</span>
@@ -824,8 +1062,8 @@ to transfer files to an nRF52832 board.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.musictest.py">
-<code class="descclassname">musictest.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.musictest.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.musictest.py">
+<code class="descclassname">musictest.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.musictest.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Example for nrf52832 to usage where “P3” is the Buzzer pin:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Example usage where &quot;P3&quot; is the Buzzer pin.</span>
@@ -846,8 +1084,8 @@ to transfer files to an nRF52832 board.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.nrf52_pwm.py">
-<code class="descclassname">nrf52_pwm.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.nrf52_pwm.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.nrf52_pwm.py">
+<code class="descclassname">nrf52_pwm.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.nrf52_pwm.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Example for nrf52832 to out pwm:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
@@ -869,8 +1107,8 @@ to transfer files to an nRF52832 board.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.nrf52_servo.py">
-<code class="descclassname">nrf52_servo.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.nrf52_servo.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.nrf52_servo.py">
+<code class="descclassname">nrf52_servo.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.nrf52_servo.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Example for nrf52832 to driver servo:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Pin</span>
@@ -903,8 +1141,8 @@ to transfer files to an nRF52832 board.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.powerup.py">
-<code class="descclassname">powerup.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.powerup.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.powerup.py">
+<code class="descclassname">powerup.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.powerup.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Examples is written for nrf52832, pca10040 using s132 bluetooth stack:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># MicroPython controller for PowerUp 3.0 paper airplane</span>
 <span class="c1"># https://www.poweruptoys.com/products/powerup-v3</span>
@@ -1105,8 +1343,8 @@ to transfer files to an nRF52832 board.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.ssd1306_oled.py">
-<code class="descclassname">ssd1306_oled.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.ssd1306_oled.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.ssd1306_oled.py">
+<code class="descclassname">ssd1306_oled.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.ssd1306_oled.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Examples is written for nrf52832 driver ssd1306 oled displayer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: Modified version to align with implemented I2C API in nrf port.</span>
 <span class="c1">#</span>
@@ -1167,8 +1405,8 @@ to transfer files to an nRF52832 board.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="machine.UART.ubluepy_eddystone.py">
-<code class="descclassname">ubluepy_eddystone.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.UART.ubluepy_eddystone.py" title="Permalink to this definition">¶</a></dt>
+<dt id="ble.ubluepy_eddystone.py">
+<code class="descclassname">ubluepy_eddystone.</code><code class="descname">py</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ble.ubluepy_eddystone.py" title="Permalink to this definition">¶</a></dt>
 <dd><p>Examples is written for nrf52832 ubluepy module API example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ubluepy</span> <span class="k">import</span> <span class="n">Peripheral</span><span class="p">,</span> <span class="n">constants</span>
 
@@ -1377,7 +1615,7 @@ to transfer files to an nRF52832 board.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 24 May 2019.
+      Last updated on 30 May 2019.
 
     </p>
   </div>

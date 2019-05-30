@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="esp32/quickref.html">Quick reference for the ESP32</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wipy/quickref.html">Quick reference for the WiPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nrf52/quickref.html">Quick reference for the nRF52832</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nrf52/ubluepy.html">ubluepy libraries for nRF52832</a></li>
 </ul>
 
             
@@ -251,6 +252,8 @@
 </li>
       <li><a href="library/machine.ADC.html#machine.adcchannel">adcchannel() (in module machine)</a>
 </li>
+      <li><a href="nrf52/quickref.html#ble.ble.address">address() (ble.ble method)</a>
+</li>
       <li><a href="library/uctypes.html#uctypes.addressof">addressof() (in module uctypes)</a>
 </li>
       <li><a href="library/ucryptolib.html#ucryptolib.aes">aes (class in ucryptolib)</a>
@@ -271,10 +274,10 @@
 </li>
       <li><a href="library/micropython.html#micropython.alloc_emergency_exception_buf">alloc_emergency_exception_buf() (in module micropython)</a>
 </li>
-      <li><a href="wipy/general.html#machine.Pin.alt_list">alt_list() (machine.Pin method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="wipy/general.html#machine.Pin.alt_list">alt_list() (machine.Pin method)</a>
+</li>
       <li><a href="library/pyb.Servo.html#pyb.Servo.angle">angle() (pyb.Servo method)</a>
 </li>
       <li><a href="library/network.WLANWiPy.html#network.WLANWiPy.antenna">antenna() (network.WLANWiPy method)</a>
@@ -339,14 +342,16 @@
 </li>
       <li><a href="library/usocket.html#usocket.socket.bind">bind() (usocket.socket method)</a>
 </li>
+      <li><a href="nrf52/quickref.html#module-ble">ble (module)</a>
+</li>
       <li><a href="library/framebuf.html#framebuf.FrameBuffer.blit">blit() (framebuf.FrameBuffer method)</a>
 </li>
       <li><a href="reference/glossary.html#term-board"><strong>board</strong></a>
 </li>
-      <li><a href="library/builtins.html#bool">bool (built-in class)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="library/builtins.html#bool">bool (built-in class)</a>
+</li>
       <li><a href="library/pyb.html#pyb.bootloader">bootloader() (in module pyb)</a>
 </li>
       <li><a href="library/btree.html#module-btree">btree (module)</a>
@@ -439,8 +444,18 @@
         <li><a href="library/pyb.Timer.html#pyb.Timer.channel">(pyb.Timer method)</a>
 </li>
       </ul></li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Characteristic">Characteristic() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Characteristic.properties">Characteristic.properties() (in module ubluepy)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Characteristic.read">Characteristic.read() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Characteristic.uuid">Characteristic.uuid() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Characteristic.write">Characteristic.write() (in module ubluepy)</a>
+</li>
       <li><a href="library/uos.html#uos.chdir">chdir() (in module uos)</a>
 </li>
       <li><a href="library/builtins.html#chr">chr() (built-in function)</a>
@@ -495,6 +510,8 @@
       </ul></li>
       <li><a href="library/micropython.html#micropython.const">const() (in module micropython)</a>
 </li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.constants">constants() (in module ubluepy)</a>
+</li>
       <li><a href="library/pyb.LCD.html#pyb.LCD.contrast">contrast() (pyb.LCD method)</a>
 </li>
       <li><a href="library/math.html#math.copysign">copysign() (in module math)</a>
@@ -537,6 +554,12 @@
         <li><a href="nrf52/quickref.html#machine.machine.deepsleep">(machine.machine method)</a>
 </li>
       </ul></li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.DefaultDelegate">DefaultDelegate() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.DefaultDelegate.handleConnection">DefaultDelegate.handleConnection() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.DefaultDelegate.handleNotification">DefaultDelegate.handleNotification() (in module ubluepy)</a>
+</li>
       <li><a href="library/math.html#math.degrees">degrees() (in module math)</a>
 </li>
       <li><a href="library/machine.ADC.html#machine.ADC.deinit">deinit() (machine.ADC method)</a>
@@ -579,10 +602,10 @@
 </li>
       <li><a href="library/ucollections.html#ucollections.deque">deque() (in module ucollections)</a>
 </li>
-      <li><a href="library/btree.html#btree.DESC">DESC (in module btree)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="library/btree.html#btree.DESC">DESC (in module btree)</a>
+</li>
       <li><a href="library/builtins.html#dict">dict (built-in class)</a>
 </li>
       <li><a href="library/pyb.Pin.html#pyb.Pin.dict">dict() (pyb.Pin class method)</a>
@@ -591,9 +614,11 @@
 </li>
       <li><a href="library/builtins.html#dir">dir() (built-in function)</a>
 </li>
-      <li><a href="library/gc.html#gc.disable">disable() (in module gc)</a>
+      <li><a href="nrf52/quickref.html#ble.ble.disable">disable() (ble.ble method)</a>
 
       <ul>
+        <li><a href="library/gc.html#gc.disable">(in module gc)</a>
+</li>
         <li><a href="library/pyb.ExtInt.html#pyb.ExtInt.disable">(pyb.ExtInt method)</a>
 </li>
       </ul></li>
@@ -667,9 +692,11 @@
 </li>
       <li><a href="library/pyb.html#pyb.elapsed_millis">elapsed_millis() (in module pyb)</a>
 </li>
-      <li><a href="library/gc.html#gc.enable">enable() (in module gc)</a>
+      <li><a href="nrf52/quickref.html#ble.ble.enable">enable() (ble.ble method)</a>
 
       <ul>
+        <li><a href="library/gc.html#gc.enable">(in module gc)</a>
+</li>
         <li><a href="library/pyb.ExtInt.html#pyb.ExtInt.enable">(pyb.ExtInt method)</a>
 </li>
       </ul></li>
@@ -681,6 +708,8 @@
         <li><a href="nrf52/quickref.html#machine.machine.enable_irq">(machine.machine method)</a>
 </li>
       </ul></li>
+      <li><a href="nrf52/quickref.html#ble.ble.enabled">enabled() (ble.ble method)</a>
+</li>
       <li><a href="library/ucryptolib.html#ucryptolib.aes.encrypt">encrypt() (ucryptolib.aes method)</a>
 </li>
       <li><a href="library/ure.html#ure.match.end">end() (ure.match method)</a>
@@ -691,10 +720,10 @@
 </li>
       <li><a href="library/math.html#math.erf">erf() (in module math)</a>
 </li>
-      <li><a href="library/math.html#math.erfc">erfc() (in module math)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="library/math.html#math.erfc">erfc() (in module math)</a>
+</li>
       <li><a href="library/uerrno.html#uerrno.errorcode">errorcode (in module uerrno)</a>
 </li>
       <li><a href="library/esp.html#module-esp">esp (module)</a>
@@ -844,6 +873,8 @@
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.get_line">get_line() (lcd160cr.LCD160CR method)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.get_pixel">get_pixel() (lcd160cr.LCD160CR method)</a>
+</li>
+      <li><a href="nrf52/quickref.html#music.get_tempo">get_tempo() (in module music)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.get_touch">get_touch() (lcd160cr.LCD160CR method)</a>
 </li>
@@ -1393,6 +1424,8 @@
 </li>
       <li><a href="library/nrf52.html#mpu6050.MPU6050.MPU6050_RA_TEMP_OUT_H">MPU6050.MPU6050_RA_TEMP_OUT_H (in module mpu6050)</a>
 </li>
+      <li><a href="nrf52/quickref.html#module-music">music (module)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1497,6 +1530,26 @@
         <li><a href="library/pyb.Timer.html#pyb.Timer.period">(pyb.Timer method)</a>
 </li>
       </ul></li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral">Peripheral() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.addService">Peripheral.addService() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.advertise">Peripheral.advertise() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.advertise_stop">Peripheral.advertise_stop() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.connect">Peripheral.connect() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.disconnect">Peripheral.disconnect() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.getServices">Peripheral.getServices() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.setConnectionHandler">Peripheral.setConnectionHandler() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.setNotificationHandler">Peripheral.setNotificationHandler() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Peripheral.withDelegate">Peripheral.withDelegate() (in module ubluepy)</a>
+</li>
       <li><a href="library/cmath.html#cmath.phase">phase() (in module cmath)</a>
 </li>
       <li><a href="library/network.html#network.phy_mode">phy_mode() (in module network)</a>
@@ -1567,6 +1620,8 @@
         <li><a href="library/pyb.Pin.html#pyb.Pin.PULL_UP">(in module pyb)</a>
 </li>
       </ul></li>
+      <li><a href="nrf52/quickref.html#music.pitch">pitch() (in module music)</a>
+</li>
       <li><a href="library/framebuf.html#framebuf.FrameBuffer.pixel">pixel() (framebuf.FrameBuffer method)</a>
 
       <ul>
@@ -1575,8 +1630,12 @@
       </ul></li>
       <li><a href="library/sys.html#sys.platform">platform (in module sys)</a>
 </li>
+      <li><a href="nrf52/quickref.html#music.play">play() (in module music)</a>
+</li>
       <li><a href="library/cmath.html#cmath.polar">polar() (in module cmath)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/uselect.html#uselect.poll">poll() (in module uselect)</a>
 
       <ul>
@@ -1591,8 +1650,6 @@
 </li>
       <li><a href="reference/glossary.html#term-port"><strong>port</strong></a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/pyb.Pin.html#pyb.Pin.port">port() (pyb.Pin method)</a>
 </li>
       <li><a href="library/nrf52.SERVO.html#servo.position">position() (in module servo)</a>
@@ -1649,20 +1706,20 @@
 </li>
       <li><a href="nrf52/quickref.html#machine.PWM.MODE_LOW_HIGH">PWM.MODE_LOW_HIGH (in module machine)</a>
 </li>
-      <li><a href="nrf52/quickref.html#machine.UART.mountsd.py">py() (machine.UART.mountsd method)</a>
+      <li><a href="nrf52/quickref.html#ble.mountsd.py">py() (ble.mountsd method)</a>
 
       <ul>
-        <li><a href="nrf52/quickref.html#machine.UART.musictest.py">(machine.UART.musictest method)</a>
+        <li><a href="nrf52/quickref.html#ble.musictest.py">(ble.musictest method)</a>
 </li>
-        <li><a href="nrf52/quickref.html#machine.UART.nrf52_pwm.py">(machine.UART.nrf52_pwm method)</a>
+        <li><a href="nrf52/quickref.html#ble.nrf52_pwm.py">(ble.nrf52_pwm method)</a>
 </li>
-        <li><a href="nrf52/quickref.html#machine.UART.nrf52_servo.py">(machine.UART.nrf52_servo method)</a>
+        <li><a href="nrf52/quickref.html#ble.nrf52_servo.py">(ble.nrf52_servo method)</a>
 </li>
-        <li><a href="nrf52/quickref.html#machine.UART.powerup.py">(machine.UART.powerup method)</a>
+        <li><a href="nrf52/quickref.html#ble.powerup.py">(ble.powerup method)</a>
 </li>
-        <li><a href="nrf52/quickref.html#machine.UART.ssd1306_oled.py">(machine.UART.ssd1306_oled method)</a>
+        <li><a href="nrf52/quickref.html#ble.ssd1306_oled.py">(ble.ssd1306_oled method)</a>
 </li>
-        <li><a href="nrf52/quickref.html#machine.UART.ubluepy_eddystone.py">(machine.UART.ubluepy_eddystone method)</a>, <a href="nrf52/quickref.html#machine.UART.ubluepy_eddystone.py">[1]</a>, <a href="nrf52/quickref.html#machine.UART.ubluepy_eddystone.py">[2]</a>
+        <li><a href="nrf52/quickref.html#ble.ubluepy_eddystone.py">(ble.ubluepy_eddystone method)</a>, <a href="nrf52/quickref.html#ble.ubluepy_eddystone.py">[1]</a>, <a href="nrf52/quickref.html#ble.ubluepy_eddystone.py">[2]</a>
 </li>
       </ul></li>
       <li><a href="library/pyb.html#module-pyb">pyb (module)</a>
@@ -1848,6 +1905,8 @@
       <li><a href="library/machine.html#machine.reset">reset() (in module machine)</a>
 
       <ul>
+        <li><a href="nrf52/quickref.html#music.reset">(in module music)</a>
+</li>
         <li><a href="library/nrf52.SERVO.html#pca9685.reset">(in module pca9685)</a>
 </li>
         <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.reset">(lcd160cr.LCD160CR method)</a>
@@ -1913,6 +1972,20 @@
         <li><a href="library/pyb.I2C.html#pyb.I2C.scan">(pyb.I2C method)</a>
 </li>
       </ul></li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.ScanEntry">ScanEntry() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.ScanEntry.addr">ScanEntry.addr() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.ScanEntry.addr_type">ScanEntry.addr_type() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.ScanEntry.getScanData">ScanEntry.getScanData() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.ScanEntry.rssi">ScanEntry.rssi() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Scanner">Scanner() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Scanner.scan">Scanner.scan() (in module ubluepy)</a>
+</li>
       <li><a href="library/micropython.html#micropython.schedule">schedule() (in module micropython)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.screen_dump">screen_dump() (lcd160cr.LCD160CR method)</a>
@@ -1957,6 +2030,16 @@
       </ul></li>
       <li><a href="library/usocket.html#usocket.socket.sendto">sendto() (usocket.socket method)</a>
 </li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Service">Service() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Service.addCharacteristic">Service.addCharacteristic() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Service.getCharacteristic">Service.getCharacteristic() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Service.getCharacteristics">Service.getCharacteristics() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.Service.uuid">Service.uuid() (in module ubluepy)</a>
+</li>
       <li><a href="library/nrf52.SERVO.html#module-servo">servo (module)</a>
 </li>
       <li><a href="library/nrf52.SERVO.html#servo.Servos">Servos() (in module servo)</a>
@@ -1993,6 +2076,8 @@
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.set_startup_deco">set_startup_deco() (lcd160cr.LCD160CR method)</a>
 </li>
+      <li><a href="nrf52/quickref.html#music.set_tempo">set_tempo() (in module music)</a>
+</li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.set_text_color">set_text_color() (lcd160cr.LCD160CR method)</a>
 </li>
       <li><a href="library/lcd160cr.html#lcd160cr.LCD160CR.set_uart_baudrate">set_uart_baudrate() (lcd160cr.LCD160CR method)</a>
@@ -2021,6 +2106,8 @@
 </li>
       <li><a href="library/nrf.html#LCD.showChar">showChar() (in module LCD)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/nrf.html#LCD.showChinese">showChinese() (in module LCD)</a>
 </li>
       <li><a href="library/nrf.html#LCD.showFloat">showFloat() (in module LCD)</a>
@@ -2033,8 +2120,6 @@
 </li>
       <li><a href="library/nrf.html#LCD.showString">showString() (in module LCD)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/machine.Signal.html#machine.Signal">Signal (class in machine)</a>
 </li>
       <li><a href="library/cmath.html#cmath.sin">sin() (in module cmath)</a>
@@ -2143,9 +2228,11 @@
 </li>
       <li><a href="library/sys.html#sys.stdout">stdout (in module sys)</a>
 </li>
-      <li><a href="library/pyb.html#pyb.stop">stop() (in module pyb)</a>
+      <li><a href="nrf52/quickref.html#music.stop">stop() (in module music)</a>
 
       <ul>
+        <li><a href="library/pyb.html#pyb.stop">(in module pyb)</a>
+</li>
         <li><a href="library/machine.I2C.html#machine.I2C.stop">(machine.I2C method)</a>
 </li>
       </ul></li>
@@ -2285,6 +2372,8 @@
 </li>
       <li><a href="library/ubinascii.html#module-ubinascii">ubinascii (module)</a>
 </li>
+      <li><a href="nrf52/ubluepy.html#module-ubluepy">ubluepy (module)</a>
+</li>
       <li><a href="library/ucollections.html#module-ucollections">ucollections (module)</a>
 </li>
       <li><a href="library/ucryptolib.html#module-ucryptolib">ucryptolib (module)</a>
@@ -2321,10 +2410,10 @@
 </li>
       <li><a href="library/uos.html#uos.umount">umount() (in module uos)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/uos.html#uos.uname">uname() (in module uos)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/ubinascii.html#ubinascii.unhexlify">unhexlify() (in module ubinascii)</a>
 </li>
       <li><a href="library/machine.html#machine.unique_id">unique_id() (in module machine)</a>
@@ -2372,6 +2461,10 @@
       <li><a href="library/ustruct.html#module-ustruct">ustruct (module)</a>
 </li>
       <li><a href="library/utime.html#module-utime">utime (module)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.UUID">UUID() (in module ubluepy)</a>
+</li>
+      <li><a href="nrf52/ubluepy.html#ubluepy.UUID.binVal">UUID.binVal() (in module ubluepy)</a>
 </li>
       <li><a href="library/uzlib.html#module-uzlib">uzlib (module)</a>
 </li>
@@ -2545,7 +2638,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 24 May 2019.
+      Last updated on 30 May 2019.
 
     </p>
   </div>
