@@ -13,7 +13,9 @@
 
   
   
-    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="shortcut icon" href="../
+
+static/favicon.ico"/>
   
   
   
@@ -26,16 +28,24 @@
 
   
 
-  <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../static/customstyle.css" type="text/css" />
+  <link rel="stylesheet" href="../
+
+static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../
+
+static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../
+
+static/customstyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pca9685 — functionality specific to the nRF52832 Bluefruit52" href="nrf52.SERVO.html" />
     <link rel="prev" title="LCD — functions related to the nRF52832 Bluefruit52" href="nrf.html" /> 
 
   
-  <script src="../static/js/modernizr.min.js"></script>
+  <script src="../
+
+static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -96,7 +106,7 @@
 <li class="toctree-l3"><a class="reference internal" href="nrf.html"><code class="docutils literal notranslate"><span class="pre">LCD</span></code> — functions related to the nRF52832 Bluefruit52</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">mpu6050</span></code> — functionality specific to the nRF52832 Bluefruit52</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="nrf52.SERVO.html"><code class="docutils literal notranslate"><span class="pre">pca9685</span></code> — functionality specific to the nRF52832 Bluefruit52</a></li>
@@ -168,7 +178,9 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/library/nrf52.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../
+
+sources/library/nrf52.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,51 +206,15 @@ controlling nRF52832 Bluefruit52 modules.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.dmpInit">
-<code class="descclassname">mpu6050.</code><code class="descname">dmpInit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpInit" title="Permalink to this definition">¶</a></dt>
+<dt id="mpu6050.init">
+<code class="descclassname">mpu6050.</code><code class="descname">init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>mpu6050 init registers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.DMPinit">
+<code class="descclassname">mpu6050.</code><code class="descname">DMPinit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.DMPinit" title="Permalink to this definition">¶</a></dt>
 <dd><p>mpu6050 init dmp mode.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.setDMPEnabled">
-<code class="descclassname">mpu6050.</code><code class="descname">setDMPEnabled</code><span class="sig-paren">(</span><em>True</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.setDMPEnabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>set DMP Mode enable.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.dmpGetFIFOPacketSize">
-<code class="descclassname">mpu6050.</code><code class="descname">dmpGetFIFOPacketSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpGetFIFOPacketSize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return FIFO packet sizes.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.getIntStatus">
-<code class="descclassname">mpu6050.</code><code class="descname">getIntStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getIntStatus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return interrupt status.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.getFIFOCount">
-<code class="descclassname">mpu6050.</code><code class="descname">getFIFOCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getFIFOCount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return FIFO counts.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.getFIFOBytes">
-<code class="descclassname">mpu6050.</code><code class="descname">getFIFOBytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getFIFOBytes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return FIFO bytes to buffers.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.dmpGetQuaternion">
-<code class="descclassname">mpu6050.</code><code class="descname">dmpGetQuaternion</code><span class="sig-paren">(</span><em>fifoBuffer</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpGetQuaternion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculation quaternion value and return to buffers.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="mpu6050.dmpGetEuler">
-<code class="descclassname">mpu6050.</code><code class="descname">dmpGetEuler</code><span class="sig-paren">(</span><em>*fifoBuffer</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.dmpGetEuler" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculation euler angle value and return to buffers(yaw,roll,pitch).</p>
 </dd></dl>
 
 <dl class="function">
@@ -248,52 +224,106 @@ controlling nRF52832 Bluefruit52 modules.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.getAccelX">
-<code class="descclassname">mpu6050.</code><code class="descname">getAccelX</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccelX" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Accel X register value.</p>
+<dt id="mpu6050.getAccel">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel X,Y,Z register value.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.getAccelY">
-<code class="descclassname">mpu6050.</code><code class="descname">getAccelY</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccelY" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Accel Y register value.</p>
+<dt id="mpu6050.getAccel_x">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccel_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccel_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel X-axis angle value(°).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.getAccelZ">
-<code class="descclassname">mpu6050.</code><code class="descname">getAccelZ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccelZ" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Accel Z register value.</p>
+<dt id="mpu6050.getAccel_y">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccel_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccel_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel Y-axis angle value(°).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.getGyroX">
-<code class="descclassname">mpu6050.</code><code class="descname">getGyroX</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyroX" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Gyro X register value.</p>
+<dt id="mpu6050.getAccel_z">
+<code class="descclassname">mpu6050.</code><code class="descname">getAccel_z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getAccel_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Accel Z-axis angle value(°).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.getGyroY">
-<code class="descclassname">mpu6050.</code><code class="descname">getGyroY</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyroY" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Gyro Y register value.</p>
+<dt id="mpu6050.getGyros">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyros</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyros" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyros X,Y,Z register value.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="mpu6050.getGyroZ">
-<code class="descclassname">mpu6050.</code><code class="descname">getGyroZ</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyroZ" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the Gyro Z register value.</p>
+<dt id="mpu6050.getGyro_x">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyro_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyro_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyro X-axis angular velocity value(rad/s).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getGyro_Y">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyro_Y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyro_Y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyro Y-axis angular velocity value(rad/s).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getGyro_Z">
+<code class="descclassname">mpu6050.</code><code class="descname">getGyro_Z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getGyro_Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the Gyro Z-axis angular velocity value(rad/s).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.getDMPdata">
+<code class="descclassname">mpu6050.</code><code class="descname">getDMPdata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.getDMPdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the MPU6050 DMP data (pitch,roll,yaw).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.setAccelOffset">
+<code class="descclassname">mpu6050.</code><code class="descname">setAccelOffset</code><span class="sig-paren">(</span><em>x_offset</em>, <em>y_offset</em>, <em>z_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.setAccelOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>First place the MP6050 module horizontally and use the function ‘getAccel()’ to read the static register values. and set it for offset.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mpu6050.setGyrosOffset">
+<code class="descclassname">mpu6050.</code><code class="descname">setGyrosOffset</code><span class="sig-paren">(</span><em>x_offset</em>, <em>y_offset</em>, <em>z_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#mpu6050.setGyrosOffset" title="Permalink to this definition">¶</a></dt>
+<dd><p>First place the MP6050 module horizontally and use the function ‘getGyros()’ to read the static register values. and set it for offset.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="constants">
-<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
-<dl class="data">
-<dt id="mpu6050.MPU6050.MPU6050_DEFAULT_ADDRESS">
-<code class="descclassname">MPU6050.</code><code class="descname">MPU6050_DEFAULT_ADDRESS</code><a class="headerlink" href="#mpu6050.MPU6050.MPU6050_DEFAULT_ADDRESS" title="Permalink to this definition">¶</a></dt>
-<dt id="mpu6050.MPU6050.MPU6050_RA_TEMP_OUT_H">
-<code class="descclassname">MPU6050.</code><code class="descname">MPU6050_RA_TEMP_OUT_H</code><a class="headerlink" href="#mpu6050.MPU6050.MPU6050_RA_TEMP_OUT_H" title="Permalink to this definition">¶</a></dt>
-<dd><p>Selects the register address.</p>
-</dd></dl>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Examples for MPU6050:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
+<span class="n">mpu</span> <span class="o">=</span> <span class="n">MPU6050</span><span class="p">()</span>
+<span class="n">mpu</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<span class="n">mpu</span><span class="o">.</span><span class="n">DMPinit</span><span class="p">()</span>
+
+<span class="n">accel_offset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">gyros_offset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">accel_offset</span> <span class="o">=</span> <span class="n">mpu</span><span class="o">.</span><span class="n">getAccel</span><span class="p">()</span>
+<span class="n">gyros_offset</span> <span class="o">=</span> <span class="n">mpu</span><span class="o">.</span><span class="n">getGyros</span><span class="p">()</span>
+
+<span class="n">mpu</span><span class="o">.</span><span class="n">setAccelOffset</span><span class="p">(</span><span class="n">accel_offset</span><span class="p">)</span>
+<span class="n">mpu</span><span class="o">.</span><span class="n">setGyrosOffset</span><span class="p">(</span><span class="n">gyros_offset</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Temp:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getTemp</span><span class="p">())</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getAccel_x</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getAccel_y</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getAccel_z</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getGyro_x</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getGyro_y</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getGyro_z</span><span class="p">())</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">mpu</span><span class="o">.</span><span class="n">getDMPdata</span><span class="p">())</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -318,7 +348,7 @@ controlling nRF52832 Bluefruit52 modules.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2014-2019, Damien P. George, Paul Sokolovsky, and contributors
-      Last updated on 30 May 2019.
+      Last updated on 09 Jun 2019.
 
     </p>
   </div>
@@ -379,14 +409,22 @@ controlling nRF52832 Bluefruit52 modules.</p>
               SOURCELINK_SUFFIX: '.txt'
           };
       </script>
-        <script type="text/javascript" src="../static/jquery.js"></script>
-        <script type="text/javascript" src="../static/underscore.js"></script>
-        <script type="text/javascript" src="../static/doctools.js"></script>
+        <script type="text/javascript" src="../
+
+static/jquery.js"></script>
+        <script type="text/javascript" src="../
+
+static/underscore.js"></script>
+        <script type="text/javascript" src="../
+
+static/doctools.js"></script>
     
 
   
 
-  <script type="text/javascript" src="../static/js/theme.js"></script>
+  <script type="text/javascript" src="../
+
+static/js/theme.js"></script>
 
   <script type="text/javascript">
       jQuery(function () {
