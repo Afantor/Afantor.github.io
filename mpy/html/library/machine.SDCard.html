@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>class WDT – watchdog timer &mdash; MicroPython 1.11 documentation</title>
+  <title>class SDCard – secure digital memory card &mdash; MicroPython 1.11 documentation</title>
   
 
   
@@ -31,8 +31,8 @@
   <link rel="stylesheet" href="../static/customstyle.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="class SD – secure digital memory card (cc3200 port only)" href="machine.SD.html" />
-    <link rel="prev" title="class Timer – control hardware timers" href="machine.Timer.html" /> 
+    <link rel="next" title="micropython – access and control MicroPython internals" href="micropython.html" />
+    <link rel="prev" title="class SD – secure digital memory card (cc3200 port only)" href="machine.SD.html" /> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -171,13 +171,13 @@
         
           <li><a href="machine.html"><code class="docutils literal notranslate"><span class="pre">machine</span></code> — functions related to the hardware</a> &raquo;</li>
         
-      <li>class WDT – watchdog timer</li>
+      <li>class SDCard – secure digital memory card</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../sources/library/machine.WDT.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/library/machine.SDCard.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -190,40 +190,208 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="class-wdt-watchdog-timer">
-<span id="machine-wdt"></span><h1>class WDT – watchdog timer<a class="headerlink" href="#class-wdt-watchdog-timer" title="Permalink to this headline">¶</a></h1>
-<p>The WDT is used to restart the system when the application crashes and ends
-up into a non recoverable state. Once started it cannot be stopped or
-reconfigured in any way. After enabling, the application must “feed” the
-watchdog periodically to prevent it from expiring and resetting the system.</p>
-<p>Example usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">machine</span> <span class="k">import</span> <span class="n">WDT</span>
-<span class="n">wdt</span> <span class="o">=</span> <span class="n">WDT</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>  <span class="c1"># enable it with a timeout of 2s</span>
-<span class="n">wdt</span><span class="o">.</span><span class="n">feed</span><span class="p">()</span>
+  <div class="section" id="class-sdcard-secure-digital-memory-card">
+<span id="machine-sdcard"></span><h1>class SDCard – secure digital memory card<a class="headerlink" href="#class-sdcard-secure-digital-memory-card" title="Permalink to this headline">¶</a></h1>
+<p>SD cards are one of the most common small form factor removable storage media.
+SD cards come in a variety of sizes and phsyical form factors. MMC cards are
+similar removable storage devices while eMMC devices are electically similar
+storage devices designed to be embedded into other systems. All three form
+share a common protocol for communication with their host system and high-level
+support looks the same for them all. As such in MicroPython they are implemented
+in a single class called <a class="reference internal" href="#machine.SDCard" title="machine.SDCard"><code class="xref py py-class docutils literal notranslate"><span class="pre">machine.SDCard</span></code></a> .</p>
+<p>Both SD and MMC interfaces support being accessed with a variety of bus widths.
+When being accessed with a 1-bit wide interface they can be accessed using the
+SPI protocol. Different MicroPython hardware platforms support different widths
+and pin configurations but for most platforms there is a standard configuation
+for any given hardware. In general constructing an <code class="xref any docutils literal notranslate"><span class="pre">SDCard`</span></code> object with without
+passing any parameters will initialise the interface to the default card slot
+for the current hardware. The arguments listed below represent the common
+arguments that might need to be set in order to use either a non-stanard slot
+or a non-standard pin assignment. The exact subset of arguments suported will
+vary from platform to platform.</p>
+<dl class="class">
+<dt id="machine.SDCard">
+<em class="property">class </em><code class="descclassname">machine.</code><code class="descname">SDCard</code><span class="sig-paren">(</span><em>slot=1</em>, <em>width=1</em>, <em>cd=None</em>, <em>wp=None</em>, <em>sck=None</em>, <em>miso=None</em>, <em>mosi=None</em>, <em>cs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.SDCard" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides access to SD or MMC storage cards using either
+a dedicated SD/MMC interface hardware or through an SPI channel.
+The class implements the block protocol defined by <a class="reference internal" href="uos.html#uos.AbstractBlockDev" title="uos.AbstractBlockDev"><code class="xref py py-class docutils literal notranslate"><span class="pre">uos.AbstractBlockDev</span></code></a>.
+This allows the mounting of an SD card to be as simple as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uos</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">SDCard</span><span class="p">(),</span> <span class="s2">&quot;/sd&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Availability of this class: pyboard, WiPy.</p>
-<div class="section" id="constructors">
-<h2>Constructors<a class="headerlink" href="#constructors" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="machine.WDT">
-<em class="property">class </em><code class="descclassname">machine.</code><code class="descname">WDT</code><span class="sig-paren">(</span><em>id=0</em>, <em>timeout=5000</em><span class="sig-paren">)</span><a class="headerlink" href="#machine.WDT" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a WDT object and start it. The timeout must be given in seconds and
-the minimum value that is accepted is 1 second. Once it is running the timeout
-cannot be changed and the WDT cannot be stopped either.</p>
+<p>The constrcutor takes the following paramters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>slot</em> selects which of the available interfaces to use. Leaving this
+unset will select the default interface.</li>
+<li><em>width</em> selects the bus width for the SD/MMC interface.</li>
+<li><em>cd</em> can be used to specify a card-detect pin.</li>
+<li><em>wp</em> can be used to specify a write-protect pin.</li>
+<li><em>sck</em> can be used to specify an SPI clock pin.</li>
+<li><em>miso</em> can be used to specify an SPI miso pin.</li>
+<li><em>mosi</em> can be used to specify an SPI mosi pin.</li>
+<li><em>cs</em> can be used to specify an SPI chip select pin.</li>
+</ul>
+</div></blockquote>
 </dd></dl>
 
+<div class="section" id="implementation-specific-details">
+<h2>Implementation-specific details<a class="headerlink" href="#implementation-specific-details" title="Permalink to this headline">¶</a></h2>
+<p>Different implementations of the <code class="docutils literal notranslate"><span class="pre">SDCard</span></code> class on different hardware support
+varying subsets of the options above.</p>
+<div class="section" id="pyboard">
+<h3>PyBoard<a class="headerlink" href="#pyboard" title="Permalink to this headline">¶</a></h3>
+<p>The standard PyBoard has just one slot. No arguments are necessary or supported.</p>
 </div>
-<div class="section" id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
-<dt id="machine.wdt.feed">
-<code class="descclassname">wdt.</code><code class="descname">feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#machine.wdt.feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Feed the WDT to prevent it from resetting the system. The application
-should place this call in a sensible place ensuring that the WDT is
-only fed after verifying that everything is functioning correctly.</p>
-</dd></dl>
-
+<div class="section" id="esp32">
+<h3>ESP32<a class="headerlink" href="#esp32" title="Permalink to this headline">¶</a></h3>
+<p>The ESP32 provides two channels of SD/MMC hardware and also supports
+access to SD Cards through either of the two SPI ports that are
+generally available to the user. As a result the <em>slot</em> argument can
+take a value between 0 and 3, inclusive. Slots 0 and 1 use the
+built-in SD/MMC hardware while slots 2 and 3 use the SPI ports. Slot 0
+supports 1, 4 or 8-bit wide access while slot 1 supports 1 or 4-bit
+access; the SPI slots only support 1-bit access.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Slot 0 is used to communicate with on-board flash memory
+on most ESP32 modules and so will be unavailable to the
+user.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Most ESP32 modules that provide an SD card slot using the
+dedicated hardware only wire up 1 data pin, so the default
+value for <em>width</em> is 1.</p>
+</div>
+</div></blockquote>
+<p>The pins used by the dedicated SD/MMC hardware are fixed. The pins
+used by the SPI hardware can be reassigned.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If any of the SPI signals are remapped then all of the SPI
+signals will pass through a GPIO multiplexer unit which
+can limit the performance of high frequency signals. Since
+the normal operating speed for SD cards is 40MHz this can
+cause problems on some cards.</p>
+</div>
+</div></blockquote>
+<p>The default (and preferred) pin assignment are as follows:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Slot</th>
+<th class="head">0</th>
+<th class="head">1</th>
+<th class="head">2</th>
+<th class="head">3</th>
+</tr>
+<tr class="row-even"><th class="head">Signal</th>
+<th class="head">Pin</th>
+<th class="head">Pin</th>
+<th class="head">Pin</th>
+<th class="head">Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><td>sck</td>
+<td>6</td>
+<td>14</td>
+<td>18</td>
+<td>14</td>
+</tr>
+<tr class="row-even"><td>cmd</td>
+<td>11</td>
+<td>15</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cs</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>5</td>
+<td>15</td>
+</tr>
+<tr class="row-even"><td>miso</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>19</td>
+<td>12</td>
+</tr>
+<tr class="row-odd"><td>mosi</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>23</td>
+<td>13</td>
+</tr>
+<tr class="row-even"><td>D0</td>
+<td>7</td>
+<td>2</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>D1</td>
+<td>8</td>
+<td>4</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>D2</td>
+<td>9</td>
+<td>12</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>D3</td>
+<td>10</td>
+<td>13</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>D4</td>
+<td>16</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>D5</td>
+<td>17</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>D6</td>
+<td>5</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>D7</td>
+<td>18</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="cc3200">
+<h3>cc3200<a class="headerlink" href="#cc3200" title="Permalink to this headline">¶</a></h3>
+<p>You can set the pins used for SPI access by passing a tuple as the
+<em>pins</em> argument.</p>
+<p><em>Note:</em> The current cc3200 SD card implementation names the this class
+<a class="reference internal" href="machine.SD.html#machine.SD" title="machine.SD"><code class="xref py py-class docutils literal notranslate"><span class="pre">machine.SD</span></code></a> rather than <a class="reference internal" href="#machine.SDCard" title="machine.SDCard"><code class="xref py py-class docutils literal notranslate"><span class="pre">machine.SDCard</span></code></a> .</p>
+</div>
 </div>
 </div>
 
@@ -235,10 +403,10 @@ only fed after verifying that everything is functioning correctly.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="machine.SD.html" class="btn btn-neutral float-right" title="class SD – secure digital memory card (cc3200 port only)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="micropython.html" class="btn btn-neutral float-right" title="micropython – access and control MicroPython internals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="machine.Timer.html" class="btn btn-neutral" title="class Timer – control hardware timers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="machine.SD.html" class="btn btn-neutral" title="class SD – secure digital memory card (cc3200 port only)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
